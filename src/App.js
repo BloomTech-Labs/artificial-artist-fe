@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import CreateVideo from "./components/CreateVideo";
 import VideoList from "./components/VideoList";
 
 function App(props) {

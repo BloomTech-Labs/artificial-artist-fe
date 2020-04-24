@@ -51,7 +51,7 @@ export const GET_VIDEOS_START = "GET_VIDEOS_START";
 export const GET_VIDEOS_SUCCESS = "GET_VIDEOS_SUCCESS";
 export const GET_VIDEOS_ERROR = "GET_VIDEOS_ERROR";
 
-export const getArt = (token) => (dispatch) => {
+export const getVideos = (token) => (dispatch) => {
   dispatch({ type: GET_VIDEOS_START });
   axiosWithAuth(token)
     .get(`${urlServer}/videos`)

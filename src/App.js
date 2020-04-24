@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import PrivateRoute from "./components/PrivateRoute";
+import { logout } from "./store/actions";
+import { connect } from "react-redux";
+import {
+  BrowserRouter as Router,
+  Route,
+  withRouter,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import CreateVideo from "./components/CreateVideo";
+import VideoList from "./components/VideoList";
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <PrivateRoute
+          path="/"
+          exact
+          component={localStorage.getItem("token") ? VideoList : Signup}
+        />
+        <PrivateRoute
+          path="/create"
+          exact
+          component={localStorage.getItem("token") ? CreateVideo : Signup}
+        />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route
+          exact
+          path="/"
+          render={() =>
+            localStorage.getItem("token") ? (
+              <Redirect to="/" />
+            ) : (
+              <Signup />
+            )
+          }
+        />
+      </Switch>
+    </Router>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  loginStart: state.loginStart,
+  token: state.token,
+});
+
+export default connect(mapStateToProps, { logout })(withRouter(App));

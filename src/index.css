@@ -28,6 +28,11 @@ nav {
   font-size: 1.188rem;
 }
 
+.navbar-brand:hover {
+  color: #665ef1;
+  text-decoration: underline;
+  }
+
 .nav-links {
   list-style-type: none;
   display: flex;

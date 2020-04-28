@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap'
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
 
 const Navigation = () => {
     const history = useHistory()
@@ -18,7 +18,8 @@ const Navigation = () => {
                 Artificial Artist
             </NavbarBrand>
 
-            {/* display create videos and log out if user has token, else display browse videos, log in, and sign up */}
+            {/* display create videos and log out if user has token, else 
+            display browse videos, log in, and sign up */}
             {localStorage.getItem('token') ? (
                 <Nav className='nav-links'>
                     <NavItem>

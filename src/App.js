@@ -13,10 +13,12 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import CreateVideo from "./components/CreateVideo";
 import VideoList from "./components/VideoList";
+import Navigation from "./components/Navigation";
 
 function App(props) {
   return (
     <Router>
+      <Navigation />
       <Switch>
         <PrivateRoute
           path="/"
@@ -37,8 +39,8 @@ function App(props) {
             localStorage.getItem("token") ? (
               <Redirect to="/" />
             ) : (
-              <Signup />
-            )
+                <Signup />
+              )
           }
         />
       </Switch>

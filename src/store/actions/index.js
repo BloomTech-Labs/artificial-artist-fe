@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-const urlServer = "http://localhost:5000/api";
+const urlServer = process.env.REACT_APP_SERVER_URL;
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -8,13 +8,14 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const login = (creds, history) => (dispatch) => {
   dispatch({ type: LOGIN_START });
+  console.log(urlServer);
   axiosWithAuth()
     .post(`${urlServer}/auth/login`, creds)
     .then((res) => {
       console.log(res);
       setTimeout(() => {
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user_id", res.data.user_id);
+        localStorage.setItem("user_id", res.data.signIn.id);
         setTimeout(() => {
           dispatch({ type: LOGIN_SUCCESS });
           history.push("/videos");

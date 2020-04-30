@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getVideos } from "../store/actions";
+
 import style from "styled-components";
 
 const VideoList = props => {

@@ -14,9 +14,10 @@ import Signup from "./components/Signup";
 import CreateVideo from "./components/CreateVideo";
 import VideoList from "./components/VideoList";
 import Navigation from "./components/Navigation";
-
+import Video from './components/VideoPage'
 function App(props) {
   return (
+    <>
     <Router>
       <Navigation />
       <Switch>
@@ -45,6 +46,9 @@ function App(props) {
         />
       </Switch>
     </Router>
+
+    <Video/>
+    </>
   );
 }
 

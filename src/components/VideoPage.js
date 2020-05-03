@@ -8,12 +8,12 @@ const videoContainer = {
   maxWidth: "50%",
   width: "-webkit-fill-available",
   left: "calc(50%/2)",
-  position: "absolute",
+  position: "absolute"
 };
 
-const Video = (props) => {
+const Video = props => {
   return (
-    <div style={videoContainer} className="videoContainer">
+    <div style={videoContainer}>
       <Player
         playsInline
         poster="/assets/poster.png"

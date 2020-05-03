@@ -7,17 +7,17 @@ import style from "styled-components";
 function Login(props) {
   const [creds, setCreds] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setCreds({
       ...creds,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     props.login(creds, props.history);
   };
@@ -27,7 +27,7 @@ function Login(props) {
       <div>
         <form onSubmit={onSubmit}>
           <img src="images/Logo.svg" />
-          <h1>Title</h1>
+          <h1>Login</h1>
           <label>email</label>
           <input
             required
@@ -35,7 +35,7 @@ function Login(props) {
             name="email"
             value={creds.email}
             onChange={handleChange}
-          ></input>
+          />
           <label>Password</label>
           <input
             required
@@ -43,7 +43,7 @@ function Login(props) {
             name="password"
             value={creds.password}
             onChange={handleChange}
-          ></input>
+          />
           {props.loginStart ? (
             <button type="submit" disabled>
               Loading...
@@ -62,9 +62,12 @@ function Login(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loginStart: state.loginStart,
-  loginError: state.loginError,
+  loginError: state.loginError
 });
 
-export default connect(mapStateToProps, { login })(withRouter(Login));
+export default connect(
+  mapStateToProps,
+  { login }
+)(withRouter(Login));

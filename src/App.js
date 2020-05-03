@@ -2,23 +2,16 @@ import React from "react";
 import PrivateRoute from "./components/PrivateRoute";
 import { logout } from "./store/actions";
 import { connect } from "react-redux";
-import {
-  BrowserRouter as Router,
-  Route,
-  withRouter,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import CreateVideo from "./components/CreateVideo";
 import VideoList from "./components/VideoList";
 import Navigation from "./components/Navigation";
-import Video from './components/VideoPage'
+import Video from "./components/VideoPage";
 function App(props) {
   return (
     <>
-    <Router>
       <Navigation />
       <Switch>
         <PrivateRoute
@@ -37,24 +30,24 @@ function App(props) {
           exact
           path="/"
           render={() =>
-            localStorage.getItem("token") ? (
+            localStorage.getItem("token" === props.token) ? (
               <Redirect to="/" />
             ) : (
-                <Signup />
-              )
+              <Signup />
+            )
           }
         />
       </Switch>
-    </Router>
-
-    <Video/>
     </>
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loginStart: state.loginStart,
-  token: state.token,
+  token: state.token
 });
 
-export default connect(mapStateToProps, { logout })(withRouter(App));
+export default connect(
+  mapStateToProps,
+  { logout }
+)(App);

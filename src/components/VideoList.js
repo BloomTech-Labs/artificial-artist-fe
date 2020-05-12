@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getVideos } from "../store/actions";
 import Video from "./Video";
 
 import style from "styled-components";
-
-const VideoList = props => {
+const VideoList = (props) => {
+  
+  const [videos, setVideos] = useState([]);
   // We might use something like this for when videos get updated, perhaps not though
   useEffect(() => {
     props.getVideos(localStorage.getItem("token"));
@@ -15,20 +16,19 @@ const VideoList = props => {
   return (
     <>
       <Video />
+
+      {videos && videos.map((video) => <> {video} </>)}
     </>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   videos: state.videos,
   getVideosStart: state.getVideosStart,
   postVideoSuccess: state.postVideoSuccess,
-  loginSuccess: state.loginSuccess
+  loginSuccess: state.loginSuccess,
 });
 
-export default connect(
-  mapStateToProps,
-  {
-    getVideos
-  }
-)(withRouter(VideoList));
+export default connect(mapStateToProps, {
+  getVideos,
+})(withRouter(VideoList));

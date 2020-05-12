@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-const urlServer = "http://localhost:5000/api";
+const urlServer = process.env.REACT_APP_SERVER_URL;
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -8,13 +8,14 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const login = (creds, history) => (dispatch) => {
   dispatch({ type: LOGIN_START });
+  console.log(urlServer);
   axiosWithAuth()
     .post(`${urlServer}/auth/login`, creds)
     .then((res) => {
       console.log(res);
       setTimeout(() => {
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user_id", res.data.user_id);
+        localStorage.setItem("user_id", res.data.signIn.id);
         setTimeout(() => {
           dispatch({ type: LOGIN_SUCCESS });
           history.push("/videos");
@@ -75,3 +76,31 @@ export const logout = (history) => (dispatch) => {
   localStorage.removeItem("user_id");
   history.push("/login");
 };
+
+export const POST_VIDEO_START = "POST_VIDEO_START"
+export const POST_VIDEO_SUCCESS = "POST_VIDEO_SUCCESS"
+export const POST_VIDEO_FAILURE = "POST_VIDEO_FAILURE"
+
+export const postVideo = creds => dispatch => {
+  dispatch({
+    type: POST_VIDEO_START,
+    payload: creds
+  })
+  console.log("credentials in post video", creds)
+  axiosWithAuth()
+    .post(`${urlServer}/create-video`, creds)
+    .then(res => {
+      console.log("postVideo response", res)
+      dispatch({
+        type: POST_VIDEO_SUCCESS,
+        payload: res.data.video_create
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      dispatch({
+        type: POST_VIDEO_FAILURE,
+        payload: "error posting data"
+      })
+    })
+}

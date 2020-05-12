@@ -8,6 +8,9 @@ import {
   GET_VIDEOS_START,
   GET_VIDEOS_SUCCESS,
   GET_VIDEOS_ERROR,
+  //POST_VIDEO_START,
+  //POST_VIDEO_SUCCESS,
+  //POST_VIDEO_FAILURE,
   LOGOUT,
 } from "../actions";
 
@@ -23,6 +26,9 @@ const initialState = {
   getVideosStart: false,
   getVideosSuccess: false,
   getVideosError: false,
+  //postVideoStart: false,
+  //postVideoSuccess: false,
+  //postVideoError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -88,6 +94,27 @@ const reducer = (state = initialState, action) => {
         getVideosStart: false,
         getVideosError: true,
       };
+
+    /*case POST_VIDEO_START:
+      return {
+        ...state,
+        postVideoStart: true,
+      };
+
+    case POST_VIDEO_SUCCESS:
+      console.log('action.payload in reducers', action.payload)
+      return {
+        ...state,
+        videos: [...state.videos, action.payload],
+        postVideoStart: false,
+      };
+
+    case POST_VIDEO_FAILURE:
+      return {
+        ...state,
+        postVideoStart: false,
+        postVideoError: true,
+      };*/
 
     case LOGOUT:
       return {

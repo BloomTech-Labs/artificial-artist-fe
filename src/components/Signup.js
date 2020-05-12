@@ -6,6 +6,9 @@ import style from "styled-components";
 
 function Signup(props) {
   const [creds, setCreds] = useState({
+    username: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: ""
   });
@@ -19,7 +22,7 @@ function Signup(props) {
 
   const onSubmit = e => {
     e.preventDefault();
-    props.login(creds, props.history);
+    props.signup(creds, props.history);
   };
 
   return (
@@ -27,16 +30,40 @@ function Signup(props) {
       <div>
         <form onSubmit={onSubmit}>
           <img src="images/Logo.svg" />
-          <h1>Signup</h1>
-          <label>email</label>
+          <h1>Sign Up</h1>
+          <label htmlFor="username">username</label>
+          <input
+            required
+            type="text"
+            name="username"
+            value={creds.username}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="first_name">first name</label>
+          <input
+            required
+            type="text"
+            name="first_name"
+            value={creds.first_name}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="last_name">last name</label>
+          <input
+            required
+            type="text"
+            name="last_name"
+            value={creds.last_name}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="email">email</label>
           <input
             required
             type="text"
             name="email"
             value={creds.email}
             onChange={handleChange}
-          />
-          <label>Password</label>
+          ></input>
+          <label htmlFor="password">Password</label>
           <input
             required
             type="password"

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getVideos } from "../store/actions";
-import VideoPage from "./VideoPage";
+import Video from "./Video";
 
 import style from "styled-components";
 
@@ -14,7 +14,7 @@ const VideoList = props => {
 
   return (
     <>
-      <VideoPage />
+      <Video />
     </>
   );
 };

@@ -42,6 +42,7 @@ export const signup = (creds, history) => (dispatch) => {
       setTimeout(() => {
         dispatch({ type: SIGNUP_SUCCESS });
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user_id", res.data.signIn.id);
         history.push("/videos");
       }, 1000);
     })
@@ -68,6 +69,23 @@ export const getVideos = (token) => (dispatch) => {
     });
 };
 
+export const POST_VIDEO_START = "POST_VIDEO_START";
+export const POST_VIDEO_SUCCESS = "POST_VIDEO_SUCCESS";
+export const POST_VIDEO_ERROR = "POST_VIDEO_ERROR";
+
+export const postVideo = (token, video, history) => (dispatch) => {
+  dispatch({ type: POST_VIDEO_START });
+  axiosWithAuth(token)
+    .post(`${urlServer}/videos`, video)
+    .then((res) => {
+      setTimeout(() => {
+        dispatch({ type: POST_VIDEO_SUCCESS });
+        history.push(`/video/${res.video.id}`);
+      }, 1000);
+    })
+    .catch((err) => dispatch({ type: POST_VIDEO_ERROR,  err }));
+};
+
 export const LOGOUT = "LOGOUT";
 
 export const logout = (history) => (dispatch) => {
@@ -76,31 +94,3 @@ export const logout = (history) => (dispatch) => {
   localStorage.removeItem("user_id");
   history.push("/login");
 };
-
-export const POST_VIDEO_START = "POST_VIDEO_START"
-export const POST_VIDEO_SUCCESS = "POST_VIDEO_SUCCESS"
-export const POST_VIDEO_FAILURE = "POST_VIDEO_FAILURE"
-
-export const postVideo = creds => dispatch => {
-  dispatch({
-    type: POST_VIDEO_START,
-    payload: creds
-  })
-  console.log("credentials in post video", creds)
-  axiosWithAuth()
-    .post(`${urlServer}/create-video`, creds)
-    .then(res => {
-      console.log("postVideo response", res)
-      dispatch({
-        type: POST_VIDEO_SUCCESS,
-        payload: res.data.video_create
-      })
-    })
-    .catch(err => {
-      console.log(err)
-      dispatch({
-        type: POST_VIDEO_FAILURE,
-        payload: "error posting data"
-      })
-    })
-}

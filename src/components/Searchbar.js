@@ -12,11 +12,16 @@ const Searchbar = () => {
 
     const [results, setResults] = useState([]);
 
+    // const [videoTitle, setVideoTitle] = useState("");
+
     const [selectedSong, setSelectedSong] = useState({
         title_short: "",
         preview: "",
         artist: "",
-        deezer_id: ""
+        deezer_id: "",
+        location: "youtube.com/video",
+        video_title: "",
+        user_id: localStorage.setItem("user_id")
     });
 
     const fullQuery = `${API_URL}${query}`;
@@ -39,9 +44,13 @@ const Searchbar = () => {
 
     }, [query])
 
-    const handleInputChange = event => {
+    const handleSongChange = event => {
         setQuery(event.target.value)
     }
+
+    const handleTitleChange = (event) => {
+        setSelectedSong(...selectedSong, [event.target.name]: event.target.value);
+    };
 
     const handleClickSong = event => {
         const songItem = event.target.getAttribute("data-index");
@@ -57,7 +66,7 @@ const Searchbar = () => {
       <>
         <input
           placeholder="Search Artist and/or Song Title"
-          onChange={handleInputChange}
+          onChange={handleSongChange}
         />
 
         <ul>

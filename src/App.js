@@ -16,6 +16,7 @@ import VideoList from "./components/VideoList";
 import Navigation from "./components/Navigation";
 
 function App(props) {
+
   return (
     <Router>
       <Navigation />
@@ -42,6 +43,10 @@ function App(props) {
                 <Signup />
               )
           }
+          
+          <PrivateRoute exact path="/videos/:id" render={props => (
+            <SingleVideoPage {...props} videos={props.videos}  />
+          )}
         />
       </Switch>
     </Router>
@@ -51,6 +56,7 @@ function App(props) {
 const mapStateToProps = (state) => ({
   loginStart: state.loginStart,
   token: state.token,
+  videos:state.videos
 });
 
 export default connect(mapStateToProps, { logout })(withRouter(App));

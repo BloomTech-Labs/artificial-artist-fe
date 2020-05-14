@@ -8,9 +8,9 @@ import {
   GET_VIDEOS_START,
   GET_VIDEOS_SUCCESS,
   GET_VIDEOS_ERROR,
-  //POST_VIDEO_START,
-  //POST_VIDEO_SUCCESS,
-  //POST_VIDEO_FAILURE,
+  POST_VIDEO_START,
+  POST_VIDEO_SUCCESS,
+  POST_VIDEO_ERROR,
   LOGOUT,
 } from "../actions";
 
@@ -26,9 +26,9 @@ const initialState = {
   getVideosStart: false,
   getVideosSuccess: false,
   getVideosError: false,
-  //postVideoStart: false,
-  //postVideoSuccess: false,
-  //postVideoError: false,
+  postVideoStart: false,
+  postVideoSuccess: false,
+  postVideoError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -95,7 +95,7 @@ const reducer = (state = initialState, action) => {
         getVideosError: true,
       };
 
-    /*case POST_VIDEO_START:
+    case POST_VIDEO_START:
       return {
         ...state,
         postVideoStart: true,
@@ -109,12 +109,12 @@ const reducer = (state = initialState, action) => {
         postVideoStart: false,
       };
 
-    case POST_VIDEO_FAILURE:
+    case POST_VIDEO_ERROR:
       return {
         ...state,
         postVideoStart: false,
         postVideoError: true,
-      };*/
+      };
 
     case LOGOUT:
       return {

@@ -114,13 +114,14 @@ const CreateVideo = props => {
               ))
             : console.log("broken")}
         </ul>
+        <button type="submit">Submit</button> 
       </form>
     </>
   );
 };
 
 const mapStateToProps = (state) => ({
-  videos: state.videos,
+    videos: state.videos,
     postVideoError: state.postVideoError,
     postVideoStart: state.postVideoStart,
 });

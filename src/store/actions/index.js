@@ -55,7 +55,7 @@ export const GET_VIDEOS_ERROR = "GET_VIDEOS_ERROR";
 export const getVideos = (token) => (dispatch) => {
   dispatch({ type: GET_VIDEOS_START });
   axiosWithAuth(token)
-    .get(`${urlServer}/videos`)
+    .get(`/videos`)
     .then((res) => {
       console.log(res.data);
       setTimeout(() => {

@@ -1,5 +1,4 @@
 import React from "react";
-import style from "styled-components";
 
 const videoThumb = {
   flex: "0 1 30vw",
@@ -10,7 +9,7 @@ const videoThumb = {
   alignItems: "center",
 };
 
-export const Thumbnail = (props) => {
+const Thumbnail = (props) => {
   function getYoutubeThumb(link) {
     let youtubeID = link.replace("https://www.youtube.com/watch?v=", "");
     let thumbnailHQ = `https://img.youtube.com/vi/${youtubeID}/hqdefault.jpg`;
@@ -37,3 +36,5 @@ export const Thumbnail = (props) => {
     </div>
   );
 };
+
+export default Thumbnail

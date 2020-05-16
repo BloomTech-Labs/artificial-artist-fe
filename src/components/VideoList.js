@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter,Link } from "react-router-dom";
 import { getVideos } from "../store/actions";
 import Video from "./Video";
 import style from "styled-components";
@@ -46,7 +46,13 @@ const VideoList = (props) => {
       {/* {props.videos && props.videos.map((video) => <SingleVideoCard video={video}/>)} */}
       <div style={VideoThumbsContainer}>
         {videoList.length > 0 &&
-          videoList.map((video) => <SingleVideoCard video={video} />)}
+          videoList.map((video) => (
+            <div key={video.id}>
+              <Link to={`/videos/${video.id}`}>
+                <SingleVideoCard video={video} />
+              </Link>
+            </div>
+          ))}
         {console.log({ videoList })}
       </div>
     </div>

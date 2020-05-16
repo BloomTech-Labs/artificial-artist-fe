@@ -10,7 +10,7 @@ const videoThumb = {
   alignItems: "center",
 };
 
-export const SingleVideoCard = (props) => {
+export const Thumbnail = (props) => {
   function getYoutubeThumb(link) {
     let youtubeID = link.replace("https://www.youtube.com/watch?v=", "");
     let thumbnailHQ = `https://img.youtube.com/vi/${youtubeID}/hqdefault.jpg`;

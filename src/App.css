@@ -1,7 +1,14 @@
-.App {
+/* .App {
   text-align: center;
-}
+  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+} */
 
+.videoThumb{
+  /* flex:0 1 45%; */
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +43,5 @@
     transform: rotate(360deg);
   }
 }
+
+

@@ -7,8 +7,7 @@ import { Player } from "video-react";
 const videoContainer = {
   maxWidth: "50%",
   width: "-webkit-fill-available",
-  left: "calc(50%/2)",
-  position: "absolute",
+  margin: "0 auto",
 };
 
 const Video = (props) => {

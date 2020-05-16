@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getVideos } from "../store/actions";
+import Video from "./Video";
 import style from "styled-components";
 
 const VideoList = props => {
@@ -10,10 +11,12 @@ const VideoList = props => {
     useEffect(() => {
         props.getVideos(localStorage.getItem("token"));
     }, [props.postVideoSuccess]);
-
 	return (
-        <>
-        </>
+    <>
+      <Video />
+
+      {props.videos && props.videos.map((video) => <> {video} </>)}
+    </>
     );
 }
 

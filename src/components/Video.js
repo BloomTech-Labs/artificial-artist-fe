@@ -1,5 +1,4 @@
 import React from "react";
-import style from "styled-components";
 import "../../node_modules/video-react/dist/video-react.css";
 import "../App.css";
 import { Player } from "video-react";
@@ -17,8 +16,8 @@ const Video = (props) => {
         playsInline
         poster="/assets/poster.png"
         src={
-          props.videoStream
-            ? props.videoStream
+          props.correctVideo
+            ? props.correctVideo
             : "https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
         }
       />

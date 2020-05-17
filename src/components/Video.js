@@ -10,15 +10,16 @@ const videoContainer = {
 };
 
 const Video = (props) => {
+  console.log("props.video",props.video)
   return (
     <div style={videoContainer}>
       <Player
         playsInline
-        poster="/assets/poster.png"
+
         src={
-          props.correctVideo
-            ? props.correctVideo
-            : "https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+          props.video
+            ? props.video.location
+            : "https://elasticbeanstalk-us-east-1-427400502172.s3.amazonaws.com/Videosforbackend/TarantulaCrisp.mp4"
         }
       />
     </div>

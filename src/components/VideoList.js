@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { getVideos } from "../store/actions";
@@ -19,6 +19,9 @@ const VideoThumbsContainer = {
 };
 
 const VideoList = ({ getVideosStart, videoList, stateVL }) => {
+
+
+
   return (
     <div style={videoListContainer}>
       <Video />

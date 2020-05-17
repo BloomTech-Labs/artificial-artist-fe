@@ -6,7 +6,7 @@ import Video from "./Video";
 
 const SingleVideoPage = ({ stateVL }) => {
   const { videoID } = useParams();
-console.log("line9SVP",{videoID})
+
   const correctVideo = stateVL.find((video) => video.id === Number(videoID));
 
   console.log("#########################--->>>>>", { correctVideo });

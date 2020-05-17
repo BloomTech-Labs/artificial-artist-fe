@@ -13,7 +13,6 @@ const SingleVideoPage = ({ stateVL }) => {
 
   return (
     <>
-      {console.log("#########################--->>>>>", { correctVideo })}
       <Video video={correctVideo} />
     </>
   );

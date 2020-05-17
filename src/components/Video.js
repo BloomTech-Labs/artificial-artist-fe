@@ -1,6 +1,5 @@
 import React from "react";
 import "../../node_modules/video-react/dist/video-react.css";
-import "../App.css";
 import { Player } from "video-react";
 
 const videoContainer = {
@@ -10,16 +9,15 @@ const videoContainer = {
 };
 
 const Video = (props) => {
-  console.log("props.video",props.video)
+  console.log("props.video", props.video);
   return (
     <div style={videoContainer}>
       <Player
         playsInline
-
         src={
           props.video
             ? props.video.location
-            : "https://elasticbeanstalk-us-east-1-427400502172.s3.amazonaws.com/Videosforbackend/TarantulaCrisp.mp4"
+            : `${process.env.REACT_APP_S3VIDEOS}billieeilish--you_should_see_me_in_a_crown-king_me_-coLerbRvgsQ.mp4`
         }
       />
     </div>

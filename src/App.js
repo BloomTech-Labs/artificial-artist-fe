@@ -36,7 +36,7 @@ function App(props) {
         <PrivateRoute
           path="/create"
           exact
-          component={localStorage.getItem("token")==props.currenttoken ? CreateVideo : Signup}
+          component={localStorage.getItem("token") ? CreateVideo : Signup}
         />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />

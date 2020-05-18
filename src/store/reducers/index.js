@@ -81,11 +81,13 @@ const reducer = (state = initialState, action) => {
       };
 
     case GET_VIDEOS_SUCCESS:
+     let ap=action.payload;
+      console.log("reducer--GET_VIDEOS_SUCCESS case",{ap},"ap.videos",ap.videos);
       return {
         ...state,
         getVideosStart: false,
         getVideosError: false,
-        videoList: action.payload,
+        videoList: action.payload.videos,
       };
 
     case GET_VIDEOS_ERROR:

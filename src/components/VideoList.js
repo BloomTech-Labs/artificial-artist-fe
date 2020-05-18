@@ -1,27 +1,51 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { connect, useSelector } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
 import { getVideos } from "../store/actions";
-import style from "styled-components";
+import Video from "./Video";
+import Thumbnail from "./Thumbnail.js";
 
-const VideoList = props => {
+const videoListContainer = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
 
-    // We might use something like this for when videos get updated, perhaps not though
-    useEffect(() => {
-        props.getVideos(localStorage.getItem("token"));
-    }, [props.postVideoSuccess]);
+const VideoThumbsContainer = {
+  display: "flex",
+  flexWrap: "wrap",
+  width: "70%",
+  margin: "0 auto",
+  placeContent: "center",
+};
 
-	return (
-        <>
-        </>
-    );
-}
+const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
+  useEffect(() => {
+    getVideos();
+  }, []);
+
+  return (
+    <div style={videoListContainer}>
+      <Video />
+      <div style={VideoThumbsContainer}>
+        {videos &&
+          videos.map((video) => (
+            <div key={video.id}>
+              <Link to={`/videos/${video.id}`}>
+                <Thumbnail video={video} />
+              </Link>
+            </div>
+          ))}
+      </div>
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
-  videos: state.videos,
   getVideosStart: state.getVideosStart,
   postVideoSuccess: state.postVideoSuccess,
   loginSuccess: state.loginSuccess,
+  videos: state.videoList,
 });
 
 export default connect(mapStateToProps, {

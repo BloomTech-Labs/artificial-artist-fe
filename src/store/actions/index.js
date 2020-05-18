@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-const urlServer = process.env.REACT_APP_SERVER_URL;
+// const urlServer = process.env.REACT_APP_SERVER_URL;
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -8,9 +8,8 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const login = (creds, history) => (dispatch) => {
   dispatch({ type: LOGIN_START });
-  console.log(urlServer);
   axiosWithAuth()
-    .post(`${urlServer}/auth/login`, creds)
+    .post(`/auth/login`, creds)
     .then((res) => {
       console.log(res);
       setTimeout(() => {
@@ -36,7 +35,7 @@ export const signup = (creds, history) => (dispatch) => {
   dispatch({ type: SIGNUP_START });
 
   axiosWithAuth()
-    .post(`${urlServer}/auth/register`, creds)
+    .post(`/auth/register`, creds)
     .then((res) => {
       console.log(res);
       setTimeout(() => {
@@ -77,7 +76,7 @@ export const postVideo = (token, video, history) => (dispatch) => {
   });
 
   axiosWithAuth(token)
-    .post(`${urlServer}/videos`, video)
+    .post(`/videos`, video)
     .then((res) => {
       setTimeout(() => {
         dispatch({ 

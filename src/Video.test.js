@@ -15,7 +15,7 @@ describe("VideoPlayer", () => {
   test("VideoPlayer renders video from props", () => {
     let mockVideoLink = "www.mOcK_GAN_vIdEo_StReAm.com";
     const VideoPlayerWithVideoProp = render(
-      <Video videoStream={mockVideoLink} />
+      <Video correctVideo={mockVideoLink} />
     );
 
     const mockVideoURL = VideoPlayerWithVideoProp.findByText(

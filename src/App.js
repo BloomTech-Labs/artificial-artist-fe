@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PrivateRoute from "./components/PrivateRoute";
-import { logout } from "./store/actions";
+import { logout,getVideos } from "./store/actions";
 import { connect } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -14,17 +14,25 @@ import Signup from "./components/Signup";
 import CreateVideo from "./components/CreateVideo";
 import VideoList from "./components/VideoList";
 import Navigation from "./components/Navigation";
+import SingleVideoPage from "./components/SingleVideoPage";
 
 function App(props) {
+
+
   return (
     <Router>
       <Navigation />
       <Switch>
-        <PrivateRoute
-          path="/"
-          exact
-          component={localStorage.getItem("token") ? VideoList : Signup}
-        />
+        <Route exact path="/" component={VideoList} />
+        {/* <Route exact path="/" >
+          <VideoList videoList={props.videoList} />
+        </Route> */}
+        <Route exact path="/videos/:videoID" component={SingleVideoPage}/>
+          {/* <SingleVideoPage videoList={props.videoList} /> */}
+
+        {/* <PrivateRoute exact path="/videos/:videoID">
+          <SingleVideoPage videoList={props.videoList} />
+        </PrivateRoute> */}
         <PrivateRoute
           path="/create"
           exact
@@ -32,17 +40,6 @@ function App(props) {
         />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route
-          exact
-          path="/"
-          render={() =>
-            localStorage.getItem("token") ? (
-              <Redirect to="/" />
-            ) : (
-                <Signup />
-              )
-          }
-        />
       </Switch>
     </Router>
   );
@@ -53,4 +50,4 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
-export default connect(mapStateToProps, { logout })(withRouter(App));
+export default connect(mapStateToProps, { logout,getVideos })(withRouter(App));

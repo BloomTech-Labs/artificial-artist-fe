@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { SpinnerDiv, Spinner } from "../styled-components/spinner";
 
 // Need to create action for posting video
 import { postVideo } from "../store/actions";
@@ -112,6 +113,11 @@ const CreateVideo = props => {
         </ul>
         <button type="submit">Submit</button>
       </form>
+      {props.postVideoStart && (
+        <SpinnerDiv>
+          <Spinner color="success" />
+        </SpinnerDiv>
+      )}
     </>
   );
 };

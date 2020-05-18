@@ -104,8 +104,8 @@ const reducer = (state = initialState, action) => {
     case POST_VIDEO_SUCCESS:
       console.log('action.payload in reducers', action.payload)
       return {
-        ...state,
-        videos: [...state.videos, action.payload],
+        // ...state,
+        // videos: [...state.videos, action.payload],
         postVideoStart: false,
       };
 

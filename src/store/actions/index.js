@@ -80,7 +80,7 @@ export const postVideo = (token, video, history) => (dispatch) => {
     .then((res) => {
       setTimeout(() => {
         dispatch({ type: POST_VIDEO_SUCCESS });
-        history.push(`/video/${res.video.id}`);
+        history.push(`/video/${res.data.videoId}`);
       }, 1000);
     })
     .catch((err) => dispatch({ type: POST_VIDEO_ERROR,  err }));

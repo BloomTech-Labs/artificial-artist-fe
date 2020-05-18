@@ -18,25 +18,25 @@ import SingleVideoPage from "./components/SingleVideoPage";
 
 function App(props) {
 
-  useEffect(() => {
-    props.getVideos();
-    console.log("props.videoList appJS23", props.videoList);
-  }, [])
 
   return (
     <Router>
       <Navigation />
       <Switch>
-        <PrivateRoute exact path="/">
+        <Route exact path="/" component={VideoList} />
+        {/* <Route exact path="/" >
           <VideoList videoList={props.videoList} />
-        </PrivateRoute>
-        <PrivateRoute exact path="/videos/:videoID">
+        </Route> */}
+        <Route exact path="/videos/:videoID" component={SingleVideoPage}/>
+          {/* <SingleVideoPage videoList={props.videoList} /> */}
+
+        {/* <PrivateRoute exact path="/videos/:videoID">
           <SingleVideoPage videoList={props.videoList} />
-        </PrivateRoute>
+        </PrivateRoute> */}
         <PrivateRoute
           path="/create"
           exact
-          component={localStorage.getItem("token") ? CreateVideo : Signup}
+          component={localStorage.getItem("token")==props.currenttoken ? CreateVideo : Signup}
         />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
@@ -48,7 +48,6 @@ function App(props) {
 const mapStateToProps = (state) => ({
   loginStart: state.loginStart,
   token: state.token,
-  videoList: state.videoList,
 });
 
 export default connect(mapStateToProps, { logout,getVideos })(withRouter(App));

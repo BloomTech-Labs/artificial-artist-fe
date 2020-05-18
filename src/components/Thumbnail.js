@@ -1,4 +1,5 @@
 import React from "react";
+import Video from "./Video";
 
 const videoThumb = {
   flex: "0 1 30vw",
@@ -10,31 +11,26 @@ const videoThumb = {
 };
 
 const Thumbnail = (props) => {
-  function getYoutubeThumb(link) {
-    let youtubeID = link.replace("https://www.youtube.com/watch?v=", "");
-    let thumbnailHQ = `https://img.youtube.com/vi/${youtubeID}/hqdefault.jpg`;
-    let thumbnailSD = `https://img.youtube.com/vi/${youtubeID}/sddefault.jpg`;
-    return [thumbnailHQ, thumbnailSD, youtubeID];
+  function getCanvasThumbnail(link) {
+    let thumbnail; //= canvas X html5 X link
+    return [thumbnail];
   }
-  const [thumbnailHQ, thumbnailSD, youtubeID] = getYoutubeThumb(
-    props.video.location
-  );
-  console.log({ youtubeID }, { thumbnailSD }, { thumbnailHQ });
+  const [thumbnail] = getCanvasThumbnail(props.video.location);
+
   return (
-    <div className="videoThumb">
+    <div >
       <ul>
         <li>{props.video.title}</li>
         <li>{props.video.artist_name}</li>
-        <img
-          style={videoThumb}
-          src={thumbnailHQ}
-          alt={
-            thumbnailSD || `${props.video.title} by ${props.video.artist_name}`
-          }
-        />
+        <li>
+
+          <video style={videoThumb}  controls>
+            <source src={`${props.video.location}#t=20`} />
+          </video>
+        </li>
       </ul>
     </div>
   );
 };
 
-export default Thumbnail
+export default Thumbnail;

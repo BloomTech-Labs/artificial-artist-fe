@@ -16,18 +16,20 @@ const VideoThumbsContainer = {
   flexWrap: "wrap",
   width: "70%",
   margin: "0 auto",
+  placeContent: "center",
 };
 
-const VideoList = ({ getVideosStart, videoList, stateVL }) => {
-
-
+const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
+  useEffect(() => {
+    getVideos();
+  }, []);
 
   return (
     <div style={videoListContainer}>
       <Video />
       <div style={VideoThumbsContainer}>
-        {stateVL &&
-          stateVL.map((video) => (
+        {videos &&
+          videos.map((video) => (
             <div key={video.id}>
               <Link to={`/videos/${video.id}`}>
                 <Thumbnail video={video} />
@@ -43,7 +45,7 @@ const mapStateToProps = (state) => ({
   getVideosStart: state.getVideosStart,
   postVideoSuccess: state.postVideoSuccess,
   loginSuccess: state.loginSuccess,
-  stateVL: state.videoList,
+  videos: state.videoList,
 });
 
 export default connect(mapStateToProps, {

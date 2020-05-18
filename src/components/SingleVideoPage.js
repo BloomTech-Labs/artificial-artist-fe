@@ -4,12 +4,10 @@ import { useParams, useRouteMatch, withRouter, Link } from "react-router-dom";
 import { getVideos } from "../store/actions";
 import Video from "./Video";
 
-const SingleVideoPage = ({ stateVL }) => {
+const SingleVideoPage = ({ videos }) => {
   const { videoID } = useParams();
 
-  const correctVideo = stateVL.find((video) => video.id === Number(videoID));
-
-  console.log("#########################--->>>>>", { correctVideo });
+  const correctVideo = videos.find((video) => video.id === Number(videoID));
 
   return (
     <>
@@ -22,7 +20,7 @@ const mapStateToProps = (state) => ({
   getVideosStart: state.getVideosStart,
   postVideoSuccess: state.postVideoSuccess,
   loginSuccess: state.loginSuccess,
-  stateVL: state.videoList,
+  videos: state.videoList,
 });
 
 export default connect(mapStateToProps, {

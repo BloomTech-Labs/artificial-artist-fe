@@ -73,24 +73,20 @@ export const POST_VIDEO_ERROR = "POST_VIDEO_ERROR";
 
 export const postVideo = (token, video, history) => (dispatch) => {
   dispatch({ 
-  	type: POST_VIDEO_START,
-  	payload: creds,
+  	type: POST_VIDEO_START
   });
 
   axiosWithAuth(token)
-    .post(`${urlServer}/videos`, video, creds)
+    .post(`${urlServer}/videos`, video)
     .then((res) => {
       setTimeout(() => {
         dispatch({ 
-        	type: POST_VIDEO_SUCCESS,
-        	payload: res.data.video_create
-        });
+        	type: POST_VIDEO_SUCCESS        });
         history.push(`/video/${res.data.videoId}`);
       }, 1000);
     })
     .catch((err) => dispatch({ 
-    	type: POST_VIDEO_ERROR,  
-    	payload: err
+    	type: POST_VIDEO_ERROR, err
     	}));
 };
 

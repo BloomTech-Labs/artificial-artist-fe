@@ -97,3 +97,21 @@ export const logout = (history) => (dispatch) => {
   localStorage.removeItem("user_id");
   history.push("/login");
 };
+
+export const GET_VIDID_START = "GET_VIDID_START";
+export const GET_VIDID_SUCCESS = "GET_VIDID_SUCCESS";
+export const GET_VIDID_ERROR = "GET_VIDID_ERROR";
+
+export const getVidID = (token) => (dispatch) => {
+  dispatch({ type: GET_VIDID_START });
+  axiosWithAuth(token)
+    .get(`/videos/:id`)
+    .then((res) => {
+      dispatch({ type: GET_VIDID_SUCCESS, payload: res.data });
+      console.log("line110_+ACTIONS--GET_VIDID_SUCCESS", res.data);
+    })
+    .catch((err) => {
+      dispatch({ type: GET_VIDID_ERROR });
+      console.log(err);
+    });
+};

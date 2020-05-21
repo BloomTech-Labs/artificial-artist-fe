@@ -12,6 +12,9 @@ import {
   POST_VIDEO_SUCCESS,
   POST_VIDEO_ERROR,
   LOGOUT,
+  GET_VIDID_START,
+  GET_VIDID_SUCCESS,
+  GET_VIDID_ERROR,
 } from "../actions";
 
 const initialState = {
@@ -29,6 +32,9 @@ const initialState = {
   postVideoStart: false,
   postVideoSuccess: false,
   postVideoError: false,
+  getVidIdStart: false,
+  getVidIdSuccess: false,
+  getVidIdError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -81,8 +87,13 @@ const reducer = (state = initialState, action) => {
       };
 
     case GET_VIDEOS_SUCCESS:
-     let ap=action.payload;
-      console.log("reducer--GET_VIDEOS_SUCCESS case",{ap},"ap.videos",ap.videos);
+      let ap = action.payload;
+      console.log(
+        "reducer--GET_VIDEOS_SUCCESS case",
+        { ap },
+        "ap.videos",
+        ap.videos
+      );
       return {
         ...state,
         getVideosStart: false,
@@ -104,7 +115,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case POST_VIDEO_SUCCESS:
-      console.log('action.payload in reducers', action.payload)
+      console.log("action.payload in reducers", action.payload);
       return {
         // ...state,
         // videos: [...state.videos, action.payload],
@@ -116,6 +127,34 @@ const reducer = (state = initialState, action) => {
         ...state,
         postVideoStart: false,
         postVideoError: true,
+      };
+
+    case GET_VIDID_START:
+      return {
+        ...state,
+        getVideosStart: true,
+      };
+
+    case GET_VIDID_SUCCESS:
+      let ap = action.payload;
+      console.log(
+        "reducer--GET_VIDID_SUCCESS case",
+        { ap },
+        "ap.video",
+        ap.video
+      );
+      return {
+        ...state,
+        getVidIdStart: false,
+        getVidIdError: false,
+        videoList: action.payload.videos,
+      };
+
+    case GET_VIDID_ERROR:
+      return {
+        ...state,
+        getVidIdStart: false,
+        getVidIdError: true,
       };
 
     case LOGOUT:

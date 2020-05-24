@@ -6,7 +6,7 @@ export const axiosWithAuth = () => {
     baseURL: process.env.REACT_APP_SERVER_URL,
     headers: {
       Authorization: token,
-      "Content-Type": "application/json",
-    },
+      "Content-Type": "application/json"
+    }
   });
 };

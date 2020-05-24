@@ -136,12 +136,12 @@ const reducer = (state = initialState, action) => {
       };
 
     case GET_VIDID_SUCCESS:
-      let ap = action.payload;
+      let actp = action.payload;
       console.log(
         "reducer--GET_VIDID_SUCCESS case",
-        { ap },
-        "ap.video",
-        ap.video
+        { actp },
+        "actp.video.id",
+        actp.video.id
       );
       return {
         ...state,

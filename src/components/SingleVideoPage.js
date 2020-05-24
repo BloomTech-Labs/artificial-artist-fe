@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect, useSelector } from "react-redux";
 import { useParams, useRouteMatch, withRouter, Link } from "react-router-dom";
 import { getVidID } from "../store/actions";
 import Video from "./Video";
 
+
 const SingleVideoPage = ({ videos }) => {
   const { videoID } = useParams();
 
   const correctVideo = videos.find((video) => video.id === Number(videoID));
-
-  //check if video is loading
-  const [isVideoLoading, setIsVideoLoading] = useState()
-
-  const downloadVid = url =>{
-    
-  }
 
   return (
     <>

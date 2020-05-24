@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { SpinnerDiv, Spinner } from "../styled-components/spinner";
+import Loading from "./Loading";
 
 // Need to create action for posting video
 import { postVideo } from "../store/actions";
@@ -11,7 +12,7 @@ import style from "styled-components";
 const API_URL =
   "https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=";
 
-const CreateVideo = props => {
+const CreateVideo = (props) => {
   // const [video, setVideo] = useState({
   //   title: "",
   //   song: "",
@@ -36,7 +37,7 @@ const CreateVideo = props => {
     deezer_id: "",
     location: "youtube.com/video",
     video_title: "",
-    user_id: localStorage.getItem("user_id")
+    user_id: localStorage.getItem("user_id"),
   });
 
   const fullQuery = `${API_URL}${query}`;
@@ -45,11 +46,11 @@ const CreateVideo = props => {
     console.log(fullQuery);
     axiosWithAuth()
       .get(`${fullQuery}&limit=7`)
-      .then(res => {
+      .then((res) => {
         console.log("res", res);
         setResults(res.data.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("unable to suggest artist and/or song", err);
       });
   };
@@ -58,15 +59,15 @@ const CreateVideo = props => {
     if (query.length >= 2) getInfo();
   }, [query]);
 
-  const handleSongChange = event => {
+  const handleSongChange = (event) => {
     setQuery(event.target.value);
   };
 
-  const handleTitleChange = event => {
+  const handleTitleChange = (event) => {
     setVideoTitle({ [event.target.name]: event.target.value });
   };
 
-  const handleClickSong = event => {
+  const handleClickSong = (event) => {
     const songItem = event.target.getAttribute("data-index");
     setSelectedSong({
       ...selectedSong,
@@ -74,11 +75,11 @@ const CreateVideo = props => {
       preview: results[songItem].preview,
       artist: results[songItem].artist.name,
       deezer_id: results[songItem].id,
-      video_title: videoTitle.title
+      video_title: videoTitle.title,
     });
   };
 
-  const submitForm = event => {
+  const submitForm = (event) => {
     event.preventDefault();
     // Need to create postVideo action in redux for this to work
     props.postVideo(localStorage.getItem("token"), selectedSong, props.history);
@@ -122,16 +123,13 @@ const CreateVideo = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   videos: state.videos,
   postVideoError: state.postVideoError,
-  postVideoStart: state.postVideoStart
+  postVideoStart: state.postVideoStart,
 });
 
-export default connect(
-  mapStateToProps,
-  { postVideo }
-)(withRouter(CreateVideo));
+export default connect(mapStateToProps, { postVideo })(withRouter(CreateVideo));
 
 // export default connect(mapStateToProps, {})(
 //   withRouter(CreateVideo)

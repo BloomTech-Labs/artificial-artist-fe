@@ -4,7 +4,6 @@ import { useParams, useRouteMatch, withRouter, Link } from "react-router-dom";
 import { getVidID } from "../store/actions";
 import Video from "./Video";
 
-
 const SingleVideoPage = ({ videos }) => {
   const { videoID } = useParams();
 

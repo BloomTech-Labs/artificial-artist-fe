@@ -71,22 +71,26 @@ export const POST_VIDEO_SUCCESS = "POST_VIDEO_SUCCESS";
 export const POST_VIDEO_ERROR = "POST_VIDEO_ERROR";
 
 export const postVideo = (token, video, history) => (dispatch) => {
-  dispatch({ 
-  	type: POST_VIDEO_START
+  dispatch({
+    type: POST_VIDEO_START,
   });
 
   axiosWithAuth(token)
     .post(`/videos`, video)
     .then((res) => {
       setTimeout(() => {
-        dispatch({ 
-        	type: POST_VIDEO_SUCCESS        });
+        dispatch({
+          type: POST_VIDEO_SUCCESS,
+        });
         history.push(`/video/${res.data.videoId}`);
       }, 1000);
     })
-    .catch((err) => dispatch({ 
-    	type: POST_VIDEO_ERROR, err
-    	}));
+    .catch((err) =>
+      dispatch({
+        type: POST_VIDEO_ERROR,
+        err,
+      })
+    );
 };
 
 export const LOGOUT = "LOGOUT";
@@ -102,10 +106,10 @@ export const GET_VIDID_START = "GET_VIDID_START";
 export const GET_VIDID_SUCCESS = "GET_VIDID_SUCCESS";
 export const GET_VIDID_ERROR = "GET_VIDID_ERROR";
 
-export const getVidID = (token) => (dispatch) => {
+export const getVidID = (videoId) => (dispatch) => {
   dispatch({ type: GET_VIDID_START });
-  axiosWithAuth(token)
-    .get(`/videos/:id`)
+  axiosWithAuth()
+    .get(`/videos/${videoId}`)
     .then((res) => {
       dispatch({ type: GET_VIDID_SUCCESS, payload: res.data });
       console.log("line110_+ACTIONS--GET_VIDID_SUCCESS", res.data);

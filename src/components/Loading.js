@@ -6,30 +6,6 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 const Loading = (props) => {
   const { bgcolor, completed } = props;
 
-  const [videoData, setVideoData] = useState({});
-  const location = props.video.location;
-  const loading = this.state;
-
-  useEffect(() => {
-    axiosWithAuth
-      .get("/video/:id")
-      .then((res) => {
-        console.log(res);
-        if ((location.status = loading)) {
-          return props.completed;
-        } else if ((location.status = "url")) {
-          return setVideoData(videoData);
-        }
-      })
-      // .then(video=>{
-      //   const videoData = res.data;
-      //   setVideoData(videoData);
-      // })
-      .catch((err) => {
-        console.log("Server error while getting video", err);
-      });
-  });
-
   return (
     <div>
       <div>

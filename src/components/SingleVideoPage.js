@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { useParams, useRouteMatch, withRouter, Link } from "react-router-dom";
 import { getVidID } from "../store/actions";
 import Video from "./Video";
+import Loading from "./Loading";
 
 const SingleVideoPage = ({ videos }) => {
   const { videoID } = useParams();
 
   const correctVideo = videos.find((video) => video.id === Number(videoID));
 
+  // useEffect(() => {
+  //   if (video.id !== Number(videoID)) {
+  //     return <Loading />;
+  //   }
+  // });
+
   return (
     <>
       <Video video={correctVideo} />
-      <h1>Title: {videos.title}</h1>
-      <h3>Creator: {videos.username}</h3>
+      {/* <h1>Title: {videos.title}</h1>
+      <h3>Creator: {videos.username}</h3> */}
     </>
   );
 };

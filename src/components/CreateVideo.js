@@ -28,7 +28,7 @@ const CreateVideo = (props) => {
 
   const [videoTitle, setVideoTitle] = useState("");
 
-  const [loading, setLoading] = useState(false);
+  const [songLoading, setSongLoading] = useState(false);
 
   const [titleLoading, setTitleLoading] = useState(false);
 
@@ -62,7 +62,7 @@ const CreateVideo = (props) => {
   }, [query]);
 
   const handleSongChange = (event) => {
-    setLoading(true);
+    setSongLoading(true);
     setQuery(event.target.value);
   };
 
@@ -81,7 +81,7 @@ const CreateVideo = (props) => {
       deezer_id: results[songItem].id,
       video_title: videoTitle.title,
     });
-    setLoading(false);
+    setSongLoading(false);
   };
 
   const submitForm = (event) => {
@@ -118,7 +118,7 @@ const CreateVideo = (props) => {
             : console.log("broken")}
         </ul>
         <div className="selected_song">
-          {selectedSong.artist !== ''  && loading === false
+          {selectedSong.artist !== ''  && songLoading === false
             ? (
                 <div>
                   <h1>Selected Song</h1>
@@ -130,7 +130,7 @@ const CreateVideo = (props) => {
             : console.log("Hi")}
         </div>
         <div className="submit_button">
-          {selectedSong.artist !== ''  && videoTitle.title !== '' && titleLoading === true && loading === false
+          {selectedSong.artist !== ''  && videoTitle.title !== '' && titleLoading === true && songLoading === false
             ? (
                   <button type="submit">Submit</button>
               )

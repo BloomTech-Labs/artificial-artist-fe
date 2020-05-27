@@ -52,7 +52,6 @@
     ]
   },
   "devDependencies": {
-    "jest": "^26.0.1",
     "react-video-thumbnail": "^0.1.3"
   }
 }

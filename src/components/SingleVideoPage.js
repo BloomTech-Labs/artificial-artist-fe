@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { useParams, useRouteMatch, withRouter, Link } from "react-router-dom";
-import { getVidID } from "../store/actions";
+import { getSingleVideo } from "../store/actions";
 import Video from "./Video";
-import Loading from "./Loading";
 
 const SingleVideoPage = ({ videos }) => {
   const { videoID } = useParams();
 
-  const correctVideo = videos.find((video) => video.id === Number(videoID));
+  const correctVideo = videos.find(video => video.id === Number(videoID));
 
   // useEffect(() => {
   //   if (video.id !== Number(videoID)) {
@@ -25,13 +24,16 @@ const SingleVideoPage = ({ videos }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  getVidIdStart: state.getVidIdStart,
-  postVidIdSuccess: state.postVidIdSuccess,
+const mapStateToProps = state => ({
+  getSingleVideoStart: state.getSingleVideoStart,
+  postSingleVideoSuccess: state.postSingleVideoSuccess,
   loginSuccess: state.loginSuccess,
-  videos: state.videoList,
+  videos: state.videoList
 });
 
-export default connect(mapStateToProps, {
-  getVidID,
-})(withRouter(SingleVideoPage));
+export default connect(
+  mapStateToProps,
+  {
+    getSingleVideo
+  }
+)(withRouter(SingleVideoPage));

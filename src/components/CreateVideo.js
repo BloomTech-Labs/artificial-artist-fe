@@ -7,10 +7,10 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { postVideo } from "../store/actions";
 import style from "styled-components";
 
+const API_URL =
+  "https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=";
 
-const API_URL = "https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=";
-
-const CreateVideo = props => {
+const CreateVideo = (props) => {
   // const [video, setVideo] = useState({
   //   title: "",
   //   song: "",
@@ -27,6 +27,10 @@ const CreateVideo = props => {
   const [results, setResults] = useState([]);
 
   const [videoTitle, setVideoTitle] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  const [titleLoading, setTitleLoading] = useState(false);
 
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
@@ -58,11 +62,13 @@ const CreateVideo = props => {
   }, [query]);
 
   const handleSongChange = (event) => {
+    setLoading(true);
     setQuery(event.target.value);
   };
 
   const handleTitleChange = (event) => {
     setVideoTitle({ [event.target.name]: event.target.value });
+    setTitleLoading(true);
   };
 
   const handleClickSong = (event) => {
@@ -73,18 +79,15 @@ const CreateVideo = props => {
       preview: results[songItem].preview,
       artist: results[songItem].artist.name,
       deezer_id: results[songItem].id,
-      video_title: videoTitle.title
+      video_title: videoTitle.title,
     });
+    setLoading(false);
   };
 
   const submitForm = (event) => {
     event.preventDefault();
     // Need to create postVideo action in redux for this to work
-    props.postVideo(
-        localStorage.getItem("token"),
-        selectedSong,
-        props.history
-    );
+    props.postVideo(localStorage.getItem("token"), selectedSong, props.history);
   };
 
   return (
@@ -114,21 +117,37 @@ const CreateVideo = props => {
               ))
             : console.log("broken")}
         </ul>
-        <button type="submit">Submit</button> 
+        <div className="selected_song">
+          {selectedSong.artist !== ''  && loading === false
+            ? (
+                <div>
+                  <h1>Selected Song</h1>
+                  <h3>
+                    {selectedSong.artist} - {selectedSong.title_short}
+                  </h3>
+                </div>
+              )
+            : console.log("Hi")}
+        </div>
+        <div className="submit_button">
+          {selectedSong.artist !== ''  && videoTitle.title !== '' && titleLoading === true && loading === false
+            ? (
+                  <button type="submit">Submit</button>
+              )
+            : console.log("Hi")}
+        </div>
       </form>
     </>
   );
 };
 
 const mapStateToProps = (state) => ({
-    videos: state.videos,
-    postVideoError: state.postVideoError,
-    postVideoStart: state.postVideoStart,
+  videos: state.videos,
+  postVideoError: state.postVideoError,
+  postVideoStart: state.postVideoStart,
 });
 
-export default connect(mapStateToProps, { postVideo })(
-  withRouter(CreateVideo)
-);
+export default connect(mapStateToProps, { postVideo })(withRouter(CreateVideo));
 
 // export default connect(mapStateToProps, {})(
 //   withRouter(CreateVideo)

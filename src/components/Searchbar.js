@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+/*import React, { useState, useEffect } from "react"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
 //I dont believe deezer requires an API key
@@ -82,4 +82,4 @@ const Searchbar = () => {
     );
 }
 
-export default Searchbar
+export default Searchbar*/

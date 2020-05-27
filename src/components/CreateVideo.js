@@ -40,8 +40,6 @@ const CreateVideo = (props) => {
     user_id: localStorage.getItem("user_id"),
   });
 
-  const [isLoading, setIsLoading] = useState(false);
-
   const fullQuery = `${API_URL}${query}`;
 
   const getInfo = () => {
@@ -50,7 +48,6 @@ const CreateVideo = (props) => {
       .get(`${fullQuery}&limit=7`)
       .then((res) => {
         console.log("res", res);
-        setIsLoading(false);
         setResults(res.data.data);
       })
       .catch((err) => {
@@ -116,7 +113,7 @@ const CreateVideo = (props) => {
               ))
             : console.log("broken")}
         </ul>
-        {!isLoading && <button type="submit">Submit</button>}
+        <button type="submit">Submit</button>
       </form>
       {props.postVideoStart && (
         <SpinnerDiv>

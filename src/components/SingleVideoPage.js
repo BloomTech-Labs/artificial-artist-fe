@@ -14,7 +14,27 @@ const SingleVideoPage = (props) => {
     console.log(props.singleVideo);
   }, [videoId]);
 
-  return <></>;
+  return (
+    <>
+      {props.getSingleVideoStart ? (
+        <>
+          <h2>Loading...</h2>
+        </>
+      ) : (
+        <>
+          {props.singleVideo.location ? (
+            <>
+              <h2>{props.singleVideo.location}</h2>
+            </>
+          ) : (
+            <>
+              <h2>We're still chugging away on this one</h2>
+            </>
+          )}
+        </>
+      )}
+    </>
+  );
 };
 
 const mapStateToProps = (state) => ({

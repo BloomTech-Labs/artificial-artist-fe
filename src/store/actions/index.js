@@ -75,7 +75,9 @@ export const getSingleVideo = (token, videoId) => (dispatch) => {
   axiosWithAuth(token)
     .get(`/videos/${videoId}`)
     .then((res) => {
-      dispatch({ type: GET_SINGLE_VIDEO_SUCCESS, payload: res.data });
+      setTimeout(() => {
+        dispatch({ type: GET_SINGLE_VIDEO_SUCCESS, payload: res.data });
+      }, 1000);
     })
     .catch((err) => {
       dispatch({ type: GET_SINGLE_VIDEO_ERROR });

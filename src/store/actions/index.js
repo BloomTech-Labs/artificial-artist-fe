@@ -70,7 +70,7 @@ export const GET_SINGLE_VIDEO_START = "GET_SINGLE_VIDEO_START";
 export const GET_SINGLE_VIDEO_SUCCESS = "GET_SINGLE_VIDEO_SUCCESS";
 export const GET_SINGLE_VIDEO_ERROR = "GET_SINGLE_VIDEO_ERROR";
 
-export const getVideos = (token) => (dispatch) => {
+export const getSingleVideo = (token, videoId) => (dispatch) => {
   dispatch({ type: GET_SINGLE_VIDEO_START });
   axiosWithAuth(token)
     .get(`/videos/${videoId}`)

@@ -66,27 +66,50 @@ export const getVideos = (token) => (dispatch) => {
     });
 };
 
+export const GET_SINGLE_VIDEO_START = "GET_SINGLE_VIDEO_START";
+export const GET_SINGLE_VIDEO_SUCCESS = "GET_SINGLE_VIDEO_SUCCESS";
+export const GET_SINGLE_VIDEO_ERROR = "GET_SINGLE_VIDEO_ERROR";
+
+export const getSingleVideo = (token, videoId) => (dispatch) => {
+  dispatch({ type: GET_SINGLE_VIDEO_START });
+  axiosWithAuth(token)
+    .get(`/videos/${videoId}`)
+    .then((res) => {
+      setTimeout(() => {
+        dispatch({ type: GET_SINGLE_VIDEO_SUCCESS, payload: res.data });
+      }, 1000);
+    })
+    .catch((err) => {
+      dispatch({ type: GET_SINGLE_VIDEO_ERROR });
+      console.log(err);
+    });
+};
+
 export const POST_VIDEO_START = "POST_VIDEO_START";
 export const POST_VIDEO_SUCCESS = "POST_VIDEO_SUCCESS";
 export const POST_VIDEO_ERROR = "POST_VIDEO_ERROR";
 
 export const postVideo = (token, video, history) => (dispatch) => {
-  dispatch({ 
-  	type: POST_VIDEO_START
+  dispatch({
+    type: POST_VIDEO_START,
   });
 
   axiosWithAuth(token)
     .post(`/videos`, video)
     .then((res) => {
       setTimeout(() => {
-        dispatch({ 
-        	type: POST_VIDEO_SUCCESS        });
+        dispatch({
+          type: POST_VIDEO_SUCCESS,
+        });
         history.push(`/video/${res.data.videoId}`);
       }, 1000);
     })
-    .catch((err) => dispatch({ 
-    	type: POST_VIDEO_ERROR, err
-    	}));
+    .catch((err) =>
+      dispatch({
+        type: POST_VIDEO_ERROR,
+        err,
+      })
+    );
 };
 
 export const LOGOUT = "LOGOUT";

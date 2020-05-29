@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PrivateRoute from "./components/PrivateRoute";
-import { logout,getVideos } from "./store/actions";
+import { logout, getVideos } from "./store/actions";
 import { connect } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -17,8 +17,6 @@ import Navigation from "./components/Navigation";
 import SingleVideoPage from "./components/SingleVideoPage";
 
 function App(props) {
-
-
   return (
     <Router>
       <Navigation />
@@ -27,8 +25,8 @@ function App(props) {
         {/* <Route exact path="/" >
           <VideoList videoList={props.videoList} />
         </Route> */}
-        <Route exact path="/videos/:videoID" component={SingleVideoPage}/>
-          {/* <SingleVideoPage videoList={props.videoList} /> */}
+        <Route exact path="/videos/:videoId" component={SingleVideoPage} />
+        {/* <SingleVideoPage videoList={props.videoList} /> */}
 
         {/* <PrivateRoute exact path="/videos/:videoID">
           <SingleVideoPage videoList={props.videoList} />
@@ -50,4 +48,4 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
-export default connect(mapStateToProps, { logout,getVideos })(withRouter(App));
+export default connect(mapStateToProps, { logout, getVideos })(withRouter(App));

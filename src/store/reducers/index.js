@@ -8,6 +8,9 @@ import {
   GET_VIDEOS_START,
   GET_VIDEOS_SUCCESS,
   GET_VIDEOS_ERROR,
+  GET_SINGLE_VIDEO_START,
+  GET_SINGLE_VIDEO_SUCCESS,
+  GET_SINGLE_VIDEO_ERROR,
   POST_VIDEO_START,
   POST_VIDEO_SUCCESS,
   POST_VIDEO_ERROR,
@@ -26,6 +29,10 @@ const initialState = {
   getVideosStart: false,
   getVideosSuccess: false,
   getVideosError: false,
+  getSingleVideoStart: false,
+  getSingleVideoSuccess: false,
+  getSingleVideoError: false,
+  singleVideo: "initializing",
   postVideoStart: false,
   postVideoSuccess: false,
   postVideoError: false,
@@ -81,8 +88,13 @@ const reducer = (state = initialState, action) => {
       };
 
     case GET_VIDEOS_SUCCESS:
-     let ap=action.payload;
-      console.log("reducer--GET_VIDEOS_SUCCESS case",{ap},"ap.videos",ap.videos);
+      let ap = action.payload;
+      console.log(
+        "reducer--GET_VIDEOS_SUCCESS case",
+        { ap },
+        "ap.videos",
+        ap.videos
+      );
       return {
         ...state,
         getVideosStart: false,
@@ -97,6 +109,27 @@ const reducer = (state = initialState, action) => {
         getVideosError: true,
       };
 
+    case GET_SINGLE_VIDEO_START:
+      return {
+        ...state,
+        getSingleVideoStart: true,
+      };
+
+    case GET_SINGLE_VIDEO_SUCCESS:
+      return {
+        ...state,
+        getSingleVideoStart: false,
+        getSingleVideoError: false,
+        singleVideo: action.payload,
+      };
+
+    case GET_SINGLE_VIDEO_ERROR:
+      return {
+        ...state,
+        getSingleVideoStart: false,
+        getSingleVideoError: true,
+      };
+
     case POST_VIDEO_START:
       return {
         ...state,
@@ -104,7 +137,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case POST_VIDEO_SUCCESS:
-      console.log('action.payload in reducers', action.payload)
+      console.log("action.payload in reducers", action.payload);
       return {
         // ...state,
         // videos: [...state.videos, action.payload],

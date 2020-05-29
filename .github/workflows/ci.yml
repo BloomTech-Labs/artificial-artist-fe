@@ -21,6 +21,6 @@ jobs:
             {
               coverageCommand: "yarn coverage",
               debug: true,
-              coverageLocations: "./artificial-artist-fe/coverage/lcov.info:lcov",
+              coverageLocations: "https://github.com/Lambda-School-Labs/artificial-artist-fe/coverage/lcov.info:lcov",
             },
         }

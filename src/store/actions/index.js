@@ -76,7 +76,6 @@ export const getSingleVideo = (token, videoId) => (dispatch) => {
     .get(`/videos/${videoId}`)
     .then((res) => {
       dispatch({ type: GET_SINGLE_VIDEO_SUCCESS, payload: res.data });
-      console.log(res.data);
     })
     .catch((err) => {
       dispatch({ type: GET_SINGLE_VIDEO_ERROR });

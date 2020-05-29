@@ -32,6 +32,7 @@ const initialState = {
   getSingleVideoStart: false,
   getSingleVideoSuccess: false,
   getSingleVideoError: false,
+  singleVideo: "",
   postVideoStart: false,
   postVideoSuccess: false,
   postVideoError: false,

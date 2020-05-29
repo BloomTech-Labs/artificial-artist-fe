@@ -81,7 +81,7 @@ const CreateVideo = (props) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    setIsLoading(true);
+
     // Need to create postVideo action in redux for this to work
     props.postVideo(localStorage.getItem("token"), selectedSong, props.history);
   };

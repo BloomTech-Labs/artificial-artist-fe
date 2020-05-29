@@ -9,7 +9,7 @@ jobs:
     steps:
       - { uses: actions/checkout@master }
       - { uses: actions/setup-node@master, with: { node-version: "12" } }
-      - { run: "npm install" }
+      - { run: "yarn install" }
       - {
           uses: paambaati/codeclimate-action@v2.4.0,
           env:
@@ -17,5 +17,5 @@ jobs:
               CC_TEST_REPORTER_ID: "${{ secrets.CodeClimateReporterId }}",
               CI: true,
             },
-          with: { coverageCommand: "npm run coverage", debug: true },
+          with: { coverageCommand: "yarn coverage", debug: true },
         }

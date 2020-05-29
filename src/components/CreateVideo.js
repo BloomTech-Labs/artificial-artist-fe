@@ -29,6 +29,10 @@ const CreateVideo = props => {
 
   const [videoTitle, setVideoTitle] = useState("");
 
+  const [songLoading, setSongLoading] = useState(false);
+
+  const [titleLoading, setTitleLoading] = useState(false);
+
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
     preview: "",
@@ -58,12 +62,14 @@ const CreateVideo = props => {
     if (query.length >= 2) getInfo();
   }, [query]);
 
-  const handleSongChange = event => {
+  const handleSongChange = (event) => {
+    setSongLoading(true);
     setQuery(event.target.value);
   };
 
   const handleTitleChange = event => {
     setVideoTitle({ [event.target.name]: event.target.value });
+    setTitleLoading(true);
   };
 
   const handleClickSong = event => {
@@ -74,8 +80,9 @@ const CreateVideo = props => {
       preview: results[songItem].preview,
       artist: results[songItem].artist.name,
       deezer_id: results[songItem].id,
-      video_title: videoTitle.title
+      video_title: videoTitle.title,
     });
+    setSongLoading(false);
   };
 
   const submitForm = event => {
@@ -111,7 +118,25 @@ const CreateVideo = props => {
               ))
             : console.log("broken")}
         </ul>
-        <button type="submit">Submit</button>
+        <div className="selected_song">
+          {selectedSong.artist !== ''  && songLoading === false
+            ? (
+                <div>
+                  <h1>Selected Song</h1>
+                  <h3>
+                    {selectedSong.artist} - {selectedSong.title_short}
+                  </h3>
+                </div>
+              )
+            : console.log("Hi")}
+        </div>
+        <div className="submit_button">
+          {selectedSong.artist !== ''  && videoTitle.title !== '' && titleLoading === true && songLoading === false
+            ? (
+                  <button type="submit">Submit</button>
+              )
+            : console.log("Hi")}
+        </div>
       </form>
       {props.postVideoStart && (
         <SpinnerDiv>
@@ -122,16 +147,13 @@ const CreateVideo = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   videos: state.videos,
   postVideoError: state.postVideoError,
-  postVideoStart: state.postVideoStart
+  postVideoStart: state.postVideoStart,
 });
 
-export default connect(
-  mapStateToProps,
-  { postVideo }
-)(withRouter(CreateVideo));
+export default connect(mapStateToProps, { postVideo })(withRouter(CreateVideo));
 
 // export default connect(mapStateToProps, {})(
 //   withRouter(CreateVideo)

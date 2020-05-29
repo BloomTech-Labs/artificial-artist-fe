@@ -1,7 +1,7 @@
 name: Code Climate
 on:
-  pull_request:
-    push:
+  - pull_request:
+    - push:
         branches:
             - master
 jobs:
@@ -11,7 +11,7 @@ jobs:
     steps:
       -  uses: actions/checkout@master 
       -  uses: actions/setup-node@master, with: node-version: "12"  
-      -  run: yarn test
+      -  run: yarn
       - uses: paambaati/codeclimate-action@v2.4.0,
           env:
             
@@ -19,7 +19,7 @@ jobs:
               CI: true,
             ,
           with:
-              coverageCommand: yarn,
+              coverageCommand: yarn coverage,
               debug: true,
               coverageLocations: "./artificial-artist-fe/coverage/lcov.info:lcov",
             ,

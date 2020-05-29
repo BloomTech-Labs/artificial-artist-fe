@@ -16,13 +16,14 @@ const SingleVideoPage = (props) => {
 
   return (
     <>
-      {props.getSingleVideoStart ? (
+      {props.singleVideo === "initializing" ? (
         <>
           <h2>Loading...</h2>
         </>
       ) : (
         <>
-          {props.singleVideo.location ? (
+          {props.singleVideo.location &&
+          props.singleVideo.location.length > 1 ? (
             <>
               <h2>{props.singleVideo.location}</h2>
             </>

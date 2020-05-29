@@ -1,28 +1,27 @@
 import React from "react";
 import { connect, useSelector } from "react-redux";
 import { useParams, useRouteMatch, withRouter, Link } from "react-router-dom";
-import { getVideos } from "../store/actions";
-import Video from "./Video";
+// import { getVideos } from "../store/actions";
+// import Video from "./Video";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const SingleVideoPage = ({ videos }) => {
-  const { videoID } = useParams();
+const SingleVideoPage = () => {
+  const { videoId } = useParams();
+  console.log(videoId);
 
-  const correctVideo = videos.find((video) => video.id === Number(videoID));
-
-  return (
-    <>
-      <Video video={correctVideo} />
-    </>
-  );
+  axiosWithAuth()
+    .get(`/videos/${videoId}`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return <></>;
 };
 
 const mapStateToProps = (state) => ({
-  getVideosStart: state.getVideosStart,
-  postVideoSuccess: state.postVideoSuccess,
   loginSuccess: state.loginSuccess,
-  videos: state.videoList,
 });
 
-export default connect(mapStateToProps, {
-  getVideos,
-})(withRouter(SingleVideoPage));
+export default connect(mapStateToProps, {})(withRouter(SingleVideoPage));

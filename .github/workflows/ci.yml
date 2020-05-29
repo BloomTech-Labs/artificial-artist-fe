@@ -1,17 +1,17 @@
 name: Code Climate
 on:
-  - push:
-    branches: 
-    -master
-  - pull_request:
+  pull_request:
+    push:
+        branches:
+            - master
 jobs:
   coverage:
     name: Test and publish test coverage
     runs-on: ubuntu-latest
     steps:
       -  uses: actions/checkout@master 
-      -  uses: actions/setup-node@master, with: { node-version: "12" } 
-      -  run: yarn 
+      -  uses: actions/setup-node@master, with: node-version: "12"  
+      -  run: yarn test
       - uses: paambaati/codeclimate-action@v2.4.0,
           env:
             
@@ -19,8 +19,7 @@ jobs:
               CI: true,
             ,
           with:
-            
-              coverageCommand: yarn coverage,
+              coverageCommand: yarn,
               debug: true,
               coverageLocations: "./artificial-artist-fe/coverage/lcov.info:lcov",
             ,

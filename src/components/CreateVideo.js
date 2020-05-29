@@ -12,7 +12,7 @@ import style from "styled-components";
 const API_URL =
   "https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=";
 
-const CreateVideo = (props) => {
+const CreateVideo = props => {
   // const [video, setVideo] = useState({
   //   title: "",
   //   song: "",
@@ -30,6 +30,10 @@ const CreateVideo = (props) => {
 
   const [videoTitle, setVideoTitle] = useState("");
 
+  const [songLoading, setSongLoading] = useState(false);
+
+  const [titleLoading, setTitleLoading] = useState(false);
+
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
     preview: "",
@@ -37,7 +41,7 @@ const CreateVideo = (props) => {
     deezer_id: "",
     location: "youtube.com/video",
     video_title: "",
-    user_id: localStorage.getItem("user_id"),
+    user_id: localStorage.getItem("user_id")
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -48,12 +52,12 @@ const CreateVideo = (props) => {
     console.log(fullQuery);
     axiosWithAuth()
       .get(`${fullQuery}&limit=7`)
-      .then((res) => {
+      .then(res => {
         console.log("res", res);
         setIsLoading(false);
         setResults(res.data.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log("unable to suggest artist and/or song", err);
       });
   };
@@ -62,15 +66,17 @@ const CreateVideo = (props) => {
     if (query.length >= 2) getInfo();
   }, [query]);
 
-  const handleSongChange = (event) => {
+  const handleSongChange = event => {
+    setSongLoading(true);
     setQuery(event.target.value);
   };
 
-  const handleTitleChange = (event) => {
+  const handleTitleChange = event => {
     setVideoTitle({ [event.target.name]: event.target.value });
+    setTitleLoading(true);
   };
 
-  const handleClickSong = (event) => {
+  const handleClickSong = event => {
     const songItem = event.target.getAttribute("data-index");
     setSelectedSong({
       ...selectedSong,
@@ -78,11 +84,12 @@ const CreateVideo = (props) => {
       preview: results[songItem].preview,
       artist: results[songItem].artist.name,
       deezer_id: results[songItem].id,
-      video_title: videoTitle.title,
+      video_title: videoTitle.title
     });
+    setSongLoading(false);
   };
 
-  const submitForm = (event) => {
+  const submitForm = event => {
     event.preventDefault();
     setIsLoading(true);
     // Need to create postVideo action in redux for this to work
@@ -116,7 +123,28 @@ const CreateVideo = (props) => {
               ))
             : console.log("broken")}
         </ul>
-        {!isLoading && <button type="submit">Submit</button>}
+        <div className="selected_song">
+          {selectedSong.artist !== "" && songLoading === false ? (
+            <div>
+              <h1>Selected Song</h1>
+              <h3>
+                {selectedSong.artist} - {selectedSong.title_short}
+              </h3>
+            </div>
+          ) : (
+            console.log("Hi")
+          )}
+        </div>
+        <div className="submit_button">
+          {selectedSong.artist !== "" &&
+          videoTitle.title !== "" &&
+          titleLoading === true &&
+          songLoading === false ? (
+            <button type="submit">Submit</button>
+          ) : (
+            console.log("Hi")
+          )}
+        </div>
       </form>
       {props.postVideoStart && (
         <SpinnerDiv>
@@ -127,13 +155,16 @@ const CreateVideo = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   videos: state.videos,
   postVideoError: state.postVideoError,
-  postVideoStart: state.postVideoStart,
+  postVideoStart: state.postVideoStart
 });
 
-export default connect(mapStateToProps, { postVideo })(withRouter(CreateVideo));
+export default connect(
+  mapStateToProps,
+  { postVideo }
+)(withRouter(CreateVideo));
 
 // export default connect(mapStateToProps, {})(
 //   withRouter(CreateVideo)

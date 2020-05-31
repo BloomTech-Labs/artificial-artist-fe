@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "yarn test --coverage --watchAll=false || true"
+    "coverage": "CI=true yarn test --coverage --watchAll=false || true"
   },
   "jest": {
     "coverageReporters": [
@@ -46,7 +46,7 @@
       "index.js"
     ],
     "collectCoverageFrom": [
-      "**/*.{js}",
+      "**/*.js",
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/__tests__/**"

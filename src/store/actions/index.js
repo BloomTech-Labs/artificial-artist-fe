@@ -100,8 +100,9 @@ export const postVideo = (token, video, history) => (dispatch) => {
       setTimeout(() => {
         dispatch({
           type: POST_VIDEO_SUCCESS,
+          payload: res.data,
         });
-        history.push(`/video/${res.data.videoId}`);
+        history.push(`/videos/${res.data.videoId}`);
       }, 1000);
     })
     .catch((err) =>

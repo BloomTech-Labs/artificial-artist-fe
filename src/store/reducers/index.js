@@ -142,6 +142,7 @@ const reducer = (state = initialState, action) => {
         // ...state,
         // videos: [...state.videos, action.payload],
         postVideoStart: false,
+        singleVideo: action.payload,
       };
 
     case POST_VIDEO_ERROR:

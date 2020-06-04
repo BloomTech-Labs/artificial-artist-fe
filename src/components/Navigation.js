@@ -10,6 +10,7 @@ const Navigation = () => {
     localStorage.clear();
     history.push("/login");
   };
+  let username = localStorage.getItem("username");
   return (
     <Navbar>
       <NavbarBrand tag={Link} to="/" className="mr-auto navbar-brand">
@@ -31,9 +32,9 @@ const Navigation = () => {
           <NavItem>
             <NavLink
               tag={Link}
-              to="/users/:username"
+              to={`/users/${username}`}
               className={
-                location.pathname === "/users/:username" ? "active" : ""
+                location.pathname === `/users/${username}` ? "active" : ""
               }
             >
               Profile

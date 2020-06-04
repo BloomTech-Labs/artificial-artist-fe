@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { connect, useSelector } from "react-redux";
+import { Link, useParams, withRouter } from "react-router-dom";
 import { Container } from "reactstrap";
 import axios from "axios";
+import { getUserVideos } from "../store/actions";
 
-const UserPage = () => {
+const UserPage = props => {
   const { username } = useParams();
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    axios
+    props.getUserVideos(localStorage.getItem("token"), username);
+    /*axios
       .get(`http://localhost:5050/api/users/username/${username}`)
       .then(res => {
         //console.log(res.data[0].id);
@@ -23,14 +26,30 @@ const UserPage = () => {
       })
       .catch(err => {
         console.log(err);
-      });
+      });*/
   }, [username]);
+
+  let greeting;
+
+  if (localStorage.getItem("username") === username) {
+    greeting = `Welcome ${username}`;
+    console.log("Welcome");
+  } else {
+    greeting = `${username} Videos`;
+    console.log(username);
+  }
 
   return (
     <>
       <Container>
         <div>
-          {videos.map(video => {
+          {/* Need to display user's username in Welcome*/}
+          <h1>{greeting}</h1>
+          <p>
+            Now that you're logged in, lets{" "}
+            <Link to="/create">create some videos!</Link>
+          </p>
+          {props.userVideos.map(video => {
             return (
               <>
                 <div Key={video.id}>
@@ -40,18 +59,20 @@ const UserPage = () => {
               </>
             );
           })}
-          {/* Need to display user's username in Welcome*/}
-          <h1>Welcome, User!</h1>
-        </div>
-        <div>
-          <p>
-            Now that you're logged in, lets{" "}
-            <Link to="/create">create some videos!</Link>
-          </p>
         </div>
       </Container>
     </>
   );
 };
 
-export default UserPage;
+const mapStateToProps = state => ({
+  userVideos: state.userVideos,
+  getUserVideosStart: state.getUserVideosStart,
+  getUserVideosSuccess: state.getUserVideosSuccess,
+  getUserVideosError: state.getUserVideosError
+});
+
+export default connect(
+  mapStateToProps,
+  { getUserVideos }
+)(withRouter(UserPage));

@@ -15,6 +15,7 @@ export const login = (creds, history) => dispatch => {
       setTimeout(() => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_id", res.data.signIn.id);
+        localStorage.setItem("username", res.data.signIn.username);
         setTimeout(() => {
           dispatch({ type: LOGIN_SUCCESS });
           history.push(`/users/${res.data.signIn.username}`);
@@ -41,8 +42,9 @@ export const signup = (creds, history) => dispatch => {
       setTimeout(() => {
         dispatch({ type: SIGNUP_SUCCESS });
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user_id", res.data.signIn.id);
-        history.push(`/users/${res.data.signIn.username}`);
+        localStorage.setItem("user_id", res.data.reg.id);
+        localStorage.setItem("username", res.data.reg.username);
+        history.push(`/users/${res.data.reg.username}`);
       }, 1000);
     })
     .catch(err => dispatch({ type: SIGNUP_ERROR }));
@@ -62,6 +64,32 @@ export const getVideos = token => dispatch => {
     })
     .catch(err => {
       dispatch({ type: GET_VIDEOS_ERROR });
+      console.log(err);
+    });
+};
+
+export const GET_USER_VIDEOS_START = "GET_USER_VIDEOS_START";
+export const GET_USER_VIDEOS_SUCCESS = "GET_USER_VIDEOS_SUCCESS";
+export const GET_USER_VIDEOS_ERROR = "GET_USER_VIDEOS_ERROR";
+
+export const getUserVideos = (token, username) => dispatch => {
+  dispatch({ type: GET_USER_VIDEOS_START });
+  axiosWithAuth()
+    .get(`/users/username/${username}`)
+    .then(res => {
+      //console.log(res.data[0].id);
+      axiosWithAuth()
+        .get(`/videos/user/${res.data[0].id}`)
+        .then(res => {
+          dispatch({ type: GET_USER_VIDEOS_SUCCESS, payload: res.data });
+
+          //setVideos(res.data);
+        })
+        .catch(err => {
+          dispatch({ type: GET_USER_VIDEOS_ERROR, payload: err });
+        });
+    })
+    .catch(err => {
       console.log(err);
     });
 };
@@ -119,5 +147,6 @@ export const logout = history => dispatch => {
   dispatch({ type: LOGOUT });
   localStorage.removeItem("token");
   localStorage.removeItem("user_id");
+  localStorage.removeItem("username");
   history.push("/login");
 };

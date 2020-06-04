@@ -15,7 +15,7 @@ import CreateVideo from "./components/CreateVideo";
 import VideoList from "./components/VideoList";
 import Navigation from "./components/Navigation";
 import SingleVideoPage from "./components/SingleVideoPage";
-import UserProfile from "./components/UserProfile";
+import UserPage from "./components/UserPage";
 
 function App(props) {
   return (
@@ -37,7 +37,7 @@ function App(props) {
           exact
           component={localStorage.getItem("token") ? CreateVideo : Signup}
         />
-        <Route exact path="/users/:username" component={UserProfile} />
+        <Route exact path="/users/:username" component={UserPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
       </Switch>

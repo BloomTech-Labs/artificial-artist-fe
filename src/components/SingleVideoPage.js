@@ -4,6 +4,7 @@ import { useParams, useRouteMatch, withRouter, Link } from "react-router-dom";
 import { getSingleVideo } from "../store/actions";
 import Video from "./Video";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Thumbnail from "./Thumbnail";
 
 const SingleVideoPage = (props) => {
   const { videoId } = useParams();
@@ -32,6 +33,7 @@ const SingleVideoPage = (props) => {
           ) : (
             <>
               <h2>We're still chugging away on this one</h2>
+              <Thumbnail video={props.singleVideo} />
             </>
           )}
         </>

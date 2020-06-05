@@ -7,7 +7,7 @@ import {
   Route,
   withRouter,
   Switch,
-  Redirect,
+  Redirect
 } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -15,6 +15,7 @@ import CreateVideo from "./components/CreateVideo";
 import VideoList from "./components/VideoList";
 import Navigation from "./components/Navigation";
 import SingleVideoPage from "./components/SingleVideoPage";
+import UserPage from "./components/UserPage";
 
 function App(props) {
   return (
@@ -36,6 +37,7 @@ function App(props) {
           exact
           component={localStorage.getItem("token") ? CreateVideo : Signup}
         />
+        <Route exact path="/users/:username" component={UserPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
       </Switch>
@@ -43,9 +45,12 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loginStart: state.loginStart,
-  token: state.token,
+  token: state.token
 });
 
-export default connect(mapStateToProps, { logout, getVideos })(withRouter(App));
+export default connect(
+  mapStateToProps,
+  { logout, getVideos }
+)(withRouter(App));

@@ -21,13 +21,13 @@ const UserPage = props => {
     greeting = `${username} Videos`;
     console.log(username);
   }
+  //this if statement will greet a user with a list of their videos, otherwise it will send a prompt to create a video
   if (getAllUserVideos) {
     return (
       <Container>
         <div>
           <h1>{greeting}</h1>
           <h2>Videos</h2>
-          {console.log("All Videos")}
           {props.userVideos.map(video => {
             return (
               <div Key={video.id}>
@@ -39,20 +39,18 @@ const UserPage = props => {
         </div>
       </Container>
     );
-  } else if (!getAllUserVideos) {
-    return (
-      <>
-        <Container>
-          <h1>{greeting}</h1>
-          <p>
-            Looks like you haven't created any videos yet, lets {""}
-            <Link to="/create">create some videos!</Link>
-          </p>
-          {console.log("No Videos")}
-        </Container>
-      </>
-    );
   }
+  return (
+    <>
+      <Container>
+        <h1>{greeting}</h1>
+        <p>
+          Looks like you haven't created any videos yet, lets {""}
+          <Link to="/create">create some videos!</Link>
+        </p>
+      </Container>
+    </>
+  );
 };
 
 const mapStateToProps = state => ({

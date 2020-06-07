@@ -20,13 +20,9 @@ const Thumbnail = props => {
   return (
     <div>
       <ul>
-        <li>{props.video.title}</li>
-        <li>{props.video.artist_name}</li>
-        <li>
-          <Video video={props.video} />
-          {/* <source src={`${props.video.location}#t=20`} />
-          </video> */}
-        </li>
+        <video style={videoThumb} controls>
+          <source src={`${props.video.location}#t=20`} />
+        </video>
       </ul>
     </div>
   );

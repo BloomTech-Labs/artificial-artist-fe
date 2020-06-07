@@ -1,35 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { connect, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { Link, useParams, withRouter } from "react-router-dom";
 import { Container } from "reactstrap";
-import axios from "axios";
 import { getUserVideos } from "../store/actions";
 
 const UserPage = props => {
   const { username } = useParams();
-  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     props.getUserVideos(localStorage.getItem("token"), username);
-    /*axios
-      .get(`http://localhost:5050/api/users/username/${username}`)
-      .then(res => {
-        //console.log(res.data[0].id);
-        axios
-          .get(`http://localhost:5050/api/videos/user/${res.data[0].id}`)
-          .then(res => {
-            setVideos(res.data);
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      })
-      .catch(err => {
-        console.log(err);
-      });*/
   }, [username]);
 
   let greeting;
+  const getAllUserVideos = props.userVideos.length !== 0;
 
   if (localStorage.getItem("username") === username) {
     greeting = `Welcome ${username}`;
@@ -38,28 +21,33 @@ const UserPage = props => {
     greeting = `${username} Videos`;
     console.log(username);
   }
-
-  return (
-    <>
+  //this if statement will greet a user with a list of their videos, otherwise it will send a prompt to create a video
+  if (getAllUserVideos) {
+    return (
       <Container>
         <div>
-          {/* Need to display user's username in Welcome*/}
           <h1>{greeting}</h1>
-          <p>
-            Now that you're logged in, lets{" "}
-            <Link to="/create">create some videos!</Link>
-          </p>
+          <h2>Videos</h2>
           {props.userVideos.map(video => {
             return (
-              <>
-                <div Key={video.id}>
-                  <h1>{video.video_title}</h1>
-                  <div>{video.location}</div>
-                </div>
-              </>
+              <div Key={video.id}>
+                <h3>{video.video_title}</h3>
+                <div>{video.location}</div>
+              </div>
             );
           })}
         </div>
+      </Container>
+    );
+  }
+  return (
+    <>
+      <Container>
+        <h1>{greeting}</h1>
+        <p>
+          Looks like you haven't created any videos yet, lets {""}
+          <Link to="/create">create some videos!</Link>
+        </p>
       </Container>
     </>
   );

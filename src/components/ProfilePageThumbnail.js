@@ -21,7 +21,7 @@ const Thumbnail = props => {
     <div>
       <ul>
         <video style={videoThumb} controls>
-          <source src={`${props.video.location}#t=20`} />
+          <source src={`${props.video.location}#t=0`} />
         </video>
       </ul>
     </div>

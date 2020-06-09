@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { Link, useParams, withRouter } from "react-router-dom";
 import { Container } from "reactstrap";
 import { getUserVideos } from "../store/actions";
-import Thumbnail from "./ProfilePageThumbnail";
-import { Player } from "video-react";
+import Thumbnail from "./Thumbnail";
 
 const videoListContainer = {
   display: "flex",

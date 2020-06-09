@@ -28,7 +28,9 @@ const UserPage = props => {
   }, [username]);
 
   let greeting;
-  const getAllUserVideos = props.userVideos ? props.userVideos.length : 0;
+  // const getAllUserVideos = props.userVideos
+  //   ? props.userVideos
+  //   : !props.userVideos;
 
   if (localStorage.getItem("username") === username) {
     greeting = `Welcome ${username}`;
@@ -38,15 +40,15 @@ const UserPage = props => {
     console.log(username);
   }
   //this if statement will greet a user with a list of their videos, otherwise it will send a prompt to create a video
-  if (getAllUserVideos) {
-    return (
-      <>
-        <Container>
-          <h1>{greeting}</h1>
-          <h2>Videos</h2>
-          <div style={videoListContainer}>
-            <div style={VideoThumbsContainer}>
-              {props.userVideos.map(video => {
+
+  return (
+    <>
+      <Container>
+        <h1>{greeting}</h1>
+        <div style={videoListContainer}>
+          <div style={VideoThumbsContainer}>
+            {props.userVideos && props.userVideos ? (
+              props.userVideos.map(video => {
                 return (
                   <div Key={video.id}>
                     <h3>{video.video_title}</h3>
@@ -55,21 +57,15 @@ const UserPage = props => {
                     </Link>
                   </div>
                 );
-              })}
-            </div>
+              })
+            ) : (
+              <p>
+                Looks like you haven't created any videos yet, lets {""}
+                <Link to="/create">create some videos!</Link>
+              </p>
+            )}
           </div>
-        </Container>
-      </>
-    );
-  }
-  return (
-    <>
-      <Container>
-        <h1>{greeting}</h1>
-        <p>
-          Looks like you haven't created any videos yet, lets {""}
-          <Link to="/create">create some videos!</Link>
-        </p>
+        </div>
       </Container>
     </>
   );

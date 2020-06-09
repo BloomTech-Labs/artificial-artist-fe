@@ -4,6 +4,8 @@ import { useParams, useRouteMatch, withRouter, Link } from "react-router-dom";
 import { getSingleVideo } from "../store/actions";
 // import Video from "./Video";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Thumbnail from "./Thumbnail";
+import { Player } from "video-react";
 
 const SingleVideoPage = (props) => {
   const { videoId } = useParams();
@@ -11,7 +13,6 @@ const SingleVideoPage = (props) => {
 
   useEffect(() => {
     props.getSingleVideo(localStorage.getItem("token"), videoId);
-    console.log(props.singleVideo);
   }, [videoId]);
 
   return (
@@ -25,7 +26,14 @@ const SingleVideoPage = (props) => {
           {props.singleVideo.location &&
           props.singleVideo.location.length > 1 ? (
             <>
-              <h2>{props.singleVideo.location}</h2>
+              <Player
+                poster={props.singleVideo.thumbnail}
+                playsInline
+                src={props.singleVideo.location}
+              />
+              <h2>{props.singleVideo.video_title}</h2>
+              <h3>{props.singleVideo.title}</h3>
+              <h3>{props.singleVideo.artist_name}</h3>
             </>
           ) : (
             <>

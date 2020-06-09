@@ -28,7 +28,8 @@ const UserPage = props => {
   }, [username]);
 
   let greeting;
-  const getAllUserVideos = props.userVideos ? props.userVideos.length : 0;
+
+  const getAllUserVideos = props.userVideos.length !== 0;
 
   if (localStorage.getItem("username") === username) {
     greeting = `Welcome ${username}`;
@@ -60,6 +61,18 @@ const UserPage = props => {
           </div>
         </Container>
       </>
+    );
+  }
+  return (
+    <>
+      <Container>
+        <h1>{greeting}</h1>
+        <p>
+          Looks like you haven't created any videos yet, lets {""}
+          <Link to="/create">create some videos!</Link>
+        </p>
+
+      </Container>
     );
   }
   return (

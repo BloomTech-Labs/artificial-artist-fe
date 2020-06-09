@@ -71,24 +71,12 @@ const getAllUserVideos = props.userVideos ? props.userVideos: !props.userVideos;
           Looks like you haven't created any videos yet, lets {""}
           <Link to="/create">create some videos!</Link>
         </p>
-
-      </Container>
-    );
-  }
-  return (
-    <>
-      <Container>
-        <h1>{greeting}</h1>
-        <p>
-          Looks like you haven't created any videos yet, lets {""}
-          <Link to="/create">create some videos!</Link>
-        </p>
       </Container>
     </>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userVideos: state.userVideos,
   getUserVideosStart: state.getUserVideosStart,
   getUserVideosSuccess: state.getUserVideosSuccess,

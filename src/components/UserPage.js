@@ -29,7 +29,7 @@ const UserPage = props => {
 
   let greeting;
 
-  const getAllUserVideos = props.userVideos.length !== 0;
+const getAllUserVideos = props.userVideos ? props.userVideos: !props.userVideos;
 
   if (localStorage.getItem("username") === username) {
     greeting = `Welcome ${username}`;

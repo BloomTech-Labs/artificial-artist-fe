@@ -7,10 +7,10 @@ const videoThumb = {
   margin: "0 auto",
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "center"
 };
 
-const Thumbnail = (props) => {
+const Thumbnail = props => {
   function getCanvasThumbnail(link) {
     let thumbnail; //= canvas X html5 X link
     return [thumbnail];
@@ -18,13 +18,12 @@ const Thumbnail = (props) => {
   const [thumbnail] = getCanvasThumbnail(props.video.location);
 
   return (
-    <div >
+    <div>
       <ul>
         <li>{props.video.title}</li>
         <li>{props.video.artist_name}</li>
         <li>
-
-          <video style={videoThumb}  controls>
+          <video style={videoThumb} controls>
             <source src={`${props.video.location}#t=20`} />
           </video>
         </li>

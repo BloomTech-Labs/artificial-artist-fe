@@ -17,10 +17,6 @@ const SingleVideoPage = (props) => {
 
   return (
     <>
-      {/* {credits < 30 ? "freshman" 
-      : credits <= 59 ? "sophomore" 
-      : credits <= 89 ? "junior" 
-      : "senior"} */}
       {props.singleVideo.video_status === "creating" ? (
         <>
           <h2>
@@ -46,31 +42,6 @@ const SingleVideoPage = (props) => {
       ) : (
         console.log("end of ternary????")
       )}
-      {/* // {props.singleVideo === "initializing" ? (
-      //   <>
-      //     <h2>Loading...</h2>
-      //   </>
-      // ) : (
-      //   <>
-      //     {props.singleVideo.location &&
-      //     props.singleVideo.location.length > 1 ? (
-      //       <>
-      //         <Player
-      //           poster={props.singleVideo.thumbnail}
-      //           playsInline
-      //           src={props.singleVideo.location}
-      //         />
-      //         <h2>{props.singleVideo.video_title}</h2>
-      //         <h3>{props.singleVideo.title}</h3>
-      //         <h3>{props.singleVideo.artist_name}</h3>
-      //       </>
-      //     ) : (
-      //       <>
-      //         <h2>We're still chugging away on this one</h2>
-      //       </>
-      //     )}
-      //   </>
-      // )} */}
     </>
   );
 };

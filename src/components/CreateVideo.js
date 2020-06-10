@@ -35,7 +35,7 @@ const CreateVideo = (props) => {
 
   const [optionsClicked, setOptionsClicked] = useState(false);
 
-  const [slider, setSlider] = useState(50);
+  const [slider, setSlider] = useState(25);
 
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
@@ -45,6 +45,7 @@ const CreateVideo = (props) => {
     location: "youtube.com/video",
     video_title: "",
     user_id: localStorage.getItem("user_id"),
+    slider: ""
   });
 
   const fullQuery = `${API_URL}${query}`;
@@ -108,6 +109,11 @@ const CreateVideo = (props) => {
   const handleSliderChange = (event) => {
     event.preventDefault();
     setSlider(event.target.value);
+    setSelectedSong({
+      ...selectedSong,
+      slider: event.target.value
+    })
+    console.log(selectedSong)
   };
 
   return (
@@ -164,8 +170,8 @@ const CreateVideo = (props) => {
         </div>
         <div className="advanced_options">
           {optionsClicked === true ? (
-            <div>
-              <div>
+            <div className="options">
+              <div className="image_category">
                 <label>
                   Image Category
                   <select onChange={handleImgCatChange}>
@@ -177,16 +183,51 @@ const CreateVideo = (props) => {
                   </select>
                 </label>
               </div>
-              <div>
+              <div className="jitter">
                 <label>
                   Slide Away
-                  <input type="range" min={0} max={100} value={slider} onChange={handleSliderChange} />
+                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
+                  <div>{slider}</div>
+                </label>
+              </div>
+              <div className="depth">
+                <label>
+                  Slide Away
+                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
+                  <div>{slider}</div>
+                </label>
+              </div>
+              <div className="truncation">
+                <label>
+                  Slide Away
+                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
+                  <div>{slider}</div>
+                </label>
+              </div>
+              <div className="pitch">
+                <label>
+                  Slide Away
+                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
+                  <div>{slider}</div>
+                </label>
+              </div>
+              <div className="tempo">
+                <label>
+                  Slide Away
+                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
+                  <div>{slider}</div>
+                </label>
+              </div>
+              <div className="smooth">
+                <label>
+                  Slide Away
+                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
                   <div>{slider}</div>
                 </label>
               </div>
             </div>
           ) : (
-            console.log("I have failed")
+            console.log("Hooray")
           )}
         </div>
       </form>

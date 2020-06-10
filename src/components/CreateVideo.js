@@ -35,7 +35,12 @@ const CreateVideo = (props) => {
 
   const [optionsClicked, setOptionsClicked] = useState(false);
 
-  const [slider, setSlider] = useState(25);
+  const [jit, setJit] = useState(0.5);
+  const [deep, setDeep] = useState(1);
+  const [truncate, setTruncate] = useState(0.5);
+  const [pitch, setPitch] = useState(220);
+  const [tempo, setTempo] = useState(0.25);
+  const [smooth, setSmooth] = useState(20);
 
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
@@ -45,7 +50,13 @@ const CreateVideo = (props) => {
     location: "youtube.com/video",
     video_title: "",
     user_id: localStorage.getItem("user_id"),
-    slider: ""
+    im_group: "",
+    jitter: 0.5,
+    depth: 1,
+    truncation: 0.5,
+    pitch_sensitivity: 220,
+    tempo_sensitivity: 0.25,
+    smooth_factor: 20
   });
 
   const fullQuery = `${API_URL}${query}`;
@@ -106,14 +117,34 @@ const CreateVideo = (props) => {
     event.preventDefault();
   };
 
-  const handleSliderChange = (event) => {
-    event.preventDefault();
-    setSlider(event.target.value);
-    setSelectedSong({
-      ...selectedSong,
-      slider: event.target.value
-    })
-    console.log(selectedSong)
+  const hanldeJitChange = event => {
+    setJit(event.target.value);
+    setSelectedSong({...selectedSong, jitter: jit});
+  };
+
+  const hanldeDeepChange = event => {
+    setDeep(event.target.value);
+    setSelectedSong({...selectedSong, depth: deep});
+  };
+
+  const hanldeTruncateChange = event => {
+    setTruncate(event.target.value);
+    setSelectedSong({...selectedSong, truncation: truncate})
+  };
+
+  const hanldePitchChange = event => {
+    setPitch(event.target.value);
+    setSelectedSong({...selectedSong, pitch_sensitivity: pitch})
+  };
+
+  const hanldeTempoChange = event => {
+    setTempo(event.target.value);
+    setSelectedSong({...selectedSong, tempo_sensitivity: tempo})
+  };
+
+  const hanldeSmoothChange = event => {
+    setSmooth(event.target.value);
+    setSelectedSong({...selectedSong, smooth_factor: smooth})
   };
 
   return (
@@ -185,44 +216,44 @@ const CreateVideo = (props) => {
               </div>
               <div className="jitter">
                 <label>
-                  Slide Away
-                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
-                  <div>{slider}</div>
+                  Jitter
+                  <input type="range" min={0} max={1} value={jit} onChange={hanldeJitChange} />
+                  <div>{jit}</div>
                 </label>
               </div>
               <div className="depth">
                 <label>
-                  Slide Away
-                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
-                  <div>{slider}</div>
+                  Depth
+                  <input type="range" min={0.1} max={1} value={deep} onChange={hanldeDeepChange} />
+                  <div>{deep}</div>
                 </label>
               </div>
               <div className="truncation">
                 <label>
-                  Slide Away
-                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
-                  <div>{slider}</div>
+                  Truncation
+                  <input type="range" min={0.1} max={1} value={truncate} onChange={hanldeTruncateChange} />
+                  <div>{truncate}</div>
                 </label>
               </div>
               <div className="pitch">
                 <label>
-                  Slide Away
-                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
-                  <div>{slider}</div>
+                  Pitch Sensitivity
+                  <input type="range" min={200} max={295} value={pitch} onChange={hanldePitchChange} />
+                  <div>{pitch}</div>
                 </label>
               </div>
               <div className="tempo">
                 <label>
-                  Slide Away
-                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
-                  <div>{slider}</div>
+                  Tempo Sensitivity
+                  <input type="range" min={0.05} max={0.8} value={tempo} onChange={hanldeTempoChange} />
+                  <div>{tempo}</div>
                 </label>
               </div>
               <div className="smooth">
                 <label>
-                  Slide Away
-                  <input type="range" min={1} max={100} value={slider} onChange={handleSliderChange} />
-                  <div>{slider}</div>
+                  Smooth Factor
+                  <input type="range" min={10} max={30} value={smooth} onChange={hanldeSmoothChange} />
+                  <div>{smooth}</div>
                 </label>
               </div>
             </div>

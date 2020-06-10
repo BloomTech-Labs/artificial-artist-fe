@@ -35,6 +35,8 @@ const CreateVideo = (props) => {
 
   const [optionsClicked, setOptionsClicked] = useState(false);
 
+  const [slider, setSlider] = useState(50);
+
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
     preview: "",
@@ -99,6 +101,15 @@ const CreateVideo = (props) => {
     setOptionsClicked(optionsClicked_new);
   };
 
+  const handleImgCatChange = (event) => {
+    event.preventDefault();
+  };
+
+  const handleSliderChange = (event) => {
+    event.preventDefault();
+    setSlider(event.target.value);
+  };
+
   return (
     <>
       <form onSubmit={submitForm}>
@@ -153,7 +164,27 @@ const CreateVideo = (props) => {
         </div>
         <div className="advanced_options">
           {optionsClicked === true ? (
-            <h1>It Worked!</h1>
+            <div>
+              <div>
+                <label>
+                  Image Category
+                  <select onChange={handleImgCatChange}>
+                    <option value="one">One</option>
+                    <option value="two">Two</option>
+                    <option value="three">Three</option>
+                    <option value="four">Four</option>
+                    <option value="five">Five</option>
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label>
+                  Slide Away
+                  <input type="range" min={0} max={100} value={slider} onChange={handleSliderChange} />
+                  <div>{slider}</div>
+                </label>
+              </div>
+            </div>
           ) : (
             console.log("I have failed")
           )}

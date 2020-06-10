@@ -11,7 +11,7 @@ import style from "styled-components";
 const API_URL =
   "https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=";
 
-const CreateVideo = props => {
+const CreateVideo = (props) => {
   // const [video, setVideo] = useState({
   //   title: "",
   //   song: "",
@@ -33,6 +33,8 @@ const CreateVideo = props => {
 
   const [titleLoading, setTitleLoading] = useState(false);
 
+  const [optionsClicked, setOptionsClicked] = useState(false);
+
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
     preview: "",
@@ -40,7 +42,7 @@ const CreateVideo = props => {
     deezer_id: "",
     location: "youtube.com/video",
     video_title: "",
-    user_id: localStorage.getItem("user_id")
+    user_id: localStorage.getItem("user_id"),
   });
 
   const fullQuery = `${API_URL}${query}`;
@@ -49,11 +51,11 @@ const CreateVideo = props => {
     console.log(fullQuery);
     axiosWithAuth()
       .get(`${fullQuery}&limit=7`)
-      .then(res => {
+      .then((res) => {
         console.log("res", res);
         setResults(res.data.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("unable to suggest artist and/or song", err);
       });
   };
@@ -67,12 +69,12 @@ const CreateVideo = props => {
     setQuery(event.target.value);
   };
 
-  const handleTitleChange = event => {
+  const handleTitleChange = (event) => {
     setVideoTitle({ [event.target.name]: event.target.value });
     setTitleLoading(true);
   };
 
-  const handleClickSong = event => {
+  const handleClickSong = (event) => {
     const songItem = event.target.getAttribute("data-index");
     setSelectedSong({
       ...selectedSong,
@@ -85,10 +87,16 @@ const CreateVideo = props => {
     setSongLoading(false);
   };
 
-  const submitForm = event => {
+  const submitForm = (event) => {
     event.preventDefault();
     // Need to create postVideo action in redux for this to work
     props.postVideo(localStorage.getItem("token"), selectedSong, props.history);
+  };
+
+  const handleClickOptions = (event) => {
+    event.preventDefault();
+    const optionsClicked_new = !optionsClicked;
+    setOptionsClicked(optionsClicked_new);
   };
 
   return (
@@ -119,23 +127,36 @@ const CreateVideo = props => {
             : console.log("broken")}
         </ul>
         <div className="selected_song">
-          {selectedSong.artist !== ''  && songLoading === false
-            ? (
-                <div>
-                  <h1>Selected Song</h1>
-                  <h3>
-                    {selectedSong.artist} - {selectedSong.title_short}
-                  </h3>
-                </div>
-              )
-            : console.log("Hi")}
+          {selectedSong.artist !== "" && songLoading === false ? (
+            <div>
+              <h1>Selected Song</h1>
+              <h3>
+                {selectedSong.artist} - {selectedSong.title_short}
+              </h3>
+            </div>
+          ) : (
+            console.log("Hi")
+          )}
         </div>
-        <div className="submit_button">
-          {selectedSong.artist !== ''  && videoTitle.title !== '' && titleLoading === true && songLoading === false
-            ? (
-                  <button type="submit">Submit</button>
-              )
-            : console.log("Hi")}
+        <div className="buttons">
+          {selectedSong.artist !== "" &&
+          videoTitle.title !== "" &&
+          titleLoading === true &&
+          songLoading === false ? (
+            <div>
+              <button type="submit">Submit</button>
+              <button onClick={handleClickOptions}>Advanced</button>
+            </div>
+          ) : (
+            console.log("Hi")
+          )}
+        </div>
+        <div className="advanced_options">
+          {optionsClicked === true ? (
+            <h1>It Worked!</h1>
+          ) : (
+            console.log("I have failed")
+          )}
         </div>
       </form>
       {props.postVideoStart && (

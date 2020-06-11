@@ -56,7 +56,7 @@ const CreateVideo = (props) => {
     truncation: 0.5,
     pitch_sensitivity: 220,
     tempo_sensitivity: 0.25,
-    smooth_factor: 20
+    smooth_factor: 20,
   });
 
   const fullQuery = `${API_URL}${query}`;
@@ -117,34 +117,34 @@ const CreateVideo = (props) => {
     event.preventDefault();
   };
 
-  const hanldeJitChange = event => {
+  const handleJitChange = (event) => {
     setJit(event.target.value);
-    setSelectedSong({...selectedSong, jitter: jit});
+    setSelectedSong({ ...selectedSong, jitter: jit });
   };
 
-  const hanldeDeepChange = event => {
+  const handleDeepChange = (event) => {
     setDeep(event.target.value);
-    setSelectedSong({...selectedSong, depth: deep});
+    setSelectedSong({ ...selectedSong, depth: deep });
   };
 
-  const hanldeTruncateChange = event => {
+  const handleTruncateChange = (event) => {
     setTruncate(event.target.value);
-    setSelectedSong({...selectedSong, truncation: truncate})
+    setSelectedSong({ ...selectedSong, truncation: truncate });
   };
 
-  const hanldePitchChange = event => {
+  const handlePitchChange = (event) => {
     setPitch(event.target.value);
-    setSelectedSong({...selectedSong, pitch_sensitivity: pitch})
+    setSelectedSong({ ...selectedSong, pitch_sensitivity: pitch });
   };
 
-  const hanldeTempoChange = event => {
+  const handleTempoChange = (event) => {
     setTempo(event.target.value);
-    setSelectedSong({...selectedSong, tempo_sensitivity: tempo})
+    setSelectedSong({ ...selectedSong, tempo_sensitivity: tempo });
   };
 
-  const hanldeSmoothChange = event => {
+  const handleSmoothChange = (event) => {
     setSmooth(event.target.value);
-    setSelectedSong({...selectedSong, smooth_factor: smooth})
+    setSelectedSong({ ...selectedSong, smooth_factor: smooth });
   };
 
   return (
@@ -256,42 +256,78 @@ const CreateVideo = (props) => {
               <div className="jitter">
                 <label>
                   Jitter
-                  <input type="range" min={0} max={20} value={jit} onChange={hanldeJitChange} />
+                  <input
+                    type="range"
+                    min={0}
+                    max={20}
+                    value={jit}
+                    onChange={handleJitChange}
+                  />
                   <div>{jit}</div>
                 </label>
               </div>
               <div className="depth">
                 <label>
                   Depth
-                  <input type="range" min={1} max={19} value={deep} onChange={hanldeDeepChange} />
+                  <input
+                    type="range"
+                    min={1}
+                    max={19}
+                    value={deep}
+                    onChange={handleDeepChange}
+                  />
                   <div>{deep}</div>
                 </label>
               </div>
               <div className="truncation">
                 <label>
                   Truncation
-                  <input type="range" min={1} max={19} value={truncate} onChange={hanldeTruncateChange} />
+                  <input
+                    type="range"
+                    min={1}
+                    max={19}
+                    value={truncate}
+                    onChange={handleTruncateChange}
+                  />
                   <div>{truncate}</div>
                 </label>
               </div>
               <div className="pitch">
                 <label>
                   Pitch Sensitivity
-                  <input type="range" min={1} max={19} value={pitch} onChange={hanldePitchChange} />
+                  <input
+                    type="range"
+                    min={1}
+                    max={19}
+                    value={pitch}
+                    onChange={handlePitchChange}
+                  />
                   <div>{pitch}</div>
                 </label>
               </div>
               <div className="tempo">
                 <label>
                   Tempo Sensitivity
-                  <input type="range" min={1} max={16} value={tempo} onChange={hanldeTempoChange} />
+                  <input
+                    type="range"
+                    min={1}
+                    max={16}
+                    value={tempo}
+                    onChange={handleTempoChange}
+                  />
                   <div>{tempo}</div>
                 </label>
               </div>
               <div className="smooth">
                 <label>
                   Smooth Factor
-                  <input type="range" min={1} max={20} value={smooth} onChange={hanldeSmoothChange} />
+                  <input
+                    type="range"
+                    min={1}
+                    max={20}
+                    value={smooth}
+                    onChange={handleSmoothChange}
+                  />
                   <div>{smooth}</div>
                 </label>
               </div>

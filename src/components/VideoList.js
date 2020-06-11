@@ -26,7 +26,6 @@ const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
 
   return (
     <div style={videoListContainer}>
-      <Video />
       <div style={VideoThumbsContainer}>
         {videos &&
           videos.map((video) => (

@@ -35,7 +35,7 @@ const CreateVideo = (props) => {
 
   const [optionsClicked, setOptionsClicked] = useState(false);
 
-  const [jit, setJit] = useState(10);
+  const [jit, setJit] = useState(11);
   const [deep, setDeep] = useState(19);
   const [truncate, setTruncate] = useState(9);
   const [pitch, setPitch] = useState(4);
@@ -256,7 +256,7 @@ const CreateVideo = (props) => {
               <div className="jitter">
                 <label>
                   Jitter
-                  <input type="range" min={1} max={20} value={jit} onChange={hanldeJitChange} />
+                  <input type="range" min={0} max={20} value={jit} onChange={hanldeJitChange} />
                   <div>{jit}</div>
                 </label>
               </div>

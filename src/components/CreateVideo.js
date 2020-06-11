@@ -115,6 +115,8 @@ const CreateVideo = (props) => {
 
   const handleImgCatChange = (event) => {
     event.preventDefault();
+    setSelectedSong({...selectedSong, im_group: event.target.value});
+    console.log(selectedSong);
   };
 
   const handleJitChange = (event) => {

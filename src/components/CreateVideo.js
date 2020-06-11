@@ -35,12 +35,12 @@ const CreateVideo = (props) => {
 
   const [optionsClicked, setOptionsClicked] = useState(false);
 
-  const [jit, setJit] = useState(0.5);
-  const [deep, setDeep] = useState(1);
-  const [truncate, setTruncate] = useState(0.5);
-  const [pitch, setPitch] = useState(220);
-  const [tempo, setTempo] = useState(0.25);
-  const [smooth, setSmooth] = useState(20);
+  const [jit, setJit] = useState(10);
+  const [deep, setDeep] = useState(19);
+  const [truncate, setTruncate] = useState(9);
+  const [pitch, setPitch] = useState(4);
+  const [tempo, setTempo] = useState(5);
+  const [smooth, setSmooth] = useState(10);
 
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
@@ -206,53 +206,92 @@ const CreateVideo = (props) => {
                 <label>
                   Image Category
                   <select onChange={handleImgCatChange}>
-                    <option value="one">One</option>
-                    <option value="two">Two</option>
-                    <option value="three">Three</option>
-                    <option value="four">Four</option>
-                    <option value="five">Five</option>
+                    <option value="">Pick One</option>
+                    <option value="">FISH</option>
+                    <option value="">BIRDS</option>
+                    <option value="">AMPHIBIANS</option>
+                    <option value="">LIZARDS</option>
+                    <option value="">SNAKES</option>
+                    <option value="">OCTOPED</option>
+                    <option value="">EXOTIC BIRDS</option>
+                    <option value="">WEIRD MAMMALS</option>
+                    <option value="">SQUISHY SEA CREATURES</option>
+                    <option value="">SHELLED SEA CREATURES</option>
+                    <option value="">FANCY BIRDS</option>
+                    <option value="">SEA MAMMALS</option>
+                    <option value="">UGLY DOGS</option>
+                    <option value="">HOUND DOGS</option>
+                    <option value="">TERRIER DOGS</option>
+                    <option value="">RETRIEVER DOGS</option>
+                    <option value="">RANDOM DOGS</option>
+                    <option value="">WOLVES</option>
+                    <option value="">HYAENAS</option>
+                    <option value="">FOXY</option>
+                    <option value="">DOMESTIC CATS</option>
+                    <option value="">BIG CATS</option>
+                    <option value="">BEAR</option>
+                    <option value="">UNDERGROUND CATS</option>
+                    <option value="">BEETLES</option>
+                    <option value="">FLYING INSECTS</option>
+                    <option value="">BUTTERFLIES</option>
+                    <option value="">SHARP SEA STUFF</option>
+                    <option value="">SMALL MAMMALS</option>
+                    <option value="">LARGE WILD ANIMALS</option>
+                    <option value="">RANDOM MAMMALS</option>
+                    <option value="">PRIMATES</option>
+                    <option value="">AFRICAN ANIMALS</option>
+                    <option value="">PANDAS</option>
+                    <option value="">CRAZY SEA CREATURES</option>
+                    <option value="">RANDOM OBJECTS</option>
+                    <option value="">WORDS AND SIGNS</option>
+                    <option value="">FOOD STUFF</option>
+                    <option value="">GEOLOGICAL STUFF</option>
+                    <option value="">PEOPLE</option>
+                    <option value="">FLOWERING THINGS</option>
+                    <option value="">FUNGI</option>
+                    <option value="">TOILET PAPER</option>
                   </select>
                 </label>
               </div>
               <div className="jitter">
                 <label>
                   Jitter
-                  <input type="range" min={0} max={1} value={jit} onChange={hanldeJitChange} />
+                  <input type="range" min={1} max={20} value={jit} onChange={hanldeJitChange} />
                   <div>{jit}</div>
                 </label>
               </div>
               <div className="depth">
                 <label>
                   Depth
-                  <input type="range" min={0.1} max={1} value={deep} onChange={hanldeDeepChange} />
+                  <input type="range" min={1} max={19} value={deep} onChange={hanldeDeepChange} />
                   <div>{deep}</div>
                 </label>
               </div>
               <div className="truncation">
                 <label>
                   Truncation
-                  <input type="range" min={0.1} max={1} value={truncate} onChange={hanldeTruncateChange} />
+                  <input type="range" min={1} max={19} value={truncate} onChange={hanldeTruncateChange} />
                   <div>{truncate}</div>
                 </label>
               </div>
               <div className="pitch">
                 <label>
                   Pitch Sensitivity
-                  <input type="range" min={200} max={295} value={pitch} onChange={hanldePitchChange} />
+                  <input type="range" min={1} max={19} value={pitch} onChange={hanldePitchChange} />
                   <div>{pitch}</div>
                 </label>
               </div>
               <div className="tempo">
                 <label>
                   Tempo Sensitivity
-                  <input type="range" min={0.05} max={0.8} value={tempo} onChange={hanldeTempoChange} />
+                  <input type="range" min={1} max={16} value={tempo} onChange={hanldeTempoChange} />
                   <div>{tempo}</div>
                 </label>
               </div>
               <div className="smooth">
                 <label>
                   Smooth Factor
-                  <input type="range" min={10} max={30} value={smooth} onChange={hanldeSmoothChange} />
+                  <input type="range" min={1} max={20} value={smooth} onChange={hanldeSmoothChange} />
                   <div>{smooth}</div>
                 </label>
               </div>

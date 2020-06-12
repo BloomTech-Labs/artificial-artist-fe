@@ -35,12 +35,12 @@ const CreateVideo = (props) => {
 
   const [optionsClicked, setOptionsClicked] = useState(false);
 
-  const [jit, setJit] = useState(11);
-  const [deep, setDeep] = useState(19);
-  const [truncate, setTruncate] = useState(9);
-  const [pitch, setPitch] = useState(4);
-  const [tempo, setTempo] = useState(5);
-  const [smooth, setSmooth] = useState(10);
+  const [jit, setJit] = useState(0.5);
+  const [deep, setDeep] = useState(1);
+  const [truncate, setTruncate] = useState(0.5);
+  const [pitch, setPitch] = useState(220);
+  const [tempo, setTempo] = useState(0.25);
+  const [smooth, setSmooth] = useState(20);
 
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
@@ -116,7 +116,6 @@ const CreateVideo = (props) => {
   const handleImgCatChange = (event) => {
     event.preventDefault();
     setSelectedSong({...selectedSong, im_group: event.target.value});
-    console.log(selectedSong);
   };
 
   const handleJitChange = (event) => {
@@ -148,9 +147,15 @@ const CreateVideo = (props) => {
     setSmooth(event.target.value);
     setSelectedSong({ ...selectedSong, smooth_factor: smooth });
   };
+  
+  const handleTest = (e) => {
+    e.preventDefault();
+    console.log(selectedSong);
+  }
 
   return (
     <>
+      <button onClick={handleTest}>CLICK HERE!</button>
       <form onSubmit={submitForm}>
         <label htmlFor="title">Title</label>
         <input
@@ -209,49 +214,49 @@ const CreateVideo = (props) => {
                   Image Category
                   <select onChange={handleImgCatChange}>
                     <option value="">Pick One</option>
-                    <option value="">FISH</option>
-                    <option value="">BIRDS</option>
-                    <option value="">AMPHIBIANS</option>
-                    <option value="">LIZARDS</option>
-                    <option value="">SNAKES</option>
-                    <option value="">OCTOPED</option>
-                    <option value="">EXOTIC BIRDS</option>
-                    <option value="">WEIRD MAMMALS</option>
-                    <option value="">SQUISHY SEA CREATURES</option>
-                    <option value="">SHELLED SEA CREATURES</option>
-                    <option value="">FANCY BIRDS</option>
-                    <option value="">SEA MAMMALS</option>
-                    <option value="">UGLY DOGS</option>
-                    <option value="">HOUND DOGS</option>
-                    <option value="">TERRIER DOGS</option>
-                    <option value="">RETRIEVER DOGS</option>
-                    <option value="">RANDOM DOGS</option>
-                    <option value="">WOLVES</option>
-                    <option value="">HYAENAS</option>
-                    <option value="">FOXY</option>
-                    <option value="">DOMESTIC CATS</option>
-                    <option value="">BIG CATS</option>
-                    <option value="">BEAR</option>
-                    <option value="">UNDERGROUND CATS</option>
-                    <option value="">BEETLES</option>
-                    <option value="">FLYING INSECTS</option>
-                    <option value="">BUTTERFLIES</option>
-                    <option value="">SHARP SEA STUFF</option>
-                    <option value="">SMALL MAMMALS</option>
-                    <option value="">LARGE WILD ANIMALS</option>
-                    <option value="">RANDOM MAMMALS</option>
-                    <option value="">PRIMATES</option>
-                    <option value="">AFRICAN ANIMALS</option>
-                    <option value="">PANDAS</option>
-                    <option value="">CRAZY SEA CREATURES</option>
-                    <option value="">RANDOM OBJECTS</option>
-                    <option value="">WORDS AND SIGNS</option>
-                    <option value="">FOOD STUFF</option>
-                    <option value="">GEOLOGICAL STUFF</option>
-                    <option value="">PEOPLE</option>
-                    <option value="">FLOWERING THINGS</option>
-                    <option value="">FUNGI</option>
-                    <option value="">TOILET PAPER</option>
+                    <option value="FISH">FISH</option>
+                    <option value="BIRDS">BIRDS</option>
+                    <option value="AMPHIBIANS">AMPHIBIANS</option>
+                    <option value="LIZARDS">LIZARDS</option>
+                    <option value="SNAKES">SNAKES</option>
+                    <option value="OCTOPED">OCTOPED</option>
+                    <option value="EXOTIC BIRDS">EXOTIC BIRDS</option>
+                    <option value="WEIRD MAMMALS">WEIRD MAMMALS</option>
+                    <option value="SQUISHY SEA CREATURES">SQUISHY SEA CREATURES</option>
+                    <option value="SHELLED SEA CREATURES">SHELLED SEA CREATURES</option>
+                    <option value="FANCY BIRDS">FANCY BIRDS</option>
+                    <option value="SEA MAMMALS">SEA MAMMALS</option>
+                    <option value="UGLY DOGS">UGLY DOGS</option>
+                    <option value="HOUND DOGS">HOUND DOGS</option>
+                    <option value="TERRIER DOGS">TERRIER DOGS</option>
+                    <option value="RETRIEVER DOGS">RETRIEVER DOGS</option>
+                    <option value="RANDOM DOGS">RANDOM DOGS</option>
+                    <option value="WOLVES">WOLVES</option>
+                    <option value="HYAENAS">HYAENAS</option>
+                    <option value="FOXY">FOXY</option>
+                    <option value="DOMESTIC CATS">DOMESTIC CATS</option>
+                    <option value="BIG CATS">BIG CATS</option>
+                    <option value="BEAR">BEAR</option>
+                    <option value="UNDERGROUND CATS">UNDERGROUND CATS</option>
+                    <option value="BEETLES">BEETLES</option>
+                    <option value="FLYING INSECTS">FLYING INSECTS</option>
+                    <option value="BUTTERFLIES">BUTTERFLIES</option>
+                    <option value="SHARP SEA STUFF">SHARP SEA STUFF</option>
+                    <option value="SMALL MAMMALS">SMALL MAMMALS</option>
+                    <option value="LARGE WILD ANIMALS">LARGE WILD ANIMALS</option>
+                    <option value="RANDOM MAMMALS">RANDOM MAMMALS</option>
+                    <option value="PRIMATES">PRIMATES</option>
+                    <option value="AFRICAN ANIMALS">AFRICAN ANIMALS</option>
+                    <option value="PANDAS">PANDAS</option>
+                    <option value="CRAZY SEA CREATURES">CRAZY SEA CREATURES</option>
+                    <option value="RANDOM OBJECTS">RANDOM OBJECTS</option>
+                    <option value="WORDS AND SIGNS">WORDS AND SIGNS</option>
+                    <option value="FOOD STUFF">FOOD STUFF</option>
+                    <option value="GEOLOGICAL STUFF">GEOLOGICAL STUFF</option>
+                    <option value="PEOPLE">PEOPLE</option>
+                    <option value="FLOWERING THINGS">FLOWERING THINGS</option>
+                    <option value="FUNGI">FUNGI</option>
+                    <option value="TOILET PAPER">TOILET PAPER</option>
                   </select>
                 </label>
               </div>
@@ -261,7 +266,8 @@ const CreateVideo = (props) => {
                   <input
                     type="range"
                     min={0}
-                    max={20}
+                    max={1}
+                    step="0.05"
                     value={jit}
                     onChange={handleJitChange}
                   />
@@ -273,8 +279,9 @@ const CreateVideo = (props) => {
                   Depth
                   <input
                     type="range"
-                    min={1}
-                    max={19}
+                    min={0.1}
+                    max={1}
+                    step="0.05"
                     value={deep}
                     onChange={handleDeepChange}
                   />
@@ -286,8 +293,9 @@ const CreateVideo = (props) => {
                   Truncation
                   <input
                     type="range"
-                    min={1}
-                    max={19}
+                    min={0.1}
+                    max={1}
+                    step="0.05"
                     value={truncate}
                     onChange={handleTruncateChange}
                   />
@@ -299,8 +307,9 @@ const CreateVideo = (props) => {
                   Pitch Sensitivity
                   <input
                     type="range"
-                    min={1}
-                    max={19}
+                    min={200}
+                    max={295}
+                    step="5"
                     value={pitch}
                     onChange={handlePitchChange}
                   />
@@ -312,8 +321,9 @@ const CreateVideo = (props) => {
                   Tempo Sensitivity
                   <input
                     type="range"
-                    min={1}
-                    max={16}
+                    min={0.05}
+                    max={0.8}
+                    step="0.05"
                     value={tempo}
                     onChange={handleTempoChange}
                   />
@@ -325,12 +335,13 @@ const CreateVideo = (props) => {
                   Smooth Factor
                   <input
                     type="range"
-                    min={1}
-                    max={20}
+                    min={10}
+                    max={30}
+                    step="1"
                     value={smooth}
                     onChange={handleSmoothChange}
                   />
-                  <div>{smooth}</div>
+                  <div>{+smooth + 10}</div>
                 </label>
               </div>
             </div>

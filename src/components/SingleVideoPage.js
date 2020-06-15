@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { useParams, useRouteMatch, withRouter, Link } from "react-router-dom";
 import { getSingleVideo } from "../store/actions";
-// import Video from "./Video";
+import Video from "./Video";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Thumbnail from "./Thumbnail";
-import { Player } from "video-react";
+// import { Player } from "video-react";
 
 const SingleVideoPage = (props) => {
   const { videoId } = useParams();
@@ -26,11 +26,7 @@ const SingleVideoPage = (props) => {
         </>
       ) : props.singleVideo.video_status === "successful" ? (
         <>
-          <Player
-            poster={props.singleVideo.thumbnail}
-            playsInline
-            src={props.singleVideo.location}
-          />
+          <Video video={props.singleVideo} />
           <h2>{props.singleVideo.video_title}</h2>
           <h3>{props.singleVideo.title}</h3>
           <h3>{props.singleVideo.artist_name}</h3>

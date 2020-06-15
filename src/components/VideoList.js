@@ -3,21 +3,28 @@ import { connect, useSelector } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { getVideos } from "../store/actions";
 import Video from "./Video";
-import Thumbnail from "./Thumbnail.js";
+import style from "styled-components";
 
-const videoListContainer = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-};
+const VideoListContainer = style.div`
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
 
-const VideoThumbsContainer = {
-  display: "flex",
-  flexWrap: "wrap",
-  width: "70%",
-  margin: "0 auto",
-  placeContent: "center",
-};
+const HeroVideo = style.div`
+    width: 100%;
+    border-top: 2px solid #FCFC0B;
+    border-bottom: 2px solid #FCFC0B;
+`;
+
+const SmallerVideo = style.div`
+  width: 45%;
+  margin-bottom: 40px;
+  border: 10px solid #44E0F6;
+  box-shadow: 10px 10px 0px 0px rgba(125,250,154,1);
+`;
 
 const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
   useEffect(() => {
@@ -25,18 +32,19 @@ const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
   }, []);
 
   return (
-    <div style={videoListContainer}>
-      <div style={VideoThumbsContainer}>
+    <>
+      <HeroVideo></HeroVideo>
+      <VideoListContainer>
         {videos &&
           videos.map((video) => (
-            <div key={video.id}>
-              <Link to={`/videos/${video.id}`}>
-                <Thumbnail video={video} />
+            <SmallerVideo>
+              <Link to={`/videos/${video.id}`} key={video.id}>
+                <Video video={video} />
               </Link>
-            </div>
+            </SmallerVideo>
           ))}
-      </div>
-    </div>
+      </VideoListContainer>
+    </>
   );
 };
 

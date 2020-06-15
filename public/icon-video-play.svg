@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="71px" height="70px" viewBox="0 0 71 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>play</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="try1-copy-2" transform="translate(-490.000000, -1629.000000)">
+            <g id="videos" transform="translate(349.000000, 1540.000000)">
+                <g id="play" transform="translate(141.000000, 89.000000)">
+                    <polygon id="Triangle" fill="#FFD617" transform="translate(17.000000, 35.000000) rotate(90.000000) translate(-17.000000, -35.000000) " points="17 18 52 52 -18 52"></polygon>
+                    <path d="M13,1.04094978e-15 L47,35 L13,70 L13,63.824 L41,35 L13,6.176 L13,1.04094978e-15 Z" id="Combined-Shape" fill="#FF781E"></path>
+                    <path d="M25,1.04094978e-15 L59,35 L25,70 L25,63.824 L53,35 L25,6.176 L25,1.04094978e-15 Z" id="Combined-Shape-Copy-2" fill="#FF1313"></path>
+                    <path d="M37,1.04094978e-15 L71,35 L37,70 L37,63.824 L65,35 L37,6.176 L37,1.04094978e-15 Z" id="Combined-Shape-Copy-3" fill="#C90404"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

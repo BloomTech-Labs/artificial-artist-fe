@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="87px" height="86px" viewBox="0 0 87 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>play</title>
+    <defs>
+        <polygon id="path-1" points="17 18 52 52 -18 52"></polygon>
+        <filter x="-17.1%" y="-35.3%" width="134.3%" height="170.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.777152535 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M13,1.04094978e-15 L47,35 L13,70 L13,63.824 L41,35 L13,6.176 L13,1.04094978e-15 Z" id="path-3"></path>
+        <filter x="-35.3%" y="-17.1%" width="170.6%" height="134.3%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.777152535 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M25,1.04094978e-15 L59,35 L25,70 L25,63.824 L53,35 L25,6.176 L25,1.04094978e-15 Z" id="path-5"></path>
+        <filter x="-35.3%" y="-17.1%" width="170.6%" height="134.3%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.777152535 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M37,1.04094978e-15 L71,35 L37,70 L37,63.824 L65,35 L37,6.176 L37,1.04094978e-15 Z" id="path-7"></path>
+        <filter x="-35.3%" y="-17.1%" width="170.6%" height="134.3%" filterUnits="objectBoundingBox" id="filter-8">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.777152535 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="try1-copy-2" transform="translate(-482.000000, -1621.000000)">
+            <g id="videos" transform="translate(349.000000, 1540.000000)">
+                <g id="play" transform="translate(141.000000, 89.000000)">
+                    <g id="Triangle" transform="translate(17.000000, 35.000000) rotate(90.000000) translate(-17.000000, -35.000000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFD617" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="Combined-Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                        <use fill="#FF781E" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    </g>
+                    <g id="Combined-Shape-Copy-2">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                        <use fill="#FF1313" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    </g>
+                    <g id="Combined-Shape-Copy-3">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
+                        <use fill="#C90404" fill-rule="evenodd" xlink:href="#path-7"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

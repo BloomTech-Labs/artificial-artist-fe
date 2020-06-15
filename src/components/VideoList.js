@@ -22,6 +22,7 @@ const HeroVideo = style.div`
 const SmallerVideo = style.div`
   width: 45%;
   margin-bottom: 40px;
+  background-color: #44E0F6;
   border: 10px solid #44E0F6;
   box-shadow: 10px 10px 0px 0px rgba(125,250,154,1);
 `;
@@ -36,13 +37,17 @@ const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
       <HeroVideo></HeroVideo>
       <VideoListContainer>
         {videos &&
-          videos.map((video) => (
-            <SmallerVideo>
-              <Link to={`/videos/${video.id}`} key={video.id}>
-                <Video video={video} />
-              </Link>
-            </SmallerVideo>
-          ))}
+          videos.map((video, index) => {
+            if (index > 0) {
+              return (
+                <SmallerVideo>
+                  <Link to={`/videos/${video.id}`} key={video.id}>
+                    <Video video={video} />
+                  </Link>
+                </SmallerVideo>
+              );
+            }
+          })}
       </VideoListContainer>
     </>
   );

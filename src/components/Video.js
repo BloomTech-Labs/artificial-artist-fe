@@ -17,8 +17,6 @@ const VideoPlayPause = style.img`
 `;
 
 const Video = (props) => {
-  console.log("props.video", props.video);
-
   const [playerState, setPlayerState] = useState({
     playing: false,
     controls: false,
@@ -33,7 +31,7 @@ const Video = (props) => {
       <VideoContainer onClick={handlePlayPause}>
         <ReactPlayer
           playsinline
-          fileConfig={{ attributes: { poster: props.video.thumbnai } }}
+          fileConfig={{ attributes: { poster: props.video.thumbnail } }}
           playing={playerState.playing}
           controls={playerState.controls}
           width="100%"

@@ -35,13 +35,6 @@ const CreateVideo = (props) => {
 
   const [optionsClicked, setOptionsClicked] = useState(false);
 
-  const [jit, setJit] = useState(0.5);
-  const [deep, setDeep] = useState(1);
-  const [truncate, setTruncate] = useState(0.5);
-  const [pitch, setPitch] = useState(220);
-  const [tempo, setTempo] = useState(0.25);
-  const [smooth, setSmooth] = useState(20);
-
   const [videoParams, setVideoParams] = useState({
     im_group: "RANDOM OBJECTS",
     jitter: 0.5,
@@ -115,6 +108,14 @@ const CreateVideo = (props) => {
     const optionsClicked_new = !optionsClicked;
     setOptionsClicked(optionsClicked_new);
   };
+
+  const handleSliderChange = (event) => {
+    console.log(event.target.name);
+    setVideoParams({
+      ...videoParams,
+      [event.target.name]: Number(event.target.value),
+    });
+  }
 
   const handleTest = (e) => {
     e.preventDefault();
@@ -248,19 +249,14 @@ const CreateVideo = (props) => {
                   Jitter
                   <input
                     type="range"
+                    name="jitter"
                     min={0}
                     max={1}
                     step="0.05"
-                    value={jit}
-                    onChange={(event) => {
-                      setJit(event.target.value);
-                      setVideoParams({
-                        ...videoParams,
-                        jitter: Number(jit),
-                      });
-                    }}
+                    value={videoParams.jitter}
+                    onChange={handleSliderChange}
                   />
-                  <div>{jit}</div>
+                  <div>{videoParams.jitter}</div>
                 </label>
               </div>
               <div className="depth">
@@ -268,19 +264,14 @@ const CreateVideo = (props) => {
                   Depth
                   <input
                     type="range"
+                    name="depth"
                     min={0.1}
                     max={1}
                     step="0.05"
-                    value={deep}
-                    onChange={(event) => {
-                      setDeep(event.target.value);
-                      setVideoParams({
-                        ...videoParams,
-                        depth: Number(deep),
-                      });
-                    }}
+                    value={videoParams.depth}
+                    onChange={handleSliderChange}
                   />
-                  <div>{deep}</div>
+                  <div>{videoParams.depth}</div>
                 </label>
               </div>
               <div className="truncation">
@@ -288,19 +279,14 @@ const CreateVideo = (props) => {
                   Truncation
                   <input
                     type="range"
+                    name="truncation"
                     min={0.1}
                     max={1}
                     step="0.05"
-                    value={truncate}
-                    onChange={(event) => {
-                      setTruncate(event.target.value);
-                      setVideoParams({
-                        ...videoParams,
-                        truncation: Number(truncate),
-                      });
-                    }}
+                    value={videoParams.truncation}
+                    onChange={handleSliderChange}
                   />
-                  <div>{truncate}</div>
+                  <div>{videoParams.truncation}</div>
                 </label>
               </div>
               <div className="pitch">
@@ -308,19 +294,14 @@ const CreateVideo = (props) => {
                   Pitch Sensitivity
                   <input
                     type="range"
+                    name="pitch_sensitivity"
                     min={200}
                     max={295}
                     step="5"
-                    value={pitch}
-                    onChange={(event) => {
-                      setPitch(event.target.value);
-                      setVideoParams({
-                        ...videoParams,
-                        pitch_sensitivity: Number(pitch),
-                      });
-                    }}
+                    value={videoParams.pitch_sensitivity}
+                    onChange={handleSliderChange}
                   />
-                  <div>{pitch}</div>
+                  <div>{videoParams.pitch_sensitivity}</div>
                 </label>
               </div>
               <div className="tempo">
@@ -328,19 +309,14 @@ const CreateVideo = (props) => {
                   Tempo Sensitivity
                   <input
                     type="range"
+                    name="tempo_sensitivity"
                     min={0.05}
                     max={0.8}
                     step="0.05"
-                    value={tempo}
-                    onChange={(event) => {
-                      setTempo(event.target.value);
-                      setVideoParams({
-                        ...videoParams,
-                        tempo_sensitivity: Number(tempo),
-                      });
-                    }}
+                    value={videoParams.tempo_sensitivity}
+                    onChange={handleSliderChange}
                   />
-                  <div>{tempo}</div>
+                  <div>{videoParams.tempo_sensitivity}</div>
                 </label>
               </div>
               <div className="smooth">
@@ -348,19 +324,14 @@ const CreateVideo = (props) => {
                   Smooth Factor
                   <input
                     type="range"
+                    name="smooth_factor"
                     min={10}
                     max={30}
                     step="1"
-                    value={smooth}
-                    onChange={(event) => {
-                      setSmooth(event.target.value);
-                      setVideoParams({
-                        ...videoParams,
-                        smooth_factor: Number(smooth),
-                      });
-                    }}
+                    value={videoParams.smooth_factor}
+                    onChange={handleSliderChange}
                   />
-                  <div>{+smooth + 10}</div>
+                  <div>{videoParams.smooth_factor}</div>
                 </label>
               </div>
             </div>

@@ -42,6 +42,16 @@ const CreateVideo = (props) => {
   const [tempo, setTempo] = useState(0.25);
   const [smooth, setSmooth] = useState(20);
 
+  const [videoParams, setVideoParams] = useState({
+    im_group: "RANDOM OBJECTS",
+    jitter: 0.5,
+    depth: 1,
+    truncation: 0.5,
+    pitch_sensitivity: 220,
+    tempo_sensitivity: 0.25,
+    smooth_factor: 20,
+  });
+
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
     preview: "",
@@ -50,13 +60,6 @@ const CreateVideo = (props) => {
     location: "youtube.com/video",
     video_title: "",
     user_id: localStorage.getItem("user_id"),
-    im_group: "",
-    jitter: 0.5,
-    depth: 1,
-    truncation: 0.5,
-    pitch_sensitivity: 220,
-    tempo_sensitivity: 0.25,
-    smooth_factor: 20,
   });
 
   const fullQuery = `${API_URL}${query}`;
@@ -113,45 +116,10 @@ const CreateVideo = (props) => {
     setOptionsClicked(optionsClicked_new);
   };
 
-  const handleImgCatChange = (event) => {
-    event.preventDefault();
-    setSelectedSong({...selectedSong, im_group: event.target.value});
-  };
-
-  const handleJitChange = (event) => {
-    setJit(event.target.value);
-    setSelectedSong({ ...selectedSong, jitter: jit });
-  };
-
-  const handleDeepChange = (event) => {
-    setDeep(event.target.value);
-    setSelectedSong({ ...selectedSong, depth: deep });
-  };
-
-  const handleTruncateChange = (event) => {
-    setTruncate(event.target.value);
-    setSelectedSong({ ...selectedSong, truncation: truncate });
-  };
-
-  const handlePitchChange = (event) => {
-    setPitch(event.target.value);
-    setSelectedSong({ ...selectedSong, pitch_sensitivity: pitch });
-  };
-
-  const handleTempoChange = (event) => {
-    setTempo(event.target.value);
-    setSelectedSong({ ...selectedSong, tempo_sensitivity: tempo });
-  };
-
-  const handleSmoothChange = (event) => {
-    setSmooth(event.target.value);
-    setSelectedSong({ ...selectedSong, smooth_factor: smooth });
-  };
-  
   const handleTest = (e) => {
     e.preventDefault();
-    console.log(selectedSong);
-  }
+    console.log(videoParams);
+  };
 
   return (
     <>
@@ -212,8 +180,15 @@ const CreateVideo = (props) => {
               <div className="image_category">
                 <label>
                   Image Category
-                  <select onChange={handleImgCatChange}>
-                    <option value="">Pick One</option>
+                  <select
+                    onChange={(event) =>
+                      setVideoParams({
+                        ...videoParams,
+                        im_group: event.target.value,
+                      })
+                    }
+                  >
+                    <option value="RANDOM OBJECTS">Pick One</option>
                     <option value="FISH">FISH</option>
                     <option value="BIRDS">BIRDS</option>
                     <option value="AMPHIBIANS">AMPHIBIANS</option>
@@ -222,8 +197,12 @@ const CreateVideo = (props) => {
                     <option value="OCTOPED">OCTOPED</option>
                     <option value="EXOTIC BIRDS">EXOTIC BIRDS</option>
                     <option value="WEIRD MAMMALS">WEIRD MAMMALS</option>
-                    <option value="SQUISHY SEA CREATURES">SQUISHY SEA CREATURES</option>
-                    <option value="SHELLED SEA CREATURES">SHELLED SEA CREATURES</option>
+                    <option value="SQUISHY SEA CREATURES">
+                      SQUISHY SEA CREATURES
+                    </option>
+                    <option value="SHELLED SEA CREATURES">
+                      SHELLED SEA CREATURES
+                    </option>
                     <option value="FANCY BIRDS">FANCY BIRDS</option>
                     <option value="SEA MAMMALS">SEA MAMMALS</option>
                     <option value="UGLY DOGS">UGLY DOGS</option>
@@ -243,12 +222,16 @@ const CreateVideo = (props) => {
                     <option value="BUTTERFLIES">BUTTERFLIES</option>
                     <option value="SHARP SEA STUFF">SHARP SEA STUFF</option>
                     <option value="SMALL MAMMALS">SMALL MAMMALS</option>
-                    <option value="LARGE WILD ANIMALS">LARGE WILD ANIMALS</option>
+                    <option value="LARGE WILD ANIMALS">
+                      LARGE WILD ANIMALS
+                    </option>
                     <option value="RANDOM MAMMALS">RANDOM MAMMALS</option>
                     <option value="PRIMATES">PRIMATES</option>
                     <option value="AFRICAN ANIMALS">AFRICAN ANIMALS</option>
                     <option value="PANDAS">PANDAS</option>
-                    <option value="CRAZY SEA CREATURES">CRAZY SEA CREATURES</option>
+                    <option value="CRAZY SEA CREATURES">
+                      CRAZY SEA CREATURES
+                    </option>
                     <option value="RANDOM OBJECTS">RANDOM OBJECTS</option>
                     <option value="WORDS AND SIGNS">WORDS AND SIGNS</option>
                     <option value="FOOD STUFF">FOOD STUFF</option>
@@ -269,7 +252,13 @@ const CreateVideo = (props) => {
                     max={1}
                     step="0.05"
                     value={jit}
-                    onChange={handleJitChange}
+                    onChange={(event) => {
+                      setJit(event.target.value);
+                      setVideoParams({
+                        ...videoParams,
+                        jitter: Number(jit),
+                      });
+                    }}
                   />
                   <div>{jit}</div>
                 </label>
@@ -283,7 +272,13 @@ const CreateVideo = (props) => {
                     max={1}
                     step="0.05"
                     value={deep}
-                    onChange={handleDeepChange}
+                    onChange={(event) => {
+                      setDeep(event.target.value);
+                      setVideoParams({
+                        ...videoParams,
+                        depth: Number(deep),
+                      });
+                    }}
                   />
                   <div>{deep}</div>
                 </label>
@@ -297,7 +292,13 @@ const CreateVideo = (props) => {
                     max={1}
                     step="0.05"
                     value={truncate}
-                    onChange={handleTruncateChange}
+                    onChange={(event) => {
+                      setTruncate(event.target.value);
+                      setVideoParams({
+                        ...videoParams,
+                        truncation: Number(truncate),
+                      });
+                    }}
                   />
                   <div>{truncate}</div>
                 </label>
@@ -311,7 +312,13 @@ const CreateVideo = (props) => {
                     max={295}
                     step="5"
                     value={pitch}
-                    onChange={handlePitchChange}
+                    onChange={(event) => {
+                      setPitch(event.target.value);
+                      setVideoParams({
+                        ...videoParams,
+                        pitch_sensitivity: Number(pitch),
+                      });
+                    }}
                   />
                   <div>{pitch}</div>
                 </label>
@@ -325,7 +332,13 @@ const CreateVideo = (props) => {
                     max={0.8}
                     step="0.05"
                     value={tempo}
-                    onChange={handleTempoChange}
+                    onChange={(event) => {
+                      setTempo(event.target.value);
+                      setVideoParams({
+                        ...videoParams,
+                        tempo_sensitivity: Number(tempo),
+                      });
+                    }}
                   />
                   <div>{tempo}</div>
                 </label>
@@ -339,7 +352,13 @@ const CreateVideo = (props) => {
                     max={30}
                     step="1"
                     value={smooth}
-                    onChange={handleSmoothChange}
+                    onChange={(event) => {
+                      setSmooth(event.target.value);
+                      setVideoParams({
+                        ...videoParams,
+                        smooth_factor: Number(smooth),
+                      });
+                    }}
                   />
                   <div>{+smooth + 10}</div>
                 </label>

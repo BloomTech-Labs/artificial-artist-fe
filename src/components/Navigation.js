@@ -1,11 +1,24 @@
 import React from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import { NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import style from "styled-components";
+
+const Logo = style.h1`
+  font-family: Staatliches, sans-serif;
+  color: #F14946;
+  font-size: 60px;
+  text-shadow: 1px 1px 0 #FCFC0B;
+`;
+
+const Navbar = style.nav`
+  margin: 0 auto;
+  padding: 80px;
+`;
 
 const Navigation = () => {
   const history = useHistory();
   const location = useLocation();
-  const logout = e => {
+  const logout = (e) => {
     e.preventDefault();
     localStorage.clear();
     history.push("/login");
@@ -13,9 +26,9 @@ const Navigation = () => {
   let username = localStorage.getItem("username");
   return (
     <Navbar>
-      <NavbarBrand tag={Link} to="/" className="mr-auto navbar-brand">
-        Artificial Artist
-      </NavbarBrand>
+      <Logo tag={Link} to="/">
+        The Artificial Artist
+      </Logo>
       {/* display create videos and log out if user has token, else 
             display browse videos, log in, and sign up */}
       {localStorage.getItem("token") ? (

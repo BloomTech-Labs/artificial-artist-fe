@@ -17,8 +17,9 @@ import Navigation from "./components/Navigation";
 import SingleVideoPage from "./components/SingleVideoPage";
 import UserPage from "./components/UserPage";
 import style from "styled-components";
+import "./App.css";
 
-const Base = style.body`
+const Base = style.div`
   background: rgb(25,7,85);
   background: linear-gradient(180deg, rgba(25,7,85,1) 0%, rgba(228,0,94,1) 100%, rgba(2,0,36,1) 190755%);
 `;

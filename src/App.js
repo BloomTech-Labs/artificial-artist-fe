@@ -17,32 +17,40 @@ import Navigation from "./components/Navigation";
 import SingleVideoPage from "./components/SingleVideoPage";
 import UserPage from "./components/UserPage";
 import Search from "./components/SearchVideos";
+import style from "styled-components";
+import "./App.css";
+
+const Base = style.div`
+  background: rgb(25,7,85);
+  background: linear-gradient(180deg, rgba(25,7,85,1) 0%, rgba(228,0,94,1) 100%, rgba(2,0,36,1) 190755%);
+`;
 
 function App(props) {
   return (
     <Router>
-      <Navigation />
-      <Switch>
-        <Route exact path="/" component={VideoList} />
-        {/* <Route exact path="/" >
-          <VideoList videoList={props.videoList} />
-        </Route> */}
-        <Route exact path="/videos/:videoId" component={SingleVideoPage} />
-        {/* <SingleVideoPage videoList={props.videoList} /> */}
-
-        {/* <PrivateRoute exact path="/videos/:videoID">
-          <SingleVideoPage videoList={props.videoList} />
-        </PrivateRoute> */}
-        <PrivateRoute
-          path="/create"
-          exact
-          component={localStorage.getItem("token") ? CreateVideo : Signup}
-        />
-        <Route exact path="/users/:username" component={UserPage} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/search" component={Search} />
-      </Switch>
+      <Base>
+        <Navigation />
+        <Switch>
+          <Route exact path="/" component={VideoList} />
+          {/* <Route exact path="/" >
+            <VideoList videoList={props.videoList} />
+          </Route> */}
+          <Route exact path="/videos/:videoId" component={SingleVideoPage} />
+          {/* <SingleVideoPage videoList={props.videoList} /> */}
+          {/* <PrivateRoute exact path="/videos/:videoID">
+            <SingleVideoPage videoList={props.videoList} />
+          </PrivateRoute> */}
+          <PrivateRoute
+            path="/create"
+            exact
+            component={localStorage.getItem("token") ? CreateVideo : Signup}
+          />
+          <Route exact path="/users/:username" component={UserPage} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+           <Route path="/search" component={Search} />
+        </Switch>
+      </Base>
     </Router>
   );
 }

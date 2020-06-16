@@ -4,6 +4,55 @@ import { withRouter, Link } from "react-router-dom";
 import { login } from "../store/actions";
 import style from "styled-components";
 
+const ContentCenter = style.div`
+  margin: 0 auto;
+  display: block;
+  width: 30%;
+  padding-bottom: 300px;
+`;
+
+const LoginLabel = style.label`
+  padding: 10px 15px;
+  color: #44E0F6;
+  font-size: 18px;
+  display: block;
+  font-weight: 800;
+`;
+
+const LoginInput = style.input`
+  padding: 10px 15px;
+  border: 2px solid #FCFC0B;
+  border-radius: 8px;
+  color: #FCFC0B;
+  font-size: 24px;
+  background-color: #0E0429;
+  display: block;
+  width: 100%;
+  &:focus {
+    border: 2px solid #44E0F6;
+    outline: none;
+  }
+`;
+
+const LoginButton = style.button`
+  padding: 20px 30px;
+  color: #0E0429;
+  border-radius: 8px;
+  font-size: 18px;
+  display: block;
+  font-weight: 800;
+  width: 100%;
+  margin-top: 20px;
+  border: 2px solid #FCFC0B;
+  cursor: pointer;
+  background: rgb(250,112,239);
+  background: linear-gradient(180deg, rgba(250,112,239,1) 0%, rgba(254,235,251,1) 100%, rgba(2,0,36,1) 190755%);
+  &:hover {
+    background: rgb(254,235,251);
+    background: radial-gradient(circle, rgba(254,235,251,1) 0%, rgba(250,112,239,1) 100%, rgba(2,0,36,1) 190755%);
+  }
+`;
+
 function Login(props) {
   const [creds, setCreds] = useState({
     email: "",
@@ -24,32 +73,30 @@ function Login(props) {
 
   return (
     <>
-      <div>
+      <ContentCenter>
         <form onSubmit={onSubmit}>
-          <img src="images/Logo.svg" />
-          <h1>Title</h1>
-          <label>email</label>
-          <input
+          <LoginLabel>email</LoginLabel>
+          <LoginInput
             required
             type="text"
             name="email"
             value={creds.email}
             onChange={handleChange}
-          ></input>
-          <label>Password</label>
-          <input
+          ></LoginInput>
+          <LoginLabel>Password</LoginLabel>
+          <LoginInput
             required
             type="password"
             name="password"
             value={creds.password}
             onChange={handleChange}
-          ></input>
+          ></LoginInput>
           {props.loginStart ? (
-            <button type="submit" disabled>
+            <LoginButton type="submit" disabled>
               Loading...
-            </button>
+            </LoginButton>
           ) : (
-            <button type="submit">Login</button>
+            <LoginButton type="submit">Login</LoginButton>
           )}
           {props.loginError && (
             <p style={{ color: "red", textAlign: "center", marginTop: "10px" }}>
@@ -57,7 +104,7 @@ function Login(props) {
             </p>
           )}
         </form>
-      </div>
+      </ContentCenter>
     </>
   );
 }

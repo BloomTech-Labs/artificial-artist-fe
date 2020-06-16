@@ -23,6 +23,7 @@ import "./App.css";
 const Base = style.div`
   background: rgb(25,7,85);
   background: linear-gradient(180deg, rgba(25,7,85,1) 0%, rgba(228,0,94,1) 100%, rgba(2,0,36,1) 190755%);
+  min-height: 100vh;
 `;
 
 function App(props) {

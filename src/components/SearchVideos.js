@@ -29,9 +29,11 @@ function Search(props) {
             {results.length > 0 ? (
               results.map((result) => {
                 return (
-                  <Link to={`/videos/${result.item.id}`} key={result.item.id}>
-                    {result.item.title}
-                  </Link>
+                  <li key={result.item.id}>
+                    <Link to={`/videos/${result.item.id}`}>
+                      {result.item.title}
+                    </Link>
+                  </li>
                 );
               })
             ) : (

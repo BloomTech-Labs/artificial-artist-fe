@@ -16,6 +16,7 @@ import VideoList from "./components/VideoList";
 import Navigation from "./components/Navigation";
 import SingleVideoPage from "./components/SingleVideoPage";
 import UserPage from "./components/UserPage";
+import Search from "./components/SearchVideos";
 import style from "styled-components";
 import "./App.css";
 
@@ -36,7 +37,6 @@ function App(props) {
           </Route> */}
           <Route exact path="/videos/:videoId" component={SingleVideoPage} />
           {/* <SingleVideoPage videoList={props.videoList} /> */}
-
           {/* <PrivateRoute exact path="/videos/:videoID">
             <SingleVideoPage videoList={props.videoList} />
           </PrivateRoute> */}
@@ -48,6 +48,7 @@ function App(props) {
           <Route exact path="/users/:username" component={UserPage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+           <Route path="/search" component={Search} />
         </Switch>
       </Base>
     </Router>

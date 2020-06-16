@@ -5,7 +5,24 @@ import { getSingleVideo } from "../store/actions";
 import Video from "./Video";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Thumbnail from "./Thumbnail";
-// import { Player } from "video-react";
+import style from "styled-components";
+
+const VideoContainer = style.div`
+  width: 100%;
+  background-color: #000;
+  border-top: 2px solid #FCFC0B;
+  box-shadow: 0px 10px 23px 0px rgba(0,0,0,0.53);
+  margin-bottom: 80px;
+`;
+
+const PageContent = style.div`
+  margin: 0 auto;
+  padding-bottom: 200px;
+  width: 80%;
+  color: #2FBCD4;
+  text-shadow: 1px 1px 0 #0E0429;
+  font-family: Shrikhand, sans-serif;
+`;
 
 const SingleVideoPage = (props) => {
   const { videoId } = useParams();
@@ -26,10 +43,14 @@ const SingleVideoPage = (props) => {
         </>
       ) : props.singleVideo.video_status === "successful" ? (
         <>
-          <Video video={props.singleVideo} />
-          <h2>{props.singleVideo.video_title}</h2>
-          <h3>{props.singleVideo.title}</h3>
-          <h3>{props.singleVideo.artist_name}</h3>
+          <VideoContainer>
+            <Video heroVideo={true} video={props.singleVideo} />
+          </VideoContainer>
+          <PageContent>
+            <h2>{props.singleVideo.video_title}</h2>
+            <h3>{props.singleVideo.title}</h3>
+            <h3>{props.singleVideo.artist_name}</h3>
+          </PageContent>
         </>
       ) : props.singleVideo.video_status === "failed" ? (
         <>

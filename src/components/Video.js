@@ -5,7 +5,9 @@ import style from "styled-components";
 import ReactPlayer from "react-player/lazy";
 
 const VideoContainer = style.div`
-  width: 100%;
+  width: ${(props) => (props.heroVideo ? "60%" : "100%")};
+  margin: 0 auto;
+  display: block;
   position: relative;
 `;
 
@@ -13,7 +15,7 @@ const VideoPlayPause = style.img`
   top: calc(50% - 35px);
   left: calc(50% - 35px);
   position: absolute;
-  display: ${(props) => (props.playing ? "none" : "flex")};
+  display: ${(props) => (props.playing ? "none" : "block")};
 `;
 
 const Video = (props) => {
@@ -28,7 +30,7 @@ const Video = (props) => {
 
   return (
     <>
-      <VideoContainer onClick={handlePlayPause}>
+      <VideoContainer heroVideo={props.heroVideo} onClick={handlePlayPause}>
         <ReactPlayer
           playsinline
           fileConfig={{ attributes: { poster: props.video.thumbnail } }}

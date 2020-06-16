@@ -3,11 +3,12 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 import style from "styled-components";
 
-const Logo = style.h1`
+const Logo = style(Link)`
   font-family: Staatliches, sans-serif;
   color: #F14946;
-  font-size: 60px;
   text-shadow: 1px 1px 0 #FCFC0B;
+  font-size: 60px;
+  text-decoration: none;
 `;
 
 const Navbar = style.nav`
@@ -26,9 +27,7 @@ const Navigation = () => {
   let username = localStorage.getItem("username");
   return (
     <Navbar>
-      <Logo tag={Link} to="/">
-        The Artificial Artist
-      </Logo>
+      <Logo to="/">The Artificial Artist</Logo>
       {/* display create videos and log out if user has token, else 
             display browse videos, log in, and sign up */}
       {localStorage.getItem("token") ? (

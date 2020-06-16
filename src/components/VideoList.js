@@ -13,9 +13,9 @@ const VideoListContainer = style.div`
   justify-content: space-between;
 `;
 
-const HeroVideo = style.div`
+const HeroContainer = style.div`
     width: 100%;
-    background-color: #FCFC0B;
+    background-color: #000;
     border-top: 2px solid #FCFC0B;
     box-shadow: 0px 10px 23px 0px rgba(0,0,0,0.53);
     margin-bottom: 80px;
@@ -36,7 +36,9 @@ const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
 
   return (
     <>
-      <HeroVideo>{videos && <Video video={videos[0]} />}</HeroVideo>
+      <HeroContainer>
+        {videos && <Video heroVideo={true} video={videos[0]} />}
+      </HeroContainer>
       <VideoListContainer>
         {videos &&
           videos.map((video, index) => {

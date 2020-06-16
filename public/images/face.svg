@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1071px" height="750px" viewBox="0 0 1071 750" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>face</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#190755" offset="0%"></stop>
+            <stop stop-color="#E4005E" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="1439" height="1079"></rect>
+        <filter x="-3.6%" y="-3.9%" width="107.2%" height="109.6%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="10" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.569438374 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="try1-copy-2" transform="translate(-185.000000, -434.000000)">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="1439" height="3238"></rect>
+            <g id="hero" transform="translate(0.000000, 240.000000)">
+                <g id="Rectangle">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <rect stroke="#FCFC0B" stroke-width="2" fill="#0E0429" fill-rule="evenodd" x="-1" y="-1" width="1441" height="1081"></rect>
+                </g>
+                <g id="face" transform="translate(458.000000, 236.000000)">
+                    <path d="M307,57 C307,25.5197693 332.519769,5.78282457e-15 364,0 C395.480231,-5.78282457e-15 421,25.5197693 421,57 L421,198 C421,229.480231 395.480231,255 364,255 C332.519769,255 307,229.480231 307,198 L307,173 L352,155.5 L307,138 L307,57 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                    <path d="M95,57 C95,25.5197693 120.519769,5.78282457e-15 152,0 C183.480231,-5.78282457e-15 209,25.5197693 209,57 L209,198 C209,229.480231 183.480231,255 152,255 C120.519769,255 95,229.480231 95,198 L95,173 L140,155.5 L95,138 L95,57 Z" id="Combined-Shape-Copy" fill="#FFFFFF"></path>
+                    <g id="Group" transform="translate(0.000000, 316.000000)">
+                        <rect id="Rectangle" stroke="#C21CBF" stroke-width="40" fill="#0E0429" x="0" y="0" width="524" height="140" rx="57"></rect>
+                        <path d="M49,20 L114,20 L114,49.5 C114,65.7924001 100.7924,79 84.5,79 L78.5,79 C62.2075999,79 49,65.7924001 49,49.5 L49,20 L49,20 Z" id="Rectangle" fill="#D8D8D8"></path>
+                        <path d="M142,20 L207,20 L207,49.5 C207,65.7924001 193.7924,79 177.5,79 L171.5,79 C155.2076,79 142,65.7924001 142,49.5 L142,20 L142,20 Z" id="Rectangle-Copy-5" fill="#D8D8D8"></path>
+                        <path d="M235,20 L300,20 L300,49.5 C300,65.7924001 286.7924,79 270.5,79 L264.5,79 C248.2076,79 235,65.7924001 235,49.5 L235,20 L235,20 Z" id="Rectangle-Copy-6" fill="#D8D8D8"></path>
+                        <path d="M321,20 L386,20 L386,49.5 C386,65.7924001 372.7924,79 356.5,79 L350.5,79 C334.2076,79 321,65.7924001 321,49.5 L321,20 L321,20 Z" id="Rectangle-Copy-7" fill="#D8D8D8"></path>
+                        <path d="M407,20 L472,20 L472,49.5 C472,65.7924001 458.7924,79 442.5,79 L436.5,79 C420.2076,79 407,65.7924001 407,49.5 L407,20 L407,20 Z" id="Rectangle-Copy-8" fill="#D8D8D8"></path>
+                        <path d="M179,79 L298,79 C328.927946,79 354,104.072054 354,135 L354,261 C354,310.153343 314.153343,350 265,350 L245,350 C195.846657,350 156,310.153343 156,261 L156,102 C156,89.2974508 166.297451,79 179,79 Z" id="Rectangle" fill="#E2668E"></path>
+                        <rect id="Rectangle" fill="#D14E78" x="255" y="124" width="7" height="170" rx="3.5"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

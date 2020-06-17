@@ -11,6 +11,12 @@ export const login = (creds, history) => (dispatch) => {
   axiosWithAuth()
     .post(`/auth/login`, creds)
     .then((res) => {
+      setTimeout(() => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("username");
+        history.push("/login");
+      }, 3600000);
       console.log(res);
       setTimeout(() => {
         localStorage.setItem("token", res.data.token);

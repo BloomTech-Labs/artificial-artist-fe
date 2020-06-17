@@ -8,7 +8,7 @@ import Thumbnail from "./Thumbnail";
 const videoListContainer = {
   display: "flex",
   flexDirection: "column",
-  alignItems: "center"
+  alignItems: "center",
 };
 
 const VideoThumbsContainer = {
@@ -16,10 +16,10 @@ const VideoThumbsContainer = {
   flexWrap: "wrap",
   width: "70%",
   margin: "0 auto",
-  placeContent: "center"
+  placeContent: "center",
 };
 
-const UserPage = props => {
+const UserPage = (props) => {
   const { username } = useParams();
 
   useEffect(() => {
@@ -43,10 +43,10 @@ const UserPage = props => {
         <h1>{greeting}</h1>
         <div style={videoListContainer}>
           <div style={VideoThumbsContainer}>
-            {props.userVideos && props.userVideos ? (
-              props.userVideos.map(video => {
+            {props.userVideos && props.userVideos.length > 0 ? (
+              props.userVideos.map((video) => {
                 return (
-                  <div Key={video.id}>
+                  <div key={video.id}>
                     <h3>{video.video_title}</h3>
                     <Link to={`/videos/${video.id}`}>
                       <Thumbnail video={video} />
@@ -67,11 +67,11 @@ const UserPage = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userVideos: state.userVideos,
   getUserVideosStart: state.getUserVideosStart,
   getUserVideosSuccess: state.getUserVideosSuccess,
-  getUserVideosError: state.getUserVideosError
+  getUserVideosError: state.getUserVideosError,
 });
 
 export default connect(

@@ -100,7 +100,7 @@ const CreateVideo = (props) => {
   const submitForm = (event) => {
     event.preventDefault();
     // Need to create postVideo action in redux for this to work
-    props.postVideo(localStorage.getItem("token"), selectedSong, props.history);
+    props.postVideo(localStorage.getItem("token"), selectedSong, videoParams, props.history);
   };
 
   const handleClickOptions = (event) => {
@@ -117,14 +117,8 @@ const CreateVideo = (props) => {
     });
   }
 
-  const handleTest = (e) => {
-    e.preventDefault();
-    console.log(videoParams);
-  };
-
   return (
     <>
-      <button onClick={handleTest}>CLICK HERE!</button>
       <form onSubmit={submitForm}>
         <label htmlFor="title">Title</label>
         <input

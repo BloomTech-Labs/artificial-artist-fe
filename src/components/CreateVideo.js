@@ -41,7 +41,7 @@ const CreateVideo = (props) => {
   const [pitchHover, setPitchHover] = useState(false);
   const [tempoHover, setTempoHover] = useState(false);
   const [smoothHover, setSmoothHover] = useState(false);
-  
+
   const [videoParams, setVideoParams] = useState({
     im_group: "RANDOM OBJECTS",
     jitter: 0.5,
@@ -107,7 +107,12 @@ const CreateVideo = (props) => {
   const submitForm = (event) => {
     event.preventDefault();
     // Need to create postVideo action in redux for this to work
-    props.postVideo(localStorage.getItem("token"), selectedSong, videoParams, props.history);
+    props.postVideo(
+      localStorage.getItem("token"),
+      selectedSong,
+      videoParams,
+      props.history
+    );
   };
 
   const handleClickOptions = (event) => {
@@ -117,11 +122,47 @@ const CreateVideo = (props) => {
   };
 
   const handleSliderChange = (event) => {
-    console.log(event.target.name);
     setVideoParams({
       ...videoParams,
       [event.target.name]: Number(event.target.value),
     });
+  };
+
+  const handleReset = (event) => {
+    event.preventDefault();
+    setVideoParams({
+      jitter: 0.5,
+      depth: 1,
+      truncation: 0.5,
+      pitch_sensitivity: 220,
+      tempo_sensitivity: 0.25,
+      smooth_factor: 20,
+    });
+  };
+
+  const handleJitHover = (event) => {
+    setJitHover(!jitHover);
+    console.log(event.target.hover);
+  };
+
+  const handleDeepHover = (event) => {
+    setDeepHover(!deepHover);
+  };
+
+  const handleTruncateHover = (event) => {
+    setTruncateHover(!truncateHover);
+  };
+
+  const handlePitchHover = (event) => {
+    setPitchHover(!pitchHover);
+  };
+
+  const handleTempoHover = (event) => {
+    setTempoHover(!tempoHover);
+  };
+
+  const handleSmoothHover = (event) => {
+    setSmoothHover(!smoothHover);
   };
 
   return (
@@ -179,6 +220,7 @@ const CreateVideo = (props) => {
         <div className="advanced_options">
           {optionsClicked === true ? (
             <div className="options">
+              <button onClick={handleReset}>Reset Defaults</button>
               <div className="image_category">
                 <label>
                   Image Category
@@ -248,10 +290,20 @@ const CreateVideo = (props) => {
               <div className="jitter">
                 <label>
                   Jitter
-                  <div onMouseEnter={e => (setJitHover(true))} onMouseLeave={e => (setJitHover(false))}>?</div>
-                        {jitHover && (
-                          <div>Prevents the same exact images from cycling repetitively during repetitive music so that the video output is more interesting. If you do want to cycle repetitively, set jitter to minimum.</div>
-                        )}
+                  <div
+                    onMouseEnter={handleJitHover}
+                    onMouseLeave={handleJitHover}
+                  >
+                    ?
+                  </div>
+                  {jitHover && (
+                    <div>
+                      Prevents the same exact images from cycling repetitively
+                      during repetitive music so that the video output is more
+                      interesting. If you do want to cycle repetitively, set
+                      jitter to minimum.
+                    </div>
+                  )}
                   <input
                     type="range"
                     name="jitter"
@@ -261,16 +313,25 @@ const CreateVideo = (props) => {
                     value={videoParams.jitter}
                     onChange={handleSliderChange}
                   />
-                  <div>{videoParams.jitter}</div>
                 </label>
               </div>
               <div className="depth">
                 <label>
                   Depth
-                  <div onMouseEnter={e => (setDeepHover(true))} onMouseLeave={e => (setDeepHover(false))}>?</div>
-                        {deepHover && (
-                          <div>Max yields more thematically rich content. Lowering yields more 'deep' structures like human and dog faces. However, this depends heavily on the specific classes you are using.</div>
-                        )}
+                  <div
+                    onMouseEnter={handleDeepHover}
+                    onMouseLeave={handleDeepHover}
+                  >
+                    ?
+                  </div>
+                  {deepHover && (
+                    <div>
+                      Max yields more thematically rich content. Lowering yields
+                      more 'deep' structures like human and dog faces. However,
+                      this depends heavily on the specific classes you are
+                      using.
+                    </div>
+                  )}
                   <input
                     type="range"
                     name="depth"
@@ -280,16 +341,25 @@ const CreateVideo = (props) => {
                     value={videoParams.depth}
                     onChange={handleSliderChange}
                   />
-                  <div>{videoParams.depth}</div>
                 </label>
               </div>
               <div className="truncation">
                 <label>
                   Truncation
-                  <div onMouseEnter={e => (setTruncateHover(true))} onMouseLeave={e => (setTruncateHover(false))}>?</div>
-                        {truncateHover && (
-                          <div>Controls the variability of images generated. Max value yield more variable images, while lower values yield simpler images with more recognizable, normal-looking objects.</div>
-                        )}
+                  <div
+                    onMouseEnter={handleTruncateHover}
+                    onMouseLeave={handleTruncateHover}
+                  >
+                    ?
+                  </div>
+                  {truncateHover && (
+                    <div>
+                      Controls the variability of images generated. Max value
+                      yield more variable images, while lower values yield
+                      simpler images with more recognizable, normal-looking
+                      objects.
+                    </div>
+                  )}
                   <input
                     type="range"
                     name="truncation"
@@ -299,16 +369,23 @@ const CreateVideo = (props) => {
                     value={videoParams.truncation}
                     onChange={handleSliderChange}
                   />
-                  <div>{videoParams.truncation}</div>
                 </label>
               </div>
               <div className="pitch">
                 <label>
                   Pitch Sensitivity
-                  <div onMouseEnter={e => (setPitchHover(true))} onMouseLeave={e => (setPitchHover(false))}>?</div>
-                        {pitchHover && (
-                          <div>Controls how rapidly the thematic content of the video will react to changes in pitch.</div>
-                        )}
+                  <div
+                    onMouseEnter={handlePitchHover}
+                    onMouseLeave={handlePitchHover}
+                  >
+                    ?
+                  </div>
+                  {pitchHover && (
+                    <div>
+                      Controls how rapidly the thematic content of the video
+                      will react to changes in pitch.
+                    </div>
+                  )}
                   <input
                     type="range"
                     name="pitch_sensitivity"
@@ -318,16 +395,24 @@ const CreateVideo = (props) => {
                     value={videoParams.pitch_sensitivity}
                     onChange={handleSliderChange}
                   />
-                  <div>{videoParams.pitch_sensitivity}</div>
                 </label>
               </div>
               <div className="tempo">
                 <label>
                   Tempo Sensitivity
-                  <div onMouseEnter={e => (setTempoHover(true))} onMouseLeave={e => (setTempoHover(false))}>?</div>
-                        {tempoHover && (
-                          <div>Controls how rapidly the overall size, position, and orientation of objects in the images will react to changes in volume and tempo. </div>
-                        )}
+                  <div
+                    onMouseEnter={handleTempoHover}
+                    onMouseLeave={handleTempoHover}
+                  >
+                    ?
+                  </div>
+                  {tempoHover && (
+                    <div>
+                      Controls how rapidly the overall size, position, and
+                      orientation of objects in the images will react to changes
+                      in volume and tempo.{" "}
+                    </div>
+                  )}
                   <input
                     type="range"
                     name="tempo_sensitivity"
@@ -337,16 +422,25 @@ const CreateVideo = (props) => {
                     value={videoParams.tempo_sensitivity}
                     onChange={handleSliderChange}
                   />
-                  <div>{videoParams.tempo_sensitivity}</div>
                 </label>
               </div>
               <div className="smooth">
                 <label>
                   Smooth Factor
-                  <div onMouseEnter={e => (setSmoothHover(true))} onMouseLeave={e => (setSmoothHover(false))}>?</div>
-                        {smoothHover && (
-                          <div>Small local fluctuations in pitch can cause the video frames to fluctuate back and forth. If you want to visualize very fast music with rapid changes in pitch, lower the smooth factor.</div>
-                        )}
+                  <div
+                    onMouseEnter={handleSmoothHover}
+                    onMouseLeave={handleSmoothHover}
+                  >
+                    ?
+                  </div>
+                  {smoothHover && (
+                    <div>
+                      Small local fluctuations in pitch can cause the video
+                      frames to fluctuate back and forth. If you want to
+                      visualize very fast music with rapid changes in pitch,
+                      lower the smooth factor.
+                    </div>
+                  )}
                   <input
                     type="range"
                     name="smooth_factor"
@@ -356,7 +450,6 @@ const CreateVideo = (props) => {
                     value={videoParams.smooth_factor}
                     onChange={handleSliderChange}
                   />
-                  <div>{videoParams.smooth_factor}</div>
                 </label>
               </div>
             </div>

@@ -19,7 +19,7 @@ export const TokenChecker = () => {
       localStorage.removeItem("username");
     }
   } else {
-    //You do not have a token ecause you're not logged in
+    //You do not have a token because you're not logged in
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
     localStorage.removeItem("username");

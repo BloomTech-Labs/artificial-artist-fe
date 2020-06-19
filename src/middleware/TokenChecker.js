@@ -18,6 +18,12 @@ export const TokenChecker = () => {
       localStorage.removeItem("user_id");
       localStorage.removeItem("username");
     }
-    return token;
+  } else {
+    //You do not have a token ecause you're not logged in
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("username");
+    console.log("No Token, not logged in");
   }
+  return token;
 };

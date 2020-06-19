@@ -5,15 +5,15 @@ export const TokenChecker = () => {
   let token = jwt.decode(localStorage.getItem("token"));
 
   if (token) {
-    console.log("here's your token");
+    // console.log("here's your token");
     //Verify the token's expiration against Date.now
     if (token.exp * 1000 > Date.now()) {
       //The login is still valid
-      console.log("valid login");
+      // console.log("valid login");
     } else {
       //Delete the expired token, userID, username
       //(Possibly re-route to login page???)
-      console.log("token expired");
+      // console.log("token expired");
       localStorage.removeItem("token");
       localStorage.removeItem("user_id");
       localStorage.removeItem("username");
@@ -23,7 +23,7 @@ export const TokenChecker = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
     localStorage.removeItem("username");
-    console.log("No Token, not logged in");
+    // console.log("No Token, not logged in");
   }
   return token;
 };

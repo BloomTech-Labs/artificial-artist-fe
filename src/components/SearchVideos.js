@@ -18,6 +18,7 @@ function Search(props) {
   useEffect(() => {
     if (props.videos && props.videos.length > 0) {
       setResults(fuse.search(query));
+      console.log(props.videos);
     }
   }, [query]);
 
@@ -29,9 +30,16 @@ function Search(props) {
             {results.length > 0 ? (
               results.map((result) => {
                 return (
-                  <Link to={`/videos/${result.item.id}`} key={result.item.id}>
-                    {result.item.video_title}
-                  </Link>
+                  <p>
+                    <li>
+                      <Link
+                        to={`/videos/${result.item.id}`}
+                        key={result.item.id}
+                      >
+                        {result.item.video_title}
+                      </Link>
+                    </li>
+                  </p>
                 );
               })
             ) : (
@@ -47,7 +55,7 @@ function Search(props) {
 
   const fuseOptions = {
     shouldSort: true,
-    threshold: 0.4,
+    threshold: 0.6,
     includeScore: true,
     minMatchCharLength: 2,
     keys: ["title", "video_title", "artist_name"],
@@ -82,7 +90,7 @@ function Search(props) {
   );
 }
 const mapStateToProps = (state) => ({
-  videos: state.videoList,
+  videos: state.videoSearch,
   getVidSearchError: state.getVidSearchError,
   getVidSearchStart: state.getVidSearchStart,
 });

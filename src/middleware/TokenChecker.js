@@ -10,6 +10,13 @@ export const TokenChecker = () => {
     if (token.exp * 1000 > Date.now()) {
       //The login is still valid
       console.log("valid login");
+    } else {
+      //Delete the expired token, userID, username
+      //(Possibly re-route to login page???)
+      console.log("token expired");
+      localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
+      localStorage.removeItem("username");
     }
     return token;
   }

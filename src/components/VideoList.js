@@ -6,7 +6,7 @@ import Video from "./Video";
 import style from "styled-components";
 
 const VideoListContainer = style.div`
-  width: 65%;
+  width: 50%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;

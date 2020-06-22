@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import { TokenChecker } from "../middleware/TokenChecker";
 import style from "styled-components";
 
 const Logo = style(Link)`
@@ -25,12 +26,14 @@ const Navigation = () => {
     history.push("/login");
   };
   let username = localStorage.getItem("username");
+  const token = TokenChecker();
+
   return (
     <Navbar>
       <Logo to="/">The Artificial Artist</Logo>
       {/* display create videos and log out if user has token, else 
             display browse videos, log in, and sign up */}
-      {localStorage.getItem("token") ? (
+      {token ? (
         <Nav className="nav-links">
           <NavItem>
             <NavLink

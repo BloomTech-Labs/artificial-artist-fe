@@ -148,7 +148,7 @@ export const postVideo = (token, video, history) => (dispatch) => {
           type: POST_VIDEO_SUCCESS,
           payload: res.data,
         });
-        history.push(`/videos/${res.data.videoId}`);
+        history.push(`/videos/${res.data.objectIds.videoId}`);
       }, 1000);
     })
     .catch((err) =>

@@ -46,10 +46,10 @@ function App(props) {
             exact
             component={localStorage.getItem("token") ? CreateVideo : Signup}
           />
-          <Route exact path="/users/:username" component={UserPage} />
+          <Route path="/users/:username" component={UserPage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-           <Route path="/search" component={Search} />
+          <Route path="/search" component={Search} />
         </Switch>
       </Base>
     </Router>
@@ -61,4 +61,7 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
-export default connect(mapStateToProps, { logout, getVideos })(withRouter(App));
+export default connect(
+  mapStateToProps,
+  { logout, getVideos }
+)(withRouter(App));

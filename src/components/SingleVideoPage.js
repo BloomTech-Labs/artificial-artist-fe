@@ -5,23 +5,70 @@ import { getSingleVideo } from "../store/actions";
 import Video from "./Video";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Thumbnail from "./Thumbnail";
+import SecondaryNav from "./SecondaryNav";
 import style from "styled-components";
 
+const PageAlign = style.div`
+  display: flex;
+`;
+
+const Container = style.div`
+  margin: 0 auto;
+  width: 60%;
+  padding: 20px 0 60px;
+`;
+
+const VideoWrapper = style.div`
+  background-color: #0E0429;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const VideoContainer = style.div`
-  width: 100%;
-  background-color: #000;
-  border-top: 2px solid #FCFC0B;
-  box-shadow: 0px 10px 23px 0px rgba(0,0,0,0.53);
+  width: 80%;
+  background-color: #FCFC0B;
+  border: 4px solid #FCFC0B;
+  margin: 80px;
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,.8);
   margin-bottom: 80px;
+`;
+
+const Notices = style.h2`
+  font-family: "Gill Sans Ultra", sans-serif;
+  -webkit-text-fill-color: #F14946;
+  -webkit-text-stroke-color: #FCFC0B;
+  -webkit-text-stroke-width: 0.50px; 
+  width: 50%;
+  font-size: 36px;
+  margin: 100px auto;
+  display: block;
+  padding: 20px 0;
+  text-align: center;
 `;
 
 const PageContent = style.div`
   margin: 0 auto;
-  padding-bottom: 200px;
-  width: 80%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 30%;
   color: #2FBCD4;
   text-shadow: 1px 1px 0 #0E0429;
-  font-family: Shrikhand, sans-serif;
+  font-family: "Gill Sans Ultra", sans-serif;
+  -webkit-text-fill-color: #F14946;
+  -webkit-text-stroke-color: #FCFC0B;
+  -webkit-text-stroke-width: 0.30px; 
+  h2 {
+    font-size: 40px;
+  }
+  h3 {
+    font-size: 20px;
+  }
 `;
 
 const SingleVideoPage = (props) => {
@@ -36,25 +83,38 @@ const SingleVideoPage = (props) => {
     <>
       {props.singleVideo.video_status === "creating" ? (
         <>
-          <h2>
-            We're crunching the numbers on this one, STILL, check back in a few
-            minutes...
-          </h2>
+          <Container>
+            <SecondaryNav />
+            <Notices>
+              Hang tight for a few minutes, these take a lot of computing power!
+            </Notices>
+          </Container>
         </>
       ) : props.singleVideo.video_status === "successful" ? (
         <>
-          <VideoContainer>
-            <Video heroVideo={true} video={props.singleVideo} />
-          </VideoContainer>
-          <PageContent>
-            <h2>{props.singleVideo.video_title}</h2>
-            <h3>{props.singleVideo.title}</h3>
-            <h3>{props.singleVideo.artist_name}</h3>
-          </PageContent>
+          <PageAlign>
+            <VideoWrapper>
+              <VideoContainer>
+                <Video heroVideo={true} video={props.singleVideo} />
+              </VideoContainer>
+            </VideoWrapper>
+
+            <PageContent>
+              <h2>{props.singleVideo.video_title}</h2>
+              <h3>{props.singleVideo.title}</h3>
+              <h3>{props.singleVideo.artist_name}</h3>
+            </PageContent>
+          </PageAlign>
         </>
       ) : props.singleVideo.video_status === "failed" ? (
         <>
-          <h2>Something failed, we're so, so, so deeply sorry</h2>
+          <Container>
+            <SecondaryNav />
+            <Notices>
+              Something failed, the video will never exist... We're so sorry
+              :```(
+            </Notices>
+          </Container>
         </>
       ) : (
         console.log("end of ternary????")

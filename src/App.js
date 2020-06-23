@@ -13,7 +13,6 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import CreateVideo from "./components/CreateVideo";
 import VideoList from "./components/VideoList";
-import Navigation from "./components/Navigation";
 import SingleVideoPage from "./components/SingleVideoPage";
 import UserPage from "./components/UserPage";
 import Search from "./components/SearchVideos";
@@ -30,7 +29,6 @@ function App(props) {
   return (
     <Router>
       <Base>
-        <Navigation />
         <Switch>
           <Route exact path="/" component={VideoList} />
           {/* <Route exact path="/" >

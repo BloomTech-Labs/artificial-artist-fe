@@ -1,31 +1,28 @@
 import React from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { TokenChecker } from "../middleware/TokenChecker";
 import style from "styled-components";
 
 const Navbar = style.nav`
   margin: 0 auto;
-  padding: 80px;
+  padding: 10px 0 40px;
   display: flex;
-  flex-direction: column;
 `;
 
 const Logo = style(Link)`
-  font-family: "Gill Sans Ultra", sans-serif;
-  -webkit-text-fill-color: #F14946;
-  -webkit-text-stroke-color: #FCFC0B;
-  -webkit-text-stroke-width: 2.00px; 
-  font-size: 80px;
-  text-decoration: none;
-  margin-right: auto;
-  width: 40%;
+    font-family: "Gill Sans Ultra",sans-serif;
+    -webkit-text-fill-color: #0E0429;
+    -webkit-text-stroke-color: #E4005E;
+    -webkit-text-stroke-width: 1.00px;
+    font-size: 36px;
+    text-decoration: none;
+    margin-right: auto;
+    width: 25%;
 `;
 
 const Menu = style.div`
-  padding: 80px 0;
+  padding: 30px 0;
   display: flex;
-  margin-bottom: auto;
-  margin-right: auto;
+  margin-left: auto;
   justify-content: space-between;
   font-family: "Gibson Bold";
 `;
@@ -81,14 +78,12 @@ const Navigation = (props) => {
     history.push("/login");
   };
   let username = localStorage.getItem("username");
-  const token = TokenChecker();
-
   return (
     <Navbar>
       <Logo to="/">The Artificial Artist</Logo>
       {/* display create videos and log out if user has token, else 
             display browse videos, log in, and sign up */}
-      {token ? (
+      {localStorage.getItem("token") ? (
         <Menu>
           <NavLinkButton to="/create">Create Video</NavLinkButton>
           <NavLink to="/search">Search</NavLink>

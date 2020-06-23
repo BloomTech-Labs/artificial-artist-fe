@@ -20,7 +20,7 @@ const Header = style.h1`
 `;
 
 const SearchInput = style.input`
-  padding: 10px 15px;
+  padding: 15px 20px;
   border: none;
   border-bottom: 2px solid #FCFC0B;
   color: #FCFC0B;

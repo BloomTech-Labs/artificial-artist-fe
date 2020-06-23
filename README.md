@@ -29,8 +29,6 @@
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 🚫 more info on using badges [here](https://github.com/badges/shields)
@@ -39,28 +37,28 @@
 
 1️⃣ [Trello Board](https://trello.com/b/48TmCzIE/labs-pt9-artificial-artist)
 
-1️⃣ [Product Canvas](https://www.notion.so/Artificial-Artist-1934140bf39c4f2ba1b8910de0ee0d41)
+2️⃣ [Product Canvas](https://www.notion.so/Artificial-Artist-1934140bf39c4f2ba1b8910de0ee0d41)
 
 The Artificial Artist is a brand new music visualization experience. Combining music with generative adversarial network (GAN) images, users can create unique music visualization videos. 
 
-### 4️⃣ Key Features
+## Key Features
 
--    Create your own music visualization videos
--    Browse other user's videos
--    Advance settings give users the ability to customize their videos
+-   Create your own music visualization videos
+-   Browse other user's videos
+-   Advance settings give users the ability to customize their videos
 
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
 
-#### _REACTJS_
+#### 1️⃣ Reactjs ![React](https://img.shields.io/badge/react-v16.13.1-blue.svg)
 
 -    Declarative --Declarative views make your code more predictable and easier to debug.
 -    Component-Based --Build encapsulated components that manage their own state, then compose them to make complex UIs.
 -    Learn Once, Write Anywhere --You can develop new features in React without rewriting existing code
 
-#### Redux
+#### 2️⃣ Redux ![Redux](https://img.shields.io/badge/redux-v4.0.5-blueviolet.svg)
  
 -   Single immutable state tree
 -   Ease of Testing
@@ -70,47 +68,51 @@ The Artificial Artist is a brand new music visualization experience. Combining m
 
 #### [Back end](https://github.com/Lambda-School-Labs/artificial-artist-fe/edit/master/README.md) built using:
 
-#### Node Express
+#### 1️⃣ Node Express ![Express](https://img.shields.io/badge/express-v4.17.1-lightgrey.svg)
 
 -    Great performance! Node was designed to optimize throughput and scalability in web applications and is a good solution for many common web-development problems (e.g. real-time web applications).
 -    Code is written in "plain old JavaScript", which means that less time is spent dealing with "context shift" between languages when you're writing both client-side and server-side code.
 -    The node package manager (NPM) provides access to hundreds of thousands of reusable packages. It also has best-in-class dependency resolution and can also be used to automate most of the build toolchain.
 
+#### 2️⃣ PostgreSQL ![PostgreSQL](https://img.shields.io/badge/pg-v8.2.1-blue.svg)
 
 
 
 # APIs
 
-## 2️⃣ /api/auth/login
+## 1️⃣ jsonwebtoken
 
-Base api url for the backend.
+Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
 
-## 3️⃣ https://developers.deezer.com/api/search
+## 2️⃣ https://developers.deezer.com/api/search
 
 The API gives users access to the site's data making it available for use in third party web sites and applications. This data includes albums, artists, comments, editorials, folders, playlists, radio, searches, tracks and users. The API uses HTTP calls and responses are formatted in XML, JSON and PHP.
 
 
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
     *  REACT_APP_SERVER_URL - for your local development server
    
 
-# 5️⃣ Content Licenses
+# Content Licenses
 
 🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
 
 | Image Filename | Source / Creator | License                                                                      |
 | -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+| face.svg      | Jimmy Hooker     | [Artificial Artist](https://github.com/Lambda-School-Labs/artificial-artist-fe/blob/master/public/images)                             |
+| face@2x.png      | Jimmy Hooker     | [Artificial Artist](https://github.com/Lambda-School-Labs/artificial-artist-fe/blob/master/public/images)                             |
+| icon-video-play.svg      | Jimmy Hooker     | [Artificial Artist](https://github.com/Lambda-School-Labs/artificial-artist-fe/blob/master/public/images)                             |
+| play.svg      | Jimmy Hooker     | [Artificial Artist](https://github.com/Lambda-School-Labs/artificial-artist-fe/blob/master/public/images)                             |
 
-# 4️⃣ Testing
+# Testing
 
-🚫Document what you used for testing and why
+## 1️⃣ Jest
+-   Jest is a JavaScript Testing Framework with a focus on simplicity. It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!
 
-# 4️⃣ Installation Instructions
+# Installation Instructions
 
 * clone the repo to your local machine
 * cd into your newly created directory

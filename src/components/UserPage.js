@@ -13,7 +13,7 @@ const VideoListContainer = style.div`
 const Container = style.div`
   margin: 0 auto;
   width: 60%;
-  padding: 80px 0;
+  padding: 20px 0 60px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

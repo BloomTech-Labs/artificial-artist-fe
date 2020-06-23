@@ -4,6 +4,7 @@ import { withRouter, useHistory, Link } from "react-router-dom";
 import { getVidSearch } from "../store/actions";
 import Fuse from "fuse.js";
 import VideoList from "./VideoList";
+import SecondaryNav from "./SecondaryNav";
 import Video from "./Video";
 import style from "styled-components";
 
@@ -46,20 +47,19 @@ const ListItem = style.li`
 const Container = style.div`
   margin: 0 auto;
   width: 60%;
-  padding: 80px 0;
+  padding: 20px 0 60px;
 `;
 
 const Result = style.h1`
   margin-top: 60px;
   font-family: "Gibson Bold";
-  width: 100%;
   padding-bottom: 40px;
   text-align: center;
   -webkit-text-fill-color: #7DFA9B;
   -webkit-text-stroke-color: #44E0F6;
   -webkit-text-stroke-width: 1.00px;
   color: #7DFA9B;
-  font-size: 20px;
+  font-size: 30px;
 `;
 
 function Search(props) {
@@ -106,7 +106,7 @@ function Search(props) {
 
   const fuseOptions = {
     shouldSort: true,
-    threshold: 0.6,
+    threshold: 0.3,
     includeScore: true,
     minMatchCharLength: 2,
     keys: ["title", "video_title", "artist_name"],
@@ -122,6 +122,7 @@ function Search(props) {
   return (
     <>
       <Container>
+        <SecondaryNav />
         <Header>Video Search</Header>
         <form className="video_search">
           <SearchInput

@@ -4,14 +4,14 @@ import style from "styled-components";
 
 const Navbar = style.nav`
   margin: 0 auto;
-  padding: 30px 0;
+  padding: 10px 0 40px;
   display: flex;
 `;
 
 const Logo = style(Link)`
     font-family: "Gill Sans Ultra",sans-serif;
-    -webkit-text-fill-color: #F14946;
-    -webkit-text-stroke-color: #FCFC0B;
+    -webkit-text-fill-color: #0E0429;
+    -webkit-text-stroke-color: #E4005E;
     -webkit-text-stroke-width: 1.00px;
     font-size: 36px;
     text-decoration: none;

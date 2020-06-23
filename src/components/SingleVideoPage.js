@@ -5,10 +5,17 @@ import { getSingleVideo } from "../store/actions";
 import Video from "./Video";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Thumbnail from "./Thumbnail";
+import SecondaryNav from "./SecondaryNav";
 import style from "styled-components";
 
 const PageAlign = style.div`
   display: flex;
+`;
+
+const Container = style.div`
+  margin: 0 auto;
+  width: 60%;
+  padding: 20px 0 60px;
 `;
 
 const VideoWrapper = style.div`
@@ -27,6 +34,19 @@ const VideoContainer = style.div`
   margin: 80px;
   box-shadow: 0 20px 40px 0 rgba(0,0,0,.8);
   margin-bottom: 80px;
+`;
+
+const Notices = style.h2`
+  font-family: "Gill Sans Ultra", sans-serif;
+  -webkit-text-fill-color: #F14946;
+  -webkit-text-stroke-color: #FCFC0B;
+  -webkit-text-stroke-width: 0.50px; 
+  width: 50%;
+  font-size: 36px;
+  margin: 100px auto;
+  display: block;
+  padding: 20px 0;
+  text-align: center;
 `;
 
 const PageContent = style.div`
@@ -63,10 +83,12 @@ const SingleVideoPage = (props) => {
     <>
       {props.singleVideo.video_status === "creating" ? (
         <>
-          <h2>
-            We're crunching the numbers on this one, STILL, check back in a few
-            minutes...
-          </h2>
+          <Container>
+            <SecondaryNav />
+            <Notices>
+              Hang tight for a few minutes, these take a lot of computing power!
+            </Notices>
+          </Container>
         </>
       ) : props.singleVideo.video_status === "successful" ? (
         <>
@@ -86,7 +108,13 @@ const SingleVideoPage = (props) => {
         </>
       ) : props.singleVideo.video_status === "failed" ? (
         <>
-          <h2>Something failed, we're so, so, so deeply sorry</h2>
+          <Container>
+            <SecondaryNav />
+            <Notices>
+              Something failed, the video will never exist... We're so sorry
+              :```(
+            </Notices>
+          </Container>
         </>
       ) : (
         console.log("end of ternary????")

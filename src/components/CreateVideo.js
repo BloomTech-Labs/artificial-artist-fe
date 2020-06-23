@@ -5,6 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { SpinnerDiv, Spinner } from "../styled-components/spinner";
 import style from "styled-components";
 import { postVideo } from "../store/actions";
+import AdvancedOptions from "../components/AdvancedOptions";
 
 const API_URL =
   "https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=";
@@ -102,22 +103,22 @@ const CreateVideo = (props) => {
 
   const [optionsClicked, setOptionsClicked] = useState(false);
 
-  const [jitHover, setJitHover] = useState(false);
-  const [deepHover, setDeepHover] = useState(false);
-  const [truncateHover, setTruncateHover] = useState(false);
-  const [pitchHover, setPitchHover] = useState(false);
-  const [tempoHover, setTempoHover] = useState(false);
-  const [smoothHover, setSmoothHover] = useState(false);
+  // const [jitHover, setJitHover] = useState(false);
+  // const [deepHover, setDeepHover] = useState(false);
+  // const [truncateHover, setTruncateHover] = useState(false);
+  // const [pitchHover, setPitchHover] = useState(false);
+  // const [tempoHover, setTempoHover] = useState(false);
+  // const [smoothHover, setSmoothHover] = useState(false);
 
-  const [videoParams, setVideoParams] = useState({
-    im_group: "RANDOM OBJECTS",
-    jitter: 0.5,
-    depth: 1,
-    truncation: 0.5,
-    pitch_sensitivity: 220,
-    tempo_sensitivity: 0.25,
-    smooth_factor: 20,
-  });
+  // const [videoParams, setVideoParams] = useState({
+  //   im_group: "RANDOM OBJECTS",
+  //   jitter: 0.5,
+  //   depth: 1,
+  //   truncation: 0.5,
+  //   pitch_sensitivity: 220,
+  //   tempo_sensitivity: 0.25,
+  //   smooth_factor: 20,
+  // });
 
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
@@ -167,13 +168,13 @@ const CreateVideo = (props) => {
       artist: results[songItem].artist.name,
       deezer_id: results[songItem].id,
       video_title: videoTitle.title,
-      im_group: videoParams.im_group,
-      jitter: videoParams.jitter,
-      depth: videoParams.depth,
-      truncation: videoParams.truncation,
-      pitch_sensitivity: videoParams.pitch_sensitivity,
-      tempo_sensitivity: videoParams.tempo_sensitivity,
-      smooth_factor: videoParams.smooth_factor,
+      // im_group: videoParams.im_group,
+      // jitter: videoParams.jitter,
+      // depth: videoParams.depth,
+      // truncation: videoParams.truncation,
+      // pitch_sensitivity: videoParams.pitch_sensitivity,
+      // tempo_sensitivity: videoParams.tempo_sensitivity,
+      // smooth_factor: videoParams.smooth_factor,
     });
 
     setSongLoading(false);
@@ -192,52 +193,58 @@ const CreateVideo = (props) => {
     setOptionsClicked(optionsClicked_new);
   };
 
-  const handleSliderChange = (event) => {
-    setVideoParams({
-      ...videoParams,
-      [event.target.name]: Number(event.target.value),
-    });
-  };
+  // const handleSliderChange = (event) => {
+  //   setVideoParams({
+  //     ...videoParams,
+  //     [event.target.name]: Number(event.target.value),
+  //   });
+  // };
 
-  const handleReset = (event) => {
-    event.preventDefault();
-    setVideoParams({
-      jitter: 0.5,
-      depth: 1,
-      truncation: 0.5,
-      pitch_sensitivity: 220,
-      tempo_sensitivity: 0.25,
-      smooth_factor: 20,
-    });
-  };
+  // const handleReset = (event) => {
+  //   event.preventDefault();
+  //   setVideoParams({
+  //     jitter: 0.5,
+  //     depth: 1,
+  //     truncation: 0.5,
+  //     pitch_sensitivity: 220,
+  //     tempo_sensitivity: 0.25,
+  //     smooth_factor: 20,
+  //   });
+  // };
 
-  const handleJitHover = (event) => {
-    setJitHover(!jitHover);
-    console.log(event.target.hover);
-  };
+  // const handleJitHover = (event) => {
+  //   setJitHover(!jitHover);
+  //   console.log(event.target.hover);
+  // };
 
-  const handleDeepHover = (event) => {
-    setDeepHover(!deepHover);
-  };
+  // const handleDeepHover = (event) => {
+  //   setDeepHover(!deepHover);
+  // };
 
-  const handleTruncateHover = (event) => {
-    setTruncateHover(!truncateHover);
-  };
+  // const handleTruncateHover = (event) => {
+  //   setTruncateHover(!truncateHover);
+  // };
 
-  const handlePitchHover = (event) => {
-    setPitchHover(!pitchHover);
-  };
+  // const handlePitchHover = (event) => {
+  //   setPitchHover(!pitchHover);
+  // };
 
-  const handleTempoHover = (event) => {
-    setTempoHover(!tempoHover);
-  };
+  // const handleTempoHover = (event) => {
+  //   setTempoHover(!tempoHover);
+  // };
 
-  const handleSmoothHover = (event) => {
-    setSmoothHover(!smoothHover);
-  };
+  // const handleSmoothHover = (event) => {
+  //   setSmoothHover(!smoothHover);
+  // };
+
+  const handleTest = (e) => {
+    e.preventDefault();
+    console.log(props);
+  }
 
   return (
     <>
+    <button onClick={handleTest} >CLICK ME!!!</button>
       <ContentCenter>
         <form onSubmit={submitForm}>
           <CreateVideoLabel htmlFor="title">Title</CreateVideoLabel>
@@ -289,7 +296,13 @@ const CreateVideo = (props) => {
             )}
           </div>
           <div className="advanced_options">
-            {optionsClicked === true ? (
+              {optionsClicked === true ? (
+                <AdvancedOptions props="props" />
+              ) : (
+                console.log("Hooray")
+              )}
+            
+            {/* {optionsClicked === true ? (
               <div className="options">
                 <VideoButton onClick={handleReset}>Reset Defaults</VideoButton>
                 <div className="image_category">
@@ -526,7 +539,7 @@ const CreateVideo = (props) => {
               </div>
             ) : (
               console.log("Hooray")
-            )}
+            )} */}
           </div>
         </form>
         {props.postVideoStart && (

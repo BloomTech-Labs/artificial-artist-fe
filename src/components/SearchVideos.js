@@ -5,6 +5,62 @@ import { getVideos } from "../store/actions";
 import Fuse from "fuse.js";
 import VideoList from "./VideoList";
 import Video from "./Video";
+import style from "styled-components";
+
+const Header = style.h1`
+  width: 100%;
+  text-align: center;
+  font-size: 46px;
+  margin-bottom: 20px;
+  font-family: "Gill Sans Ultra", sans-serif;
+  -webkit-text-fill-color: #F14946;
+  -webkit-text-stroke-color: #FCFC0B;
+  -webkit-text-stroke-width: 0.50px; 
+`;
+
+const SearchInput = style.input`
+  padding: 10px 15px;
+  border: none;
+  border-bottom: 2px solid #FCFC0B;
+  color: #FCFC0B;
+  font-size: 24px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  background-color: #0E0429;
+  display: block;
+  width: 100%;
+  &:focus {
+    border: 2px solid #44E0F6;
+    outline: none;
+  }
+`;
+
+const List = style.ul`
+  list-style-type: none;
+`;
+
+const ListItem = style.li`
+
+`;
+
+const Container = style.div`
+  margin: 0 auto;
+  width: 60%;
+  padding: 80px 0;
+`;
+
+const Result = style.h1`
+  margin-top: 60px;
+  font-family: "Gibson Bold";
+  width: 100%;
+  padding-bottom: 40px;
+  text-align: center;
+  -webkit-text-fill-color: #7DFA9B;
+  -webkit-text-stroke-color: #44E0F6;
+  -webkit-text-stroke-width: 1.00px;
+  color: #7DFA9B;
+  font-size: 20px;
+`;
 
 function Search(props) {
   const history = useHistory();
@@ -29,19 +85,19 @@ function Search(props) {
             {results.length > 0 ? (
               results.map((result) => {
                 return (
-                  <li key={result.item.id}>
+                  <ListItem key={result.item.id}>
                     <Link to={`/videos/${result.item.id}`}>
-                      {result.item.title}
+                      <Result>{result.item.title}</Result>
                     </Link>
-                  </li>
+                  </ListItem>
                 );
               })
             ) : (
-              <div>No matching videos found</div>
+              <Result>No matching videos found</Result>
             )}
           </>
         ) : (
-          <VideoList />
+          <Result>We're waiting...</Result>
         )}
       </>
     );
@@ -64,10 +120,10 @@ function Search(props) {
 
   return (
     <>
-      <div>
-        <h2>Video Search</h2>
+      <Container>
+        <Header>Video Search</Header>
         <form className="video_search">
-          <input
+          <SearchInput
             id="video"
             name="video"
             type="text"
@@ -77,9 +133,9 @@ function Search(props) {
           />
         </form>
         <div>
-          <ul>{renderItems()}</ul>
+          <List>{renderItems()}</List>
         </div>
-      </div>
+      </Container>
     </>
   );
 }

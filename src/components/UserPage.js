@@ -3,18 +3,20 @@ import { connect } from "react-redux";
 import { Link, useParams, withRouter } from "react-router-dom";
 import { getUserVideos } from "../store/actions";
 import Video from "./Video";
+import SecondaryNav from "./SecondaryNav";
 import style from "styled-components";
 
 const VideoListContainer = style.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  background-color: #0E0429;
 `;
 
 const Container = style.div`
   margin: 0 auto;
   width: 60%;
-  margin-bottom: 40px;
+  padding: 80px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 const VideoContainer = style.div`
@@ -24,6 +26,7 @@ const VideoContainer = style.div`
 const VideoTitle = style.h3`
   color: #FCFC0B;
   font-size: 24px;
+  padding: 20px 0;
 `;
 
 const SmallerVideo = style.div`
@@ -33,7 +36,14 @@ const SmallerVideo = style.div`
 `;
 
 const Greeting = style.h1`
-  color: #44E0F6;
+  font-family: "Gibson Bold";
+  width: 100%;
+  padding-bottom: 40px;
+  text-align: center;
+  -webkit-text-fill-color: #7DFA9B;
+  -webkit-text-stroke-color: #44E0F6;
+  -webkit-text-stroke-width: 1.00px;
+  color: #7DFA9B;
   font-size: 40px;
 `;
 
@@ -58,8 +68,11 @@ const UserPage = (props) => {
   return (
     <>
       <Container>
-        <Greeting>{greeting}</Greeting>
-        <VideoListContainer>
+        <SecondaryNav />
+      </Container>
+      <VideoListContainer>
+        <Container>
+          <Greeting>{greeting}!</Greeting>
           {props.userVideos && props.userVideos ? (
             props.userVideos.map((video) => {
               return (
@@ -81,8 +94,8 @@ const UserPage = (props) => {
               <Link to="/create">create some videos!</Link>
             </p>
           )}
-        </VideoListContainer>
-      </Container>
+        </Container>
+      </VideoListContainer>
     </>
   );
 };

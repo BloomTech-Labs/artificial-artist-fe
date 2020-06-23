@@ -4,27 +4,25 @@ import style from "styled-components";
 
 const Navbar = style.nav`
   margin: 0 auto;
-  padding: 80px;
+  padding: 30px 0;
   display: flex;
-  flex-direction: column;
 `;
 
 const Logo = style(Link)`
-  font-family: "Gill Sans Ultra", sans-serif;
-  -webkit-text-fill-color: #F14946;
-  -webkit-text-stroke-color: #FCFC0B;
-  -webkit-text-stroke-width: 2.00px; 
-  font-size: 80px;
-  text-decoration: none;
-  margin-right: auto;
-  width: 40%;
+    font-family: "Gill Sans Ultra",sans-serif;
+    -webkit-text-fill-color: #F14946;
+    -webkit-text-stroke-color: #FCFC0B;
+    -webkit-text-stroke-width: 1.00px;
+    font-size: 36px;
+    text-decoration: none;
+    margin-right: auto;
+    width: 25%;
 `;
 
 const Menu = style.div`
-  padding: 80px 0;
+  padding: 30px 0;
   display: flex;
-  margin-bottom: auto;
-  margin-right: auto;
+  margin-left: auto;
   justify-content: space-between;
   font-family: "Gibson Bold";
 `;

@@ -59,7 +59,7 @@ The Artificial Artist is a brand new music visualization experience. Combining m
 
 #### Front end deployed to `AWS Amplify`
 
-#### [Back end](https://github.com/Lambda-School-Labs/artificial-artist-fe/edit/master/README.md) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/artificial-artist-be/blob/master/README.md) built using:
 
 #### 1️⃣ [Node Express](https://expressjs.com/) ![Express](https://img.shields.io/badge/express-v4.17.1-lightgrey.svg)
 
@@ -153,4 +153,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/artificial-artist-be/blob/master/README.md) for details on the backend of our project.

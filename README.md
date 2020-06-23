@@ -55,28 +55,29 @@ The Artificial Artist is a brand new music visualization experience. Combining m
 
 ### Front end built using:
 
-#### _Front end framework goes here_
+#### _REACTJS_
 
-🚫 Why did you choose this framework?
+-    Declarative --Declarative views make your code more predictable and easier to debug.
+-    Component-Based --Build encapsulated components that manage their own state, then compose them to make complex UIs.
+-    Learn Once, Write Anywhere --You can develop new features in React without rewriting existing code
 
--    point one
--    point two
--    point three
--    point four
+Redux 
+-   Single immutable state tree
+-   Ease of Testing
+-   Global Store of App State
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
+#### Front end deployed to `AWS Amplify`
 
-#### Front end deployed to `🚫insert service here`
+#### [Back end](https://github.com/Lambda-School-Labs/artificial-artist-fe/edit/master/README.md) built using:
 
-#### [Back end](🚫link to back end repo here) built using:
+#### Node Express
 
-#### 🚫 back end framework goes here
+-    Great performance! Node was designed to optimize throughput and scalability in web applications and is a good solution for many common web-development problems (e.g. real-time web applications).
+-    Code is written in "plain old JavaScript", which means that less time is spent dealing with "context shift" between languages when you're writing both client-side and server-side code.
+-    The node package manager (NPM) provides access to hundreds of thousands of reusable packages. It also has best-in-class dependency resolution and can also be used to automate most of the build toolchain.
 
--    point one
--    point two
--    point three
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+
 
 # APIs
 

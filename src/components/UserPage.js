@@ -73,7 +73,7 @@ const UserPage = (props) => {
       <VideoListContainer>
         <Container>
           <Greeting>{greeting}!</Greeting>
-          {props.userVideos && props.userVideos ? (
+          {props.userVideos && props.userVideos.length > 0 ? (
             props.userVideos.map((video) => {
               return (
                 <>
@@ -107,6 +107,7 @@ const mapStateToProps = (state) => ({
   getUserVideosError: state.getUserVideosError,
 });
 
-export default connect(mapStateToProps, { getUserVideos })(
-  withRouter(UserPage)
-);
+export default connect(
+  mapStateToProps,
+  { getUserVideos }
+)(withRouter(UserPage));

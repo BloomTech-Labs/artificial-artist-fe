@@ -99,12 +99,13 @@ In order for the app to function correctly, the user must set up their own envir
 ## 1️⃣ [Jest](https://jestjs.io/) ![Jest](https://img.shields.io/badge/jest-v4.2.4-red.svg)
 -   Jest is a JavaScript Testing Framework with a focus on simplicity. It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!
 
+
 # Installation Instructions
 
-* Clone the repo to your local machine
-* cd into your newly created directory
-* run `yarn install`
-* run `yarn start`
+* Clone this repo
+* run `yarn install` to install all required dependencies
+* run `yarn start` to start the local server
+
 
 ## Other Scripts
 

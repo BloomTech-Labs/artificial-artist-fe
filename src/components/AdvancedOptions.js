@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "styled-components";
 
 const CreateVideoLabel = style.label`
@@ -29,15 +29,33 @@ const VideoButton = style.button`
 `;
 
 const AdvancedOptions = (props) => {
-    const [jitHover, setJitHover] = useState(false);
-    const [deepHover, setDeepHover] = useState(false);
-    const [truncateHover, setTruncateHover] = useState(false);
-    const [pitchHover, setPitchHover] = useState(false);
-    const [tempoHover, setTempoHover] = useState(false);
-    const [smoothHover, setSmoothHover] = useState(false);
-  
-    const [videoParams, setVideoParams] = useState({
-      im_group: "RANDOM OBJECTS",
+  const [jitHover, setJitHover] = useState(false);
+  const [deepHover, setDeepHover] = useState(false);
+  const [truncateHover, setTruncateHover] = useState(false);
+  const [pitchHover, setPitchHover] = useState(false);
+  const [tempoHover, setTempoHover] = useState(false);
+  const [smoothHover, setSmoothHover] = useState(false);
+
+  const [videoParams, setVideoParams] = useState({
+    im_group: "RANDOM OBJECTS",
+    jitter: 0.5,
+    depth: 1,
+    truncation: 0.5,
+    pitch_sensitivity: 220,
+    tempo_sensitivity: 0.25,
+    smooth_factor: 20,
+  });
+
+  const handleSliderChange = (event) => {
+    setVideoParams({
+      ...videoParams,
+      [event.target.name]: Number(event.target.value),
+    });
+  };
+
+  const handleReset = (event) => {
+    event.preventDefault();
+    setVideoParams({
       jitter: 0.5,
       depth: 1,
       truncation: 0.5,
@@ -45,51 +63,47 @@ const AdvancedOptions = (props) => {
       tempo_sensitivity: 0.25,
       smooth_factor: 20,
     });
+  };
 
-    const handleSliderChange = (event) => {
-        setVideoParams({
-          ...videoParams,
-          [event.target.name]: Number(event.target.value),
-        });
-      };
-    
-      const handleReset = (event) => {
-        event.preventDefault();
-        setVideoParams({
-          jitter: 0.5,
-          depth: 1,
-          truncation: 0.5,
-          pitch_sensitivity: 220,
-          tempo_sensitivity: 0.25,
-          smooth_factor: 20,
-        });
-      };
-    
-      const handleJitHover = (event) => {
-        setJitHover(!jitHover);
-      };
-    
-      const handleDeepHover = (event) => {
-        setDeepHover(!deepHover);
-      };
-    
-      const handleTruncateHover = (event) => {
-        setTruncateHover(!truncateHover);
-      };
-    
-      const handlePitchHover = (event) => {
-        setPitchHover(!pitchHover);
-      };
-    
-      const handleTempoHover = (event) => {
-        setTempoHover(!tempoHover);
-      };
-    
-      const handleSmoothHover = (event) => {
-        setSmoothHover(!smoothHover);
-      };
+  const handleJitHover = (event) => {
+    setJitHover(!jitHover);
+  };
 
-    return (
+  const handleDeepHover = (event) => {
+    setDeepHover(!deepHover);
+  };
+
+  const handleTruncateHover = (event) => {
+    setTruncateHover(!truncateHover);
+  };
+
+  const handlePitchHover = (event) => {
+    setPitchHover(!pitchHover);
+  };
+
+  const handleTempoHover = (event) => {
+    setTempoHover(!tempoHover);
+  };
+
+  const handleSmoothHover = (event) => {
+    setSmoothHover(!smoothHover);
+  };
+
+  useEffect(() => {
+    if (props.onChange) {
+      props.onChange(videoParams);
+    }
+  }, [
+    videoParams.im_group,
+    videoParams.jitter,
+    videoParams.depth,
+    videoParams.truncation,
+    videoParams.pitch_sensitivity,
+    videoParams.tempo_sensitivity,
+    videoParams.smooth_factor,
+  ]);
+
+  return (
     <div className="options">
       <VideoButton onClick={handleReset}>Reset Defaults</VideoButton>
       <div className="image_category">

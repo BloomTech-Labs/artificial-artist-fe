@@ -237,9 +237,17 @@ const CreateVideo = (props) => {
   //   setSmoothHover(!smoothHover);
   // };
 
+  const handleVideoParams = (event) => {
+    setSelectedSong({
+      ...selectedSong,
+      [event.name]: event.value,
+    });
+    console.log(selectedSong)
+  }
+
   const handleTest = (e) => {
     e.preventDefault();
-    console.log(props);
+    console.log(AdvancedOptions.params);
   }
 
   return (
@@ -297,7 +305,7 @@ const CreateVideo = (props) => {
           </div>
           <div className="advanced_options">
               {optionsClicked === true ? (
-                <AdvancedOptions props="props" />
+                <AdvancedOptions onChange={handleVideoParams} />
               ) : (
                 console.log("Hooray")
               )}

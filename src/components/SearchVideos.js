@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter, useHistory, Link } from "react-router-dom";
-import { getVideos } from "../store/actions";
+import { getVidSearch } from "../store/actions";
 import Fuse from "fuse.js";
 import VideoList from "./VideoList";
 import Video from "./Video";
@@ -12,12 +12,13 @@ function Search(props) {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    props.getVideos();
+    props.getVidSearch();
   }, []);
 
   useEffect(() => {
     if (props.videos && props.videos.length > 0) {
       setResults(fuse.search(query));
+      console.log(props.videos);
     }
   }, [query]);
 
@@ -29,11 +30,16 @@ function Search(props) {
             {results.length > 0 ? (
               results.map((result) => {
                 return (
-                  <li key={result.item.id}>
-                    <Link to={`/videos/${result.item.id}`}>
-                      {result.item.title}
-                    </Link>
-                  </li>
+                  <p>
+                    <li>
+                      <Link
+                        to={`/videos/${result.item.id}`}
+                        key={result.item.id}
+                      >
+                        {result.item.video_title}
+                      </Link>
+                    </li>
+                  </p>
                 );
               })
             ) : (
@@ -49,7 +55,7 @@ function Search(props) {
 
   const fuseOptions = {
     shouldSort: true,
-    threshold: 0.4,
+    threshold: 0.6,
     includeScore: true,
     minMatchCharLength: 2,
     keys: ["title", "video_title", "artist_name"],
@@ -84,9 +90,9 @@ function Search(props) {
   );
 }
 const mapStateToProps = (state) => ({
-  videos: state.videoList,
-  getVideosError: state.getVideosError,
-  getVideosStart: state.getVideosStart,
+  videos: state.videoSearch,
+  getVidSearchError: state.getVidSearchError,
+  getVidSearchStart: state.getVidSearchStart,
 });
 
-export default connect(mapStateToProps, { getVideos })(withRouter(Search));
+export default connect(mapStateToProps, { getVidSearch })(withRouter(Search));

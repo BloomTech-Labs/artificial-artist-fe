@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Video from "../components/Video";
+import Video from "./components/Video";
 
 describe("VideoPlayer", () => {
   test("VideoPlayer renders", () => {

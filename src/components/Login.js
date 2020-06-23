@@ -82,6 +82,7 @@ function Login(props) {
             name="email"
             value={creds.email}
             onChange={handleChange}
+            placeholder="email"
           ></LoginInput>
           <LoginLabel>Password</LoginLabel>
           <LoginInput
@@ -90,13 +91,16 @@ function Login(props) {
             name="password"
             value={creds.password}
             onChange={handleChange}
+            placeholder="password"
           ></LoginInput>
           {props.loginStart ? (
             <LoginButton type="submit" disabled>
               Loading...
             </LoginButton>
           ) : (
-            <LoginButton type="submit">Login</LoginButton>
+            <LoginButton type="submit" data-testid="submit">
+              Login
+            </LoginButton>
           )}
           {props.loginError && (
             <p style={{ color: "red", textAlign: "center", marginTop: "10px" }}>

@@ -76,13 +76,7 @@ The Artificial Artist is a brand new music visualization experience. Combining m
 
 # APIs
 
-## 1️⃣ [jsonwebtoken](https://jwt.io/)
-
-`yarn add jsonweboken`
-<br>
-Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
-
-## 2️⃣ https://developers.deezer.com/api/search
+## 1️⃣ https://developers.deezer.com/api/search
 
 The API gives users access to the site's data making it available for use in third party web sites and applications. This data includes albums, artists, comments, editorials, folders, playlists, radio, searches, tracks and users. The API uses HTTP calls and responses are formatted in XML, JSON and PHP.
 

@@ -246,7 +246,6 @@ const CreateVideo = (props) => {
 
   return (
     <>
-      <button onClick={handleTest}>CLICK ME!!!</button>
       <Container>
         <SecondaryNav />
         <Form onSubmit={submitForm}>
@@ -272,14 +271,43 @@ const CreateVideo = (props) => {
             ) : (
               console.log("No Selection")
             )}
-          </FieldContainer>
-          <div className="advanced_options">
+             <div className="buttons">
+              {selectedSong.artist !== "" &&
+              videoTitle.title !== "" &&
+              titleLoading === true &&
+              songLoading === false ? (
+                <div>
+                  <VideoButton type="submit">Submit</VideoButton>
+                  <Advanced onClick={handleClickOptions}>Advanced</Advanced>
+                  <button onClick={handleTest}>CLICK ME!!!</button>
+                </div>
+              ) : (
+                console.log("Hi")
+              )}
+            </div>
+            <div className="advanced_options">
             {optionsClicked === true ? (
               <AdvancedOptions onChange={handleVideoParams} />
             ) : (
               console.log("Hooray")
             )}
           </div>
+          </FieldContainer>
+          <ResultsContainer>
+            <VideoList>
+              {results && results.length > 0
+                ? results.map((res, index) => (
+                    <ListItem
+                      onClick={handleClickSong}
+                      key={index}
+                      data-index={index}
+                    >
+                      {res.artist.name} - {res.title}
+                    </ListItem>
+                  ))
+                : console.log("")}
+            </VideoList>
+          </ResultsContainer>
         </Form>
         {props.postVideoStart && (
           <SpinnerDiv>

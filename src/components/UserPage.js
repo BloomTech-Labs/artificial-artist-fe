@@ -5,6 +5,8 @@ import { getUserVideos } from "../store/actions";
 import Video from "./Video";
 import SecondaryNav from "./SecondaryNav";
 import style from "styled-components";
+import styled from "styled-components";
+import { linkSync } from "fs";
 
 const VideoListContainer = style.div`
   background-color: #0E0429;
@@ -45,6 +47,20 @@ const Greeting = style.h1`
   -webkit-text-stroke-width: 1.00px;
   color: #7DFA9B;
   font-size: 40px;
+`;
+
+const CreateGreeting = style.p`
+color: aquamarine;
+font-size: 20px;
+
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  background: -webkit-linear-gradient(#ffeb3b, #e3005e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
 `;
 
 const UserPage = (props) => {
@@ -89,10 +105,10 @@ const UserPage = (props) => {
               );
             })
           ) : (
-            <p>
+            <CreateGreeting>
               Looks like you haven't created any videos yet, lets {""}
-              <Link to="/create">create some videos!</Link>
-            </p>
+              <StyledLink to="/create">create some videos!</StyledLink>
+            </CreateGreeting>
           )}
         </Container>
       </VideoListContainer>

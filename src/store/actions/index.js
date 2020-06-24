@@ -68,6 +68,24 @@ export const getVideos = (token) => (dispatch) => {
     });
 };
 
+export const GET_FINDVID_START = "GET_FINDVID_START";
+export const GET_FINDVID_SUCCESS = "GET_FINDVID_SUCCESS";
+export const GET_FINDVID_ERROR = "GET_FINDVID_ERROR";
+
+export const getVidSearch = (token) => (dispatch) => {
+  dispatch({ type: GET_FINDVID_START });
+  axiosWithAuth(token)
+    .get(`/videos`)
+    .then((res) => {
+      dispatch({ type: GET_FINDVID_SUCCESS, payload: res.data });
+      console.log("Search videos working", res.data);
+    })
+    .catch((err) => {
+      dispatch({ type: GET_FINDVID_ERROR });
+      console.log("Search videos error", err);
+    });
+};
+
 export const GET_USER_VIDEOS_START = "GET_USER_VIDEOS_START";
 export const GET_USER_VIDEOS_SUCCESS = "GET_USER_VIDEOS_SUCCESS";
 export const GET_USER_VIDEOS_ERROR = "GET_USER_VIDEOS_ERROR";

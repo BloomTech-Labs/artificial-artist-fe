@@ -3,10 +3,11 @@ import { connect, useSelector } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { getVideos } from "../store/actions";
 import Video from "./Video";
+import Navigation from "./Navigation";
 import style from "styled-components";
 
 const VideoListContainer = style.div`
-  width: 65%;
+  width: 50%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -14,19 +15,26 @@ const VideoListContainer = style.div`
 `;
 
 const HeroContainer = style.div`
-    width: 100%;
-    background-color: #000;
-    border-top: 2px solid #FCFC0B;
-    box-shadow: 0px 10px 23px 0px rgba(0,0,0,0.53);
+    width: 60%;
+    background-color: #FCFC0B;
+    border: 4px solid #FCFC0B;
+    margin: 80px;
+    box-shadow: 0 20px 40px 0 rgba(0,0,0,.7);
     margin-bottom: 80px;
 `;
 
 const SmallerVideo = style.div`
   width: 40%;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   background-color: #44E0F6;
   border: 10px solid #44E0F6;
-  box-shadow: 10px 10px 0px 0px rgba(125,250,154,1), 10px 10px 23px 2px rgba(0,0,0,0.46);
+  box-shadow: 10px 10px 0px 0px rgba(125,250,154,1), 0 20px 40px 0 rgba(0,0,0,.4);;
+`;
+
+const NavWrapper = style.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
@@ -36,9 +44,13 @@ const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
 
   return (
     <>
-      <HeroContainer>
-        {videos && <Video heroVideo={true} video={videos[0]} />}
-      </HeroContainer>
+      <NavWrapper>
+        <Navigation heroNav={true} />
+        <HeroContainer>
+          {videos && <Video heroVideo={true} video={videos[0]} />}
+        </HeroContainer>
+      </NavWrapper>
+
       <VideoListContainer>
         {videos &&
           videos.map((video, index) => {

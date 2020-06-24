@@ -6,15 +6,15 @@ import { SpinnerDiv, Spinner } from "../styled-components/spinner";
 import style from "styled-components";
 import { postVideo } from "../store/actions";
 import AdvancedOptions from "../components/AdvancedOptions";
+import SecondaryNav from "./SecondaryNav";
 
 const API_URL =
   "https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=";
 
-const ContentCenter = style.div`
+const Container = style.div`
   margin: 0 auto;
-  display: block;
-  width: 30%;
-  padding-bottom: 300px;
+  width: 60%;
+  padding: 20px 0 60px;
 `;
 
 const CreateVideoLabel = style.label`
@@ -34,12 +34,29 @@ const VideoList = style.ul`
   list-style-type: none;
 `;
 
+const ListItem = style.li`
+  cursor: pointer;
+  font-family: "Gibson Bold";
+  padding-bottom: 40px;
+  text-align: center;
+  -webkit-text-fill-color: #7DFA9B;
+  -webkit-text-stroke-color: #44E0F6;
+  -webkit-text-stroke-width: 1.00px;
+  color: #7DFA9B;
+  font-size: 30px;
+  &:hover {
+    -webkit-text-stroke-color: #190755;
+  }
+`;
+
 const VideoInput = style.input`
-  padding: 10px 15px;
-  border: 2px solid #FCFC0B;
-  border-radius: 8px;
+  padding: 15px 20px;
+  border: none;
+  border-bottom: 2px solid #FCFC0B;
   color: #FCFC0B;
   font-size: 24px;
+  border-radius: 30px;
+  margin-bottom: 20px;
   background-color: #0E0429;
   display: block;
   width: 100%;
@@ -49,34 +66,67 @@ const VideoInput = style.input`
   }
 `;
 
-const SelectedSong = style.div`
-  padding: 10px 15px;
-  border-radius: 8px;
-  color: #FCFC0B;
-  font-size: 20px;
-  background-color: #0E0429;
-  display: block;
-  text-align: center;
+const Form = style.form`
+  display: flex;
+`;
+
+const FieldContainer = style.div`
+  width: 50%;
+`;
+
+const ResultsContainer = style.div`
+  width: 50%;
+`;
+
+const Selection = style.h2`
+  font-family: "Gill Sans Ultra", sans-serif;
+  -webkit-text-fill-color: #F14946;
+  -webkit-text-stroke-color: #FCFC0B;
+  -webkit-text-stroke-width: 0.50px; 
   width: 100%;
+  padding: 20px 0;
+  text-align: center;
 `;
 
 const VideoButton = style.button`
-  padding: 20px 30px;
-  color: #0E0429;
-  border-radius: 8px;
-  font-size: 18px;
-  display: block;
-  font-weight: 800;
+  background-color: #4499F6;
+  color: #FCFC0B; 
+  border-radius: 30px;
+  border: 0;
   width: 100%;
-  margin-top: 20px;
-  border: 2px solid #FCFC0B;
+  font-family: "Gibson Bold";
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,.4);
+  padding: 15px 20px;
   cursor: pointer;
-  background: rgb(250,112,239);
-  background: linear-gradient(180deg, rgba(250,112,239,1) 0%, rgba(254,235,251,1) 100%, rgba(2,0,36,1) 190755%);
+  white-space: nowrap;
+  font-size: 26px;
   &:hover {
-    background: rgb(254,235,251);
-    background: radial-gradient(circle, rgba(254,235,251,1) 0%, rgba(250,112,239,1) 100%, rgba(2,0,36,1) 190755%);
+    background-color: #F14946;
   }
+`;
+
+const ResetDefaults = style.button`
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  margin: 20px 0;
+  background: transparent;
+  border: none;
+  font-family: "Gibson Bold";
+  cursor: pointer;
+  color: #FF1313;
+`;
+
+const Advanced = style.button`
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  margin: 20px 0;
+  background: transparent;
+  border: none;
+  font-family: "Gibson Bold";
+  cursor: pointer;  
+  color: #4499F6;
 `;
 
 const CreateVideo = (props) => {
@@ -102,23 +152,6 @@ const CreateVideo = (props) => {
   const [titleLoading, setTitleLoading] = useState(false);
 
   const [optionsClicked, setOptionsClicked] = useState(false);
-
-  // const [jitHover, setJitHover] = useState(false);
-  // const [deepHover, setDeepHover] = useState(false);
-  // const [truncateHover, setTruncateHover] = useState(false);
-  // const [pitchHover, setPitchHover] = useState(false);
-  // const [tempoHover, setTempoHover] = useState(false);
-  // const [smoothHover, setSmoothHover] = useState(false);
-
-  // const [videoParams, setVideoParams] = useState({
-  //   im_group: "RANDOM OBJECTS",
-  //   jitter: 0.5,
-  //   depth: 1,
-  //   truncation: 0.5,
-  //   pitch_sensitivity: 220,
-  //   tempo_sensitivity: 0.25,
-  //   smooth_factor: 20,
-  // });
 
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
@@ -214,56 +247,32 @@ const CreateVideo = (props) => {
   return (
     <>
       <button onClick={handleTest}>CLICK ME!!!</button>
-      <ContentCenter>
-        <form onSubmit={submitForm}>
-          <CreateVideoLabel htmlFor="title">Title</CreateVideoLabel>
-          <VideoInput
-            required
-            id="title"
-            name="title"
-            placeholder="Title Your Video"
-            type="text"
-            onChange={handleTitleChange}
-          />
-          <CreateVideoLabel htmlFor="title">Song</CreateVideoLabel>
-          <VideoInput
-            placeholder="Search Artist and/or Song Title"
-            onChange={handleSongChange}
-          />
-
-          <VideoList>
-            {results && results.length > 0
-              ? results.map((res, index) => (
-                  <li onClick={handleClickSong} key={index} data-index={index}>
-                    {res.artist.name} - {res.title}
-                  </li>
-                ))
-              : console.log("broken")}
-          </VideoList>
-          <div className="selected_song">
+      <Container>
+        <SecondaryNav />
+        <Form onSubmit={submitForm}>
+          <FieldContainer>
+            <CreateVideoLabel htmlFor="title">Title</CreateVideoLabel>
+            <VideoInput
+              required
+              id="title"
+              name="title"
+              placeholder="Title Your Video"
+              type="text"
+              onChange={handleTitleChange}
+            />
+            <CreateVideoLabel htmlFor="title">Song</CreateVideoLabel>
+            <VideoInput
+              placeholder="Search Artist and/or Song Title"
+              onChange={handleSongChange}
+            />
             {selectedSong.artist !== "" && songLoading === false ? (
-              <SelectedSong>
-                <h3>
-                  {selectedSong.artist} - {selectedSong.title_short}
-                </h3>
-              </SelectedSong>
+              <Selection>
+                {selectedSong.artist} - {selectedSong.title_short}
+              </Selection>
             ) : (
-              console.log("Hi")
+              console.log("No Selection")
             )}
-          </div>
-          <div className="buttons">
-            {selectedSong.artist !== "" &&
-            videoTitle.title !== "" &&
-            titleLoading === true &&
-            songLoading === false ? (
-              <div>
-                <VideoButton type="submit">Submit</VideoButton>
-                <VideoButton onClick={handleClickOptions}>Advanced</VideoButton>
-              </div>
-            ) : (
-              console.log("Hi")
-            )}
-          </div>
+          </FieldContainer>
           <div className="advanced_options">
             {optionsClicked === true ? (
               <AdvancedOptions onChange={handleVideoParams} />
@@ -271,13 +280,13 @@ const CreateVideo = (props) => {
               console.log("Hooray")
             )}
           </div>
-        </form>
+        </Form>
         {props.postVideoStart && (
           <SpinnerDiv>
             <Spinner color="success" />
           </SpinnerDiv>
         )}
-      </ContentCenter>
+      </Container>
     </>
   );
 };

@@ -16,149 +16,98 @@
 
 
 
-|                                       [Courtney Jackson](https://github.com/CourtneyJa)                                        |                                       [Tucker Wray](https://github.com/jtwray)                                        |                                       [Jimmy Hooker](https://github.com/hisnameisjimmy)                                        |                                       [Jake Gifford](https://github.com/panamajake86)                                        |                                       [Jimmique Parsons](https://github.com/Jimmique)                                        |
+|                                       [Courtney Jackson](https://github.com/CourtneyJa)                                        |                                       [Tucker Wray](https://github.com/jtwray)                                        |                                       [Jimmy Hooker](https://github.com/hisnameisjimmy)                                        |                                       [Jake Gifford](https://github.com/panamajake86)                                        |                                       [Jimmique Parsons](https://github.com/jimmique-parsons)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+|                      [<img src="https://avatars2.githubusercontent.com/u/52590162?s=460&u=c1e321f74ee3bc5b1d1136ee3f32ba8db50c7ee3&v=4" width = "200" />](https://github.com/)                       |                      [<img src="https://media-exp1.licdn.com/dms/image/C4E03AQG4pIyc9AGcZg/profile-displayphoto-shrink_200_200/0?e=1597881600&v=beta&t=qbn8mffJeJWNzXQSbuqSKsjd3g8SN-faEbYoFTkWAFk" width = "200" />](https://github.com/)                       |                      [<img src="https://media-exp1.licdn.com/dms/image/C5603AQFVfq2UeA0g5g/profile-displayphoto-shrink_400_400/0?e=1598486400&v=beta&t=CQCcBgdqJ_ZLWNwUtRXZ-Vjxli3fL65qb7UVEN_w1_A" width = "200" />](https://github.com/)                       |                      [<img src="https://media-exp1.licdn.com/dms/image/C4D03AQFGO2VM37afyw/profile-displayphoto-shrink_400_400/0?e=1598486400&v=beta&t=09OAK9ozkC6doSCwcWa-aVtyMC_sPVYnWfgc00Dup2A" width = "200" />](https://github.com/)                       |                      [<img src="https://ca.slack-edge.com/ESZCHB482-W012X6PE61X-482e0a7d5334-512" width = "200" />](https://github.com/)                       |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/CourtneyJa)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jtwray)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/hisnameisjimmy)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/panamajake86)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jimmique-parsons)             |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/courtney-jackson-609/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jtwray/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jamesharrisonhookerjr/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jake-gifford-4516251a/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jimmiqueparsons/) |
 
 <br>
 <br>
 
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](https://trello.com/b/48TmCzIE/labs-pt9-artificial-artist)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+2️⃣ [Product Canvas](https://www.notion.so/Artificial-Artist-1934140bf39c4f2ba1b8910de0ee0d41)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+The Artificial Artist is a brand new music visualization experience. Combining music with generative adversarial network (GAN) images, users can create unique music visualization videos. 
 
-🚫 Replace lorem ipsum with a description of your project
+## Key Features
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+-   Create your own music visualization videos
+-   Browse other user's videos
+-   Advance settings give users the ability to customize their videos
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-
-### 4️⃣ Key Features
-
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
-
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
 
-#### _Front end framework goes here_
+#### 1️⃣ [Reactjs](https://reactjs.org/) ![React](https://img.shields.io/badge/react-v16.13.1-blue.svg)
 
-🚫 Why did you choose this framework?
+-    Declarative --Declarative views make your code more predictable and easier to debug.
+-    Component-Based --Build encapsulated components that manage their own state, then compose them to make complex UIs.
+-    Learn Once, Write Anywhere --You can develop new features in React without rewriting existing code
 
--    point one
--    point two
--    point three
--    point four
+#### 2️⃣ [Redux](https://redux.js.org/) ![Redux](https://img.shields.io/badge/redux-v4.0.5-blueviolet.svg)
+ 
+-   Single immutable state tree
+-   Ease of Testing
+-   Global Store of App State
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
+#### Front end deployed to `AWS Amplify`
 
-#### Front end deployed to `🚫insert service here`
+#### [Back end](https://github.com/Lambda-School-Labs/artificial-artist-be) built using:
 
-#### [Back end](🚫link to back end repo here) built using:
+#### 1️⃣ [Node Express](https://expressjs.com/) ![Express](https://img.shields.io/badge/express-v4.17.1-lightgrey.svg)
 
-#### 🚫 back end framework goes here
+-    Great performance! Node was designed to optimize throughput and scalability in web applications and is a good solution for many common web-development problems (e.g. real-time web applications).
+-    Code is written in "plain old JavaScript", which means that less time is spent dealing with "context shift" between languages when you're writing both client-side and server-side code.
+-    The node package manager (NPM) provides access to hundreds of thousands of reusable packages. It also has best-in-class dependency resolution and can also be used to automate most of the build toolchain.
 
--    point one
--    point two
--    point three
+#### 2️⃣ [PostgreSQL](https://www.postgresql.org/) ![PostgreSQL](https://img.shields.io/badge/pg-v8.2.1-blue.svg)
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+-    Implements the SQL standard very well.
+-    Completely open source.
+-    It supports lots of advanced data types, such as (multi-dimensional) arrays, user-defined types, etc.
+
 
 # APIs
 
-## 2️⃣ Authentication API here
+## 1️⃣ https://developers.deezer.com/api/search
 
-🚫Replace text below with a description of the API
+The API gives users access to the site's data making it available for use in third party web sites and applications. This data includes albums, artists, comments, editorials, folders, playlists, radio, searches, tracks and users. The API uses HTTP calls and responses are formatted in XML, JSON and PHP.
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
 
-## 2️⃣ Payment API here
-
-🚫Replace text below with a description of the API
-
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
+    *  REACT_APP_SERVER_URL - for your local development server
+   
 
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+# Testing
 
-# 5️⃣ Content Licenses
+## 1️⃣ [Jest](https://jestjs.io/) ![Jest](https://img.shields.io/badge/jest-v4.2.4-red.svg)
+-   Jest is a JavaScript Testing Framework with a focus on simplicity. It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
 
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+# Installation Instructions
 
-# 4️⃣ Testing
+* Clone this repo
+* run `yarn install` to install all required dependencies
+* run `yarn start` to start the local server
 
-🚫Document what you used for testing and why
-
-# 4️⃣ Installation Instructions
-
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+* start - ***"react-scripts start",*** starts the production server after a build is created
+* build - ***"react-scripts build",*** creates a build of the application
+* test - ***"react-scripts test",*** runs tests in **tests** directory
+* eject - ***"react-scripts eject",*** copy the configuration files and dependencies into the project so you have full control over them
+* coverage - ***"CI=true yarn test --coverage --watchAll=false || true"*** refers to how much of your app code is covered by unit tests
 
 # Contributing
 
@@ -198,4 +147,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/artificial-artist-be/blob/master/README.md) for details on the backend of our project.

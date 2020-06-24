@@ -50,12 +50,16 @@ const Greeting = style.h1`
 `;
 
 const CreateGreeting = style.p`
+text-align: center;
+width: 100%;
 color: aquamarine;
 font-size: 20px;
 
 `;
 
 const StyledLink = styled(Link)`
+  text-align: center;
+  width: 100%;
   text-decoration: none;
   background: -webkit-linear-gradient(#ffeb3b, #e3005e);
   -webkit-background-clip: text;

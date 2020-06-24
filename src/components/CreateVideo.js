@@ -239,11 +239,6 @@ const CreateVideo = (props) => {
     });
   };
 
-  const handleTest = (e) => {
-    e.preventDefault();
-    console.log(selectedSong);
-  };
-
   return (
     <>
       <Container>
@@ -279,7 +274,6 @@ const CreateVideo = (props) => {
                 <div>
                   <VideoButton type="submit">Submit</VideoButton>
                   <Advanced onClick={handleClickOptions}>Advanced</Advanced>
-                  <button onClick={handleTest}>CLICK ME!!!</button>
                 </div>
               ) : (
                 console.log("Hi")

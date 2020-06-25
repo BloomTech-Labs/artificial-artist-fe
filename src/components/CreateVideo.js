@@ -105,18 +105,6 @@ const VideoButton = style.button`
   }
 `;
 
-const ResetDefaults = style.button`
-  width: 100%;
-  text-align: center;
-  font-size: 24px;
-  margin: 20px 0;
-  background: transparent;
-  border: none;
-  font-family: "Gibson Bold";
-  cursor: pointer;
-  color: #FF1313;
-`;
-
 const Advanced = style.button`
   width: 100%;
   text-align: center;
@@ -266,7 +254,7 @@ const CreateVideo = (props) => {
             ) : (
               console.log("No Selection")
             )}
-             <div className="buttons">
+            <div className="buttons">
               {selectedSong.artist !== "" &&
               videoTitle.title !== "" &&
               titleLoading === true &&
@@ -280,12 +268,12 @@ const CreateVideo = (props) => {
               )}
             </div>
             <div className="advanced_options">
-            {optionsClicked === true ? (
-              <AdvancedOptions onChange={handleVideoParams} />
-            ) : (
-              console.log("Hooray")
-            )}
-          </div>
+              {optionsClicked === true ? (
+                <AdvancedOptions onChange={handleVideoParams} />
+              ) : (
+                console.log("Hooray")
+              )}
+            </div>
           </FieldContainer>
           <ResultsContainer>
             <VideoList>

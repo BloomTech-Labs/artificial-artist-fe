@@ -28,6 +28,18 @@ const VideoButton = style.button`
   }
 `;
 
+const ResetDefaults = style.button`
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  margin: 20px 0;
+  background: transparent;
+  border: none;
+  font-family: "Gibson Bold";
+  cursor: pointer;
+  color: #FF1313;
+`;
+
 const AdvancedOptions = (props) => {
   const [jitHover, setJitHover] = useState(false);
   const [deepHover, setDeepHover] = useState(false);
@@ -105,7 +117,7 @@ const AdvancedOptions = (props) => {
 
   return (
     <div className="options">
-      <VideoButton onClick={handleReset}>Reset Defaults</VideoButton>
+      <ResetDefaults onClick={handleReset}>Reset Defaults</ResetDefaults>
       <div className="image_category">
         <CreateVideoLabel>
           Image Category

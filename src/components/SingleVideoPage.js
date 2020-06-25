@@ -8,6 +8,26 @@ import Thumbnail from "./Thumbnail";
 import SecondaryNav from "./SecondaryNav";
 import style from "styled-components";
 
+const Logo = style(Link)`
+    font-family: "Gill Sans Ultra",sans-serif;
+    -webkit-text-fill-color: #0E0429;
+    -webkit-text-stroke-color: #E4005E;
+    -webkit-text-stroke-width: 1.00px;
+    font-size: 46px;
+    text-decoration: none;
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 80px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: all .25s ease-in-out;
+    &:hover {
+      -webkit-text-stroke-color: #44E0F6;
+    }
+`;
+
 const PageAlign = style.div`
   display: flex;
 `;
@@ -52,9 +72,6 @@ const Notices = style.h2`
 const PageContent = style.div`
   margin: 0 auto;
   display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   width: 30%;
   color: #2FBCD4;
@@ -69,6 +86,14 @@ const PageContent = style.div`
   h3 {
     font-size: 20px;
   }
+`;
+
+const Text = style.div`
+  margin: auto;
+  margin-top: 80px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 const SingleVideoPage = (props) => {
@@ -98,11 +123,13 @@ const SingleVideoPage = (props) => {
                 <Video heroVideo={true} video={props.singleVideo} />
               </VideoContainer>
             </VideoWrapper>
-
             <PageContent>
-              <h2>{props.singleVideo.video_title}</h2>
-              <h3>{props.singleVideo.title}</h3>
-              <h3>{props.singleVideo.artist_name}</h3>
+              <Logo to="/">The Artificial Artist</Logo>
+              <Text>
+                <h2>{props.singleVideo.video_title}</h2>
+                <h3>{props.singleVideo.title}</h3>
+                <h3>{props.singleVideo.artist_name}</h3>
+              </Text>
             </PageContent>
           </PageAlign>
         </>

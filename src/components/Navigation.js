@@ -36,6 +36,7 @@ const NavLink = style(Link)`
   text-decoration: none;
   white-space: nowrap;
   font-size: 26px;
+  transition: all .25s ease-in-out;
   &:hover {
     color: #F14946;
   }
@@ -51,6 +52,7 @@ const NavButton = style.button`
   font-family: "Gibson Bold";
   cursor: pointer;
   font-size: 26px;
+  transition: all .25s ease-in-out;
   &:hover {
     color: #F14946;
   }
@@ -67,6 +69,7 @@ const NavLinkButton = style(Link)`
   cursor: pointer;
   white-space: nowrap;
   font-size: 26px;
+  transition: all .25s ease-in-out;
   &:hover {
     background-color: #F14946;
   }

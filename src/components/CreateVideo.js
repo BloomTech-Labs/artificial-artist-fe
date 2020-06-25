@@ -44,6 +44,7 @@ const ListItem = style.li`
   -webkit-text-stroke-width: 1.00px;
   color: #7DFA9B;
   font-size: 30px;
+  transition: all .25s ease-in-out;
   &:hover {
     -webkit-text-stroke-color: #190755;
   }
@@ -100,8 +101,12 @@ const VideoButton = style.button`
   cursor: pointer;
   white-space: nowrap;
   font-size: 26px;
+  transition: all .25s ease-in-out;
   &:hover {
     background-color: #F14946;
+  }
+  &:disabled {
+    background-color: #0E0429;
   }
 `;
 

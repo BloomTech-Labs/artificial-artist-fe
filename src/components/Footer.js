@@ -60,7 +60,7 @@ const Footer = (props) => {
             target="_blank"
             href="https://www.linkedin.com/in/steven-elliott42/"
           >
-            Steve Elliot
+            Steve Elliott
           </FooterLink>
           <FooterLink
             target="_blank"

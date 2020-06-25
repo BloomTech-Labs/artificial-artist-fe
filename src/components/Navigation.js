@@ -21,8 +21,22 @@ const Logo = style(Link)`
   width: 40%;
 `;
 
+const SubHead = style.h2`
+  padding: 20px 0 0;
+  font-family: "Gibson Bold";
+  font-size: 28px;
+  line-height: 60px;
+  -webkit-text-fill-color: #7dfa9b;
+  -webkit-text-stroke-color: #44e0f6;
+  -webkit-text-stroke-width: 1px;
+  color: #7dfa9b;
+  a {
+    color: #7dfa9b;
+  }
+`;
+
 const Menu = style.div`
-  padding: 80px 0;
+  padding: 0 0 80px;
   display: flex;
   margin-bottom: auto;
   margin-right: auto;
@@ -89,6 +103,16 @@ const Navigation = (props) => {
   return (
     <Navbar>
       <Logo to="/">The Artificial Artist</Logo>
+      <SubHead>
+        Create crazy, weird, unsettling, rad,{" "}
+        <a
+          target="_blank"
+          href="https://en.wikipedia.org/wiki/Generative_adversarial_network"
+        >
+          GAN
+        </a>{" "}
+        built music videos that will keep you up at night
+      </SubHead>
       {/* display create videos and log out if user has token, else 
             display browse videos, log in, and sign up */}
       {token ? (

@@ -76,13 +76,15 @@ const Footer = (props) => {
           </FooterLink>
           <FooterLink
             target="_blank"
-            href="https://www.linkedin.com/in/jake-gifford-4516251a/"
-          ></FooterLink>
-          <FooterLink
-            target="_blank"
             href="https://www.linkedin.com/in/jimmiqueparsons/"
           >
             Jimmique Parsons
+          </FooterLink>
+          <FooterLink
+            target="_blank"
+            href="https://www.linkedin.com/in/jake-gifford-4516251a/"
+          >
+            Jake Gifford
           </FooterLink>
           <FooterLink
             target="_blank"

@@ -259,10 +259,23 @@ const CreateVideo = (props) => {
               videoTitle.title !== "" &&
               titleLoading === true &&
               songLoading === false ? (
-                <div>
-                  <VideoButton type="submit">Submit</VideoButton>
-                  <Advanced onClick={handleClickOptions}>Advanced</Advanced>
-                </div>
+                <>
+                  {props.postVideoStart ? (
+                    <>
+                      <VideoButton disabled type="submit">
+                        Loading...
+                      </VideoButton>
+                      <Advanced disabled onClick={handleClickOptions}>
+                        Advanced
+                      </Advanced>
+                    </>
+                  ) : (
+                    <>
+                      <VideoButton type="submit">Submit</VideoButton>
+                      <Advanced onClick={handleClickOptions}>Advanced</Advanced>
+                    </>
+                  )}
+                </>
               ) : (
                 console.log("Hi")
               )}

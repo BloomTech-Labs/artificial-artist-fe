@@ -4,6 +4,7 @@ import { Link, useParams, withRouter } from "react-router-dom";
 import { getUserVideos } from "../store/actions";
 import Video from "./Video";
 import SecondaryNav from "./SecondaryNav";
+import Footer from "./Footer";
 import styled from "styled-components";
 import { linkSync } from "fs";
 
@@ -33,8 +34,13 @@ const VideoTitle = styled.h3`
 const SmallerVideo = styled.div`
   background-color: #44e0f6;
   border: 10px solid #44e0f6;
-  box-shadow: 10px 10px 0px 0px rgba(125, 250, 154, 1),
-    10px 10px 23px 2px rgba(0, 0, 0, 0.46);
+  box-shadow: 10px 10px 0px 0px #7dfa9a, 0 20px 40px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease-in-out;
+  &:hover {
+    background-color: #7dfa9a;
+    border: 10px solid #7dfa9a;
+    box-shadow: 10px 10px 0px 0px #44e0f6, 0 20px 40px 0 rgba(0, 0, 0, 0.4);
+  }
 `;
 
 const Greeting = styled.h1`
@@ -115,6 +121,7 @@ const UserPage = (props) => {
           )}
         </Container>
       </VideoListContainer>
+      <Footer />
     </>
   );
 };
@@ -126,7 +133,6 @@ const mapStateToProps = (state) => ({
   getUserVideosError: state.getUserVideosError,
 });
 
-export default connect(
-  mapStateToProps,
-  { getUserVideos }
-)(withRouter(UserPage));
+export default connect(mapStateToProps, { getUserVideos })(
+  withRouter(UserPage)
+);

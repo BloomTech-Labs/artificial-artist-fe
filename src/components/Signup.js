@@ -53,6 +53,7 @@ const SignupInput = style.input`
   background-color: #0E0429;
   display: block;
   width: 100%;
+  transition: all .25s ease-in-out;
   &:focus {
     border: 2px solid #44E0F6;
     outline: none;
@@ -71,8 +72,12 @@ const SignupButton = style.button`
   cursor: pointer;
   white-space: nowrap;
   font-size: 26px;
+  transition: all .25s ease-in-out;
   &:hover {
     background-color: #F14946;
+  }
+  &:disabled {
+    background-color: #0E0429;
   }
 `;
 

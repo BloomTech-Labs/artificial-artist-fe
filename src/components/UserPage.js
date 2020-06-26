@@ -19,10 +19,16 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const VideoContainer = styled.div`
   width: 45%;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const VideoTitle = styled.h3`

@@ -8,6 +8,10 @@ const Navbar = style.nav`
   padding: 80px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    padding: 20px 0;
+    margin: unset;
+  }
 `;
 
 const Logo = style(Link)`
@@ -19,6 +23,13 @@ const Logo = style(Link)`
   text-decoration: none;
   margin-right: auto;
   width: 40%;
+  @media (max-width: 768px) {
+    -webkit-text-stroke-width: 1.00px; 
+    font-size: 35px;
+    width: 100%;
+    margin-right: unset;
+    text-align: center;
+  }
 `;
 
 const SubHead = style.h2`
@@ -33,6 +44,12 @@ const SubHead = style.h2`
   a {
     color: #7dfa9b;
   }
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+    font-size: 18x;
+    line-height: 34px;
+  }
 `;
 
 const Menu = style.div`
@@ -42,6 +59,9 @@ const Menu = style.div`
   margin-right: auto;
   justify-content: space-between;
   font-family: "Gibson Bold";
+  @media (max-width: 768px) {
+    margin-right: unset;
+  }
 `;
 
 const NavLink = style(Link)`

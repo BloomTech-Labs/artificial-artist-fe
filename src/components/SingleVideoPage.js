@@ -26,16 +26,27 @@ const Logo = style(Link)`
     &:hover {
       -webkit-text-stroke-color: #44E0F6;
     }
+  @media (max-width: 768px) {
+    width: 90%;
+    text-align: center;
+    font-size: 22px;
+  }
 `;
 
 const PageAlign = style.div`
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Container = style.div`
   margin: 0 auto;
   width: 60%;
   padding: 20px 0 60px;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const VideoWrapper = style.div`
@@ -45,6 +56,10 @@ const VideoWrapper = style.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 
 const VideoContainer = style.div`
@@ -85,6 +100,14 @@ const PageContent = style.div`
   }
   h3 {
     font-size: 20px;
+  }
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 16px;
+    }
   }
 `;
 

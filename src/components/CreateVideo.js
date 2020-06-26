@@ -15,6 +15,10 @@ const Container = style.div`
   margin: 0 auto;
   width: 60%;
   padding: 20px 0 60px;
+  @media (max-width: 768px) {
+    width: 90%;
+    padding: 20px 0 20px;
+  }
 `;
 
 const CreateVideoLabel = style.label`
@@ -47,6 +51,9 @@ const ListItem = style.li`
   transition: all .25s ease-in-out;
   &:hover {
     -webkit-text-stroke-color: #190755;
+  }
+  @media (max-width: 768px) {
+    font-size: 22px;
   }
 `;
 

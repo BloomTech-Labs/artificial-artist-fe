@@ -6,6 +6,9 @@ const Navbar = style.nav`
   margin: 0 auto;
   padding: 10px 0 40px;
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Logo = style(Link)`
@@ -21,6 +24,12 @@ const Logo = style(Link)`
     &:hover {
       -webkit-text-stroke-color: #44E0F6;
     }
+    @media (max-width: 768px) {
+      width: 100%;
+      text-align: center;
+      font-size: 28px;
+      margin-right: unset;
+    }
 `;
 
 const Menu = style.div`
@@ -29,6 +38,9 @@ const Menu = style.div`
   margin-left: auto;
   justify-content: space-between;
   font-family: "Gibson Bold";
+  @media (max-width: 768px) {
+    margin-left: unset;
+  }
 `;
 
 const NavLink = style(Link)`

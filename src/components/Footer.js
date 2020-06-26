@@ -15,8 +15,12 @@ const Callout = style.h3`
 `;
 
 const FooterContainer = style.footer`
-    width: 60%;
-    margin: 300px auto 0;
+  width: 60%;
+  margin: 300px auto 0;
+  @media (max-width: 768px) {
+    width: 90%;
+    margin: 80px auto 20px;
+  }
 `;
 
 const FooterLinks = style.div`

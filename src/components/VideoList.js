@@ -13,6 +13,9 @@ const VideoListContainer = style.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const HeroContainer = style.div`
@@ -22,6 +25,11 @@ const HeroContainer = style.div`
     margin: 80px;
     box-shadow: 0 20px 40px 0 rgba(0,0,0,.7);
     margin-bottom: 80px;
+    @media (max-width: 768px) {
+      width: 100%;
+      margin: 0px;
+      flex-direction: row;
+    }
 `;
 
 const SmallerVideo = style.div`
@@ -36,12 +44,19 @@ const SmallerVideo = style.div`
     border: 10px solid #7DFA9A;
     box-shadow: 10px 10px 0px 0px #44E0F6, 0 20px 40px 0 rgba(0,0,0,.4);
   }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const NavWrapper = style.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 40px;
+  }
 `;
 
 const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {

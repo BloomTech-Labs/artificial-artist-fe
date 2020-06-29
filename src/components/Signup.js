@@ -4,11 +4,34 @@ import { withRouter, Link } from "react-router-dom";
 import { signup } from "../store/actions";
 import style from "styled-components";
 
-const ContentCenter = style.div`
-  margin: 0 auto;
-  display: block;
+const PageAlign = style.div`
+  display: flex;
+  min-height: 100vh;
+  overflow: hidden;
+`;
+
+const FormContents = style.div`
   width: 30%;
-  padding-bottom: 300px;
+  padding: 80px;
+`;
+
+const SidebarContents = style.div`
+  background-color: #0E0429;
+  width: 70%;
+  overflow: hidden;
+  height: 100vh;
+  img {
+    margin: 0 auto;
+    width: 150%;
+    display: block;
+  }
+`;
+
+const Header = style.h1`
+  font-family: "Gill Sans Ultra", sans-serif;
+  -webkit-text-fill-color: #F14946;
+  -webkit-text-stroke-color: #FCFC0B;
+  -webkit-text-stroke-width: 0.50px; 
 `;
 
 const SignupLabel = style.label`
@@ -20,11 +43,13 @@ const SignupLabel = style.label`
 `;
 
 const SignupInput = style.input`
-  padding: 10px 15px;
-  border: 2px solid #FCFC0B;
-  border-radius: 8px;
+  padding: 15px 20px;
+  border: none;
+  border-bottom: 2px solid #FCFC0B;
   color: #FCFC0B;
   font-size: 24px;
+  border-radius: 30px;
+  margin-bottom: 20px;
   background-color: #0E0429;
   display: block;
   width: 100%;
@@ -35,21 +60,19 @@ const SignupInput = style.input`
 `;
 
 const SignupButton = style.button`
-  padding: 20px 30px;
-  color: #0E0429;
-  border-radius: 8px;
-  font-size: 18px;
-  display: block;
-  font-weight: 800;
+  background-color: #4499F6;
+  color: #FCFC0B; 
+  border-radius: 30px;
+  border: 0;
   width: 100%;
-  margin-top: 20px;
-  border: 2px solid #FCFC0B;
+  font-family: "Gibson Bold";
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,.4);
+  padding: 15px 20px;
   cursor: pointer;
-  background: rgb(250,112,239);
-  background: linear-gradient(180deg, rgba(250,112,239,1) 0%, rgba(254,235,251,1) 100%, rgba(2,0,36,1) 190755%);
+  white-space: nowrap;
+  font-size: 26px;
   &:hover {
-    background: rgb(254,235,251);
-    background: radial-gradient(circle, rgba(254,235,251,1) 0%, rgba(250,112,239,1) 100%, rgba(2,0,36,1) 190755%);
+    background-color: #F14946;
   }
 `;
 
@@ -76,62 +99,78 @@ function Signup(props) {
 
   return (
     <>
-      <ContentCenter>
-        <form onSubmit={onSubmit}>
-          <SignupLabel htmlFor="username">username</SignupLabel>
-          <SignupInput
-            required
-            type="text"
-            name="username"
-            value={creds.username}
-            onChange={handleChange}
-          ></SignupInput>
-          <SignupLabel htmlFor="first_name">first name</SignupLabel>
-          <SignupInput
-            required
-            type="text"
-            name="first_name"
-            value={creds.first_name}
-            onChange={handleChange}
-          ></SignupInput>
-          <SignupLabel htmlFor="last_name">last name</SignupLabel>
-          <SignupInput
-            required
-            type="text"
-            name="last_name"
-            value={creds.last_name}
-            onChange={handleChange}
-          ></SignupInput>
-          <SignupLabel htmlFor="email">email</SignupLabel>
-          <SignupInput
-            required
-            type="text"
-            name="email"
-            value={creds.email}
-            onChange={handleChange}
-          ></SignupInput>
-          <SignupLabel htmlFor="password">Password</SignupLabel>
-          <SignupInput
-            required
-            type="password"
-            name="password"
-            value={creds.password}
-            onChange={handleChange}
-          ></SignupInput>
-          {props.signupStart ? (
-            <SignupButton type="submit" disabled>
-              Loading...
-            </SignupButton>
-          ) : (
-            <SignupButton type="submit">Sign up</SignupButton>
-          )}
-          {props.signupError && (
-            <p style={{ color: "red", textAlign: "center", marginTop: "10px" }}>
-              There has been an issue logging in. Please check your credentials.
-            </p>
-          )}
-        </form>
-      </ContentCenter>
+      <PageAlign>
+        <FormContents>
+          <Header>Sign Up</Header>
+          <form onSubmit={onSubmit}>
+            <SignupLabel htmlFor="username">username</SignupLabel>
+            <SignupInput
+              required
+              type="text"
+              name="username"
+              placeholder="username"
+              value={creds.username}
+              onChange={handleChange}
+            ></SignupInput>
+            <SignupLabel htmlFor="first_name">first name</SignupLabel>
+            <SignupInput
+              required
+              type="text"
+              name="first_name"
+              placeholder="first_name"
+              value={creds.first_name}
+              onChange={handleChange}
+            ></SignupInput>
+            <SignupLabel htmlFor="last_name">last name</SignupLabel>
+            <SignupInput
+              required
+              type="text"
+              name="last_name"
+              placeholder="last_name"
+              value={creds.last_name}
+              onChange={handleChange}
+            ></SignupInput>
+            <SignupLabel htmlFor="email">email</SignupLabel>
+            <SignupInput
+              required
+              type="text"
+              name="email"
+              placeholder="email"
+              value={creds.email}
+              onChange={handleChange}
+            ></SignupInput>
+            <SignupLabel htmlFor="password">Password</SignupLabel>
+            <SignupInput
+              required
+              type="password"
+              name="password"
+              placeholder="password"
+              value={creds.password}
+              onChange={handleChange}
+            ></SignupInput>
+            {props.signupStart ? (
+              <SignupButton type="submit" disabled>
+                Loading...
+              </SignupButton>
+            ) : (
+              <SignupButton type="submit" data-testid="submit">
+                Sign up
+              </SignupButton>
+            )}
+            {props.signupError && (
+              <p
+                style={{ color: "red", textAlign: "center", marginTop: "10px" }}
+              >
+                There has been an issue logging in. Please check your
+                credentials.
+              </p>
+            )}
+          </form>
+        </FormContents>
+        <SidebarContents>
+          <img alt="logo" src="/images/face.svg" />
+        </SidebarContents>
+      </PageAlign>
     </>
   );
 }

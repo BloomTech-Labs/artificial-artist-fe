@@ -11,7 +11,7 @@ describe("Navigation", () => {
     const { getByText } = render(<Navigation />);
 
     getByText(/Artificial Artist/i);
-    getByText(/browse/i);
+    getByText(/search/i);
     getByText(/login/i);
     getByText(/sign up/i);
   });

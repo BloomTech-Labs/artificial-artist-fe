@@ -4,6 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 import { getVideos } from "../store/actions";
 import Video from "./Video";
 import Navigation from "./Navigation";
+import Footer from "./Footer";
 import style from "styled-components";
 
 const VideoListContainer = style.div`
@@ -12,6 +13,9 @@ const VideoListContainer = style.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const HeroContainer = style.div`
@@ -21,6 +25,11 @@ const HeroContainer = style.div`
     margin: 80px;
     box-shadow: 0 20px 40px 0 rgba(0,0,0,.7);
     margin-bottom: 80px;
+    @media (max-width: 768px) {
+      width: 100%;
+      margin: 0px;
+      flex-direction: row;
+    }
 `;
 
 const SmallerVideo = style.div`
@@ -28,13 +37,26 @@ const SmallerVideo = style.div`
   margin-bottom: 80px;
   background-color: #44E0F6;
   border: 10px solid #44E0F6;
-  box-shadow: 10px 10px 0px 0px rgba(125,250,154,1), 0 20px 40px 0 rgba(0,0,0,.4);;
+  box-shadow: 10px 10px 0px 0px #7DFA9A, 0 20px 40px 0 rgba(0,0,0,.4);
+  transition: all .25s ease-in-out;
+  &:hover {
+    background-color: #7DFA9A;
+    border: 10px solid #7DFA9A;
+    box-shadow: 10px 10px 0px 0px #44E0F6, 0 20px 40px 0 rgba(0,0,0,.4);
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const NavWrapper = style.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 40px;
+  }
 `;
 
 const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
@@ -65,6 +87,7 @@ const VideoList = ({ getVideosStart, videoList, videos, getVideos }) => {
             }
           })}
       </VideoListContainer>
+      <Footer />
     </>
   );
 };

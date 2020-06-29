@@ -17,7 +17,14 @@ import SingleVideoPage from "./components/SingleVideoPage";
 import UserPage from "./components/UserPage";
 import Search from "./components/SearchVideos";
 import style from "styled-components";
+import TagManager from "react-gtm-module";
 import "./App.css";
+
+const tagManagerArgs = {
+  gtmId: "GTM-TZCRF9D",
+};
+
+TagManager.initialize(tagManagerArgs);
 
 const Base = style.div`
   background: rgb(25,7,85);
@@ -59,7 +66,4 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
-export default connect(
-  mapStateToProps,
-  { logout, getVideos }
-)(withRouter(App));
+export default connect(mapStateToProps, { logout, getVideos })(withRouter(App));

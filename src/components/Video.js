@@ -19,6 +19,10 @@ const VideoPlayPause = style.img`
   position: absolute;
   cursor: pointer;
   display: ${(props) => (props.playing ? "none" : "block")};
+  transition: all .25s ease-in-out;
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 const ReactPlayerExt = style(ReactPlayer)`

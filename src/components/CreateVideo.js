@@ -5,6 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { SpinnerDiv, Spinner } from "../styled-components/spinner";
 import style from "styled-components";
 import { postVideo } from "../store/actions";
+import AdvancedOptions from "../components/AdvancedOptions";
 import SecondaryNav from "./SecondaryNav";
 
 const API_URL =
@@ -14,6 +15,10 @@ const Container = style.div`
   margin: 0 auto;
   width: 60%;
   padding: 20px 0 60px;
+  @media (max-width: 768px) {
+    width: 90%;
+    padding: 20px 0 20px;
+  }
 `;
 
 const CreateVideoLabel = style.label`
@@ -43,8 +48,12 @@ const ListItem = style.li`
   -webkit-text-stroke-width: 1.00px;
   color: #7DFA9B;
   font-size: 30px;
+  transition: all .25s ease-in-out;
   &:hover {
     -webkit-text-stroke-color: #190755;
+  }
+  @media (max-width: 768px) {
+    font-size: 22px;
   }
 `;
 
@@ -99,21 +108,13 @@ const VideoButton = style.button`
   cursor: pointer;
   white-space: nowrap;
   font-size: 26px;
+  transition: all .25s ease-in-out;
   &:hover {
     background-color: #F14946;
   }
-`;
-
-const ResetDefaults = style.button`
-  width: 100%;
-  text-align: center;
-  font-size: 24px;
-  margin: 20px 0;
-  background: transparent;
-  border: none;
-  font-family: "Gibson Bold";
-  cursor: pointer;
-  color: #FF1313;
+  &:disabled {
+    background-color: #0E0429;
+  }
 `;
 
 const Advanced = style.button`
@@ -152,23 +153,6 @@ const CreateVideo = (props) => {
 
   const [optionsClicked, setOptionsClicked] = useState(false);
 
-  const [jitHover, setJitHover] = useState(false);
-  const [deepHover, setDeepHover] = useState(false);
-  const [truncateHover, setTruncateHover] = useState(false);
-  const [pitchHover, setPitchHover] = useState(false);
-  const [tempoHover, setTempoHover] = useState(false);
-  const [smoothHover, setSmoothHover] = useState(false);
-
-  const [videoParams, setVideoParams] = useState({
-    im_group: "RANDOM OBJECTS",
-    jitter: 0.5,
-    depth: 1,
-    truncation: 0.5,
-    pitch_sensitivity: 220,
-    tempo_sensitivity: 0.25,
-    smooth_factor: 20,
-  });
-
   const [selectedSong, setSelectedSong] = useState({
     title_short: "",
     preview: "",
@@ -177,6 +161,13 @@ const CreateVideo = (props) => {
     location: "youtube.com/video",
     video_title: "",
     user_id: localStorage.getItem("user_id"),
+    im_group: "RANDOM OBJECTS",
+    jitter: 0.5,
+    depth: 1,
+    truncation: 0.5,
+    pitch_sensitivity: 220,
+    tempo_sensitivity: 0.25,
+    smooth_factor: 20,
   });
 
   const fullQuery = `${API_URL}${query}`;
@@ -217,13 +208,6 @@ const CreateVideo = (props) => {
       artist: results[songItem].artist.name,
       deezer_id: results[songItem].id,
       video_title: videoTitle.title,
-      im_group: videoParams.im_group,
-      jitter: videoParams.jitter,
-      depth: videoParams.depth,
-      truncation: videoParams.truncation,
-      pitch_sensitivity: videoParams.pitch_sensitivity,
-      tempo_sensitivity: videoParams.tempo_sensitivity,
-      smooth_factor: videoParams.smooth_factor,
     });
 
     setSongLoading(false);
@@ -242,48 +226,17 @@ const CreateVideo = (props) => {
     setOptionsClicked(optionsClicked_new);
   };
 
-  const handleSliderChange = (event) => {
-    setVideoParams({
-      ...videoParams,
-      [event.target.name]: Number(event.target.value),
+  const handleVideoParams = (event) => {
+    setSelectedSong({
+      ...selectedSong,
+      im_group: event.im_group,
+      jitter: event.jitter,
+      depth: event.depth,
+      truncation: event.truncation,
+      pitch_sensitivity: event.pitch_sensitivity,
+      tempo_sensitivity: event.tempo_sensitivity,
+      smooth_factor: event.smooth_factor,
     });
-  };
-
-  const handleReset = (event) => {
-    event.preventDefault();
-    setVideoParams({
-      jitter: 0.5,
-      depth: 1,
-      truncation: 0.5,
-      pitch_sensitivity: 220,
-      tempo_sensitivity: 0.25,
-      smooth_factor: 20,
-    });
-  };
-
-  const handleJitHover = (event) => {
-    setJitHover(!jitHover);
-    console.log(event.target.hover);
-  };
-
-  const handleDeepHover = (event) => {
-    setDeepHover(!deepHover);
-  };
-
-  const handleTruncateHover = (event) => {
-    setTruncateHover(!truncateHover);
-  };
-
-  const handlePitchHover = (event) => {
-    setPitchHover(!pitchHover);
-  };
-
-  const handleTempoHover = (event) => {
-    setTempoHover(!tempoHover);
-  };
-
-  const handleSmoothHover = (event) => {
-    setSmoothHover(!smoothHover);
   };
 
   return (
@@ -318,258 +271,30 @@ const CreateVideo = (props) => {
               videoTitle.title !== "" &&
               titleLoading === true &&
               songLoading === false ? (
-                <div>
-                  <VideoButton type="submit">Submit</VideoButton>
-                  <Advanced onClick={handleClickOptions}>Advanced</Advanced>
-                </div>
+                <>
+                  {props.postVideoStart ? (
+                    <>
+                      <VideoButton disabled type="submit">
+                        Loading...
+                      </VideoButton>
+                      <Advanced disabled onClick={handleClickOptions}>
+                        Advanced
+                      </Advanced>
+                    </>
+                  ) : (
+                    <>
+                      <VideoButton type="submit">Submit</VideoButton>
+                      <Advanced onClick={handleClickOptions}>Advanced</Advanced>
+                    </>
+                  )}
+                </>
               ) : (
                 console.log("Hi")
               )}
             </div>
             <div className="advanced_options">
               {optionsClicked === true ? (
-                <div className="options">
-                  <ResetDefaults onClick={handleReset}>
-                    Reset Defaults
-                  </ResetDefaults>
-                  <div className="image_category">
-                    <CreateVideoLabel>
-                      Image Category
-                      <select
-                        onChange={(event) =>
-                          setVideoParams({
-                            ...videoParams,
-                            im_group: event.target.value,
-                          })
-                        }
-                      >
-                        <option value="RANDOM OBJECTS">Pick One</option>
-                        <option value="FISH">FISH</option>
-                        <option value="BIRDS">BIRDS</option>
-                        <option value="AMPHIBIANS">AMPHIBIANS</option>
-                        <option value="LIZARDS">LIZARDS</option>
-                        <option value="SNAKES">SNAKES</option>
-                        <option value="OCTOPED">OCTOPED</option>
-                        <option value="EXOTIC BIRDS">EXOTIC BIRDS</option>
-                        <option value="WEIRD MAMMALS">WEIRD MAMMALS</option>
-                        <option value="SQUISHY SEA CREATURES">
-                          SQUISHY SEA CREATURES
-                        </option>
-                        <option value="SHELLED SEA CREATURES">
-                          SHELLED SEA CREATURES
-                        </option>
-                        <option value="FANCY BIRDS">FANCY BIRDS</option>
-                        <option value="SEA MAMMALS">SEA MAMMALS</option>
-                        <option value="UGLY DOGS">UGLY DOGS</option>
-                        <option value="HOUND DOGS">HOUND DOGS</option>
-                        <option value="TERRIER DOGS">TERRIER DOGS</option>
-                        <option value="RETRIEVER DOGS">RETRIEVER DOGS</option>
-                        <option value="RANDOM DOGS">RANDOM DOGS</option>
-                        <option value="WOLVES">WOLVES</option>
-                        <option value="HYAENAS">HYAENAS</option>
-                        <option value="FOXY">FOXY</option>
-                        <option value="DOMESTIC CATS">DOMESTIC CATS</option>
-                        <option value="BIG CATS">BIG CATS</option>
-                        <option value="BEAR">BEAR</option>
-                        <option value="UNDERGROUND CATS">
-                          UNDERGROUND CATS
-                        </option>
-                        <option value="BEETLES">BEETLES</option>
-                        <option value="FLYING INSECTS">FLYING INSECTS</option>
-                        <option value="BUTTERFLIES">BUTTERFLIES</option>
-                        <option value="SHARP SEA STUFF">SHARP SEA STUFF</option>
-                        <option value="SMALL MAMMALS">SMALL MAMMALS</option>
-                        <option value="LARGE WILD ANIMALS">
-                          LARGE WILD ANIMALS
-                        </option>
-                        <option value="RANDOM MAMMALS">RANDOM MAMMALS</option>
-                        <option value="PRIMATES">PRIMATES</option>
-                        <option value="AFRICAN ANIMALS">AFRICAN ANIMALS</option>
-                        <option value="PANDAS">PANDAS</option>
-                        <option value="CRAZY SEA CREATURES">
-                          CRAZY SEA CREATURES
-                        </option>
-                        <option value="RANDOM OBJECTS">RANDOM OBJECTS</option>
-                        <option value="WORDS AND SIGNS">WORDS AND SIGNS</option>
-                        <option value="FOOD STUFF">FOOD STUFF</option>
-                        <option value="GEOLOGICAL STUFF">
-                          GEOLOGICAL STUFF
-                        </option>
-                        <option value="PEOPLE">PEOPLE</option>
-                        <option value="FLOWERING THINGS">
-                          FLOWERING THINGS
-                        </option>
-                        <option value="FUNGI">FUNGI</option>
-                        <option value="TOILET PAPER">TOILET PAPER</option>
-                      </select>
-                    </CreateVideoLabel>
-                  </div>
-                  <div className="jitter">
-                    <CreateVideoLabel>
-                      Jitter
-                      <div
-                        onMouseEnter={handleJitHover}
-                        onMouseLeave={handleJitHover}
-                      >
-                        ?
-                      </div>
-                      {jitHover && (
-                        <div>
-                          Prevents the same exact images from cycling
-                          repetitively during repetitive music so that the video
-                          output is more interesting. If you do want to cycle
-                          repetitively, set jitter to minimum.
-                        </div>
-                      )}
-                      <input
-                        type="range"
-                        name="jitter"
-                        min={0}
-                        max={1}
-                        step="0.05"
-                        value={videoParams.jitter}
-                        onChange={handleSliderChange}
-                      />
-                    </CreateVideoLabel>
-                  </div>
-                  <div className="depth">
-                    <CreateVideoLabel>
-                      Depth
-                      <div
-                        onMouseEnter={handleDeepHover}
-                        onMouseLeave={handleDeepHover}
-                      >
-                        ?
-                      </div>
-                      {deepHover && (
-                        <div>
-                          Max yields more thematically rich content. Lowering
-                          yields more 'deep' structures like human and dog
-                          faces. However, this depends heavily on the specific
-                          classes you are using.
-                        </div>
-                      )}
-                      <input
-                        type="range"
-                        name="depth"
-                        min={0.1}
-                        max={1}
-                        step="0.05"
-                        value={videoParams.depth}
-                        onChange={handleSliderChange}
-                      />
-                    </CreateVideoLabel>
-                  </div>
-                  <div className="truncation">
-                    <CreateVideoLabel>
-                      Truncation
-                      <div
-                        onMouseEnter={handleTruncateHover}
-                        onMouseLeave={handleTruncateHover}
-                      >
-                        ?
-                      </div>
-                      {truncateHover && (
-                        <div>
-                          Controls the variability of images generated. Max
-                          value yield more variable images, while lower values
-                          yield simpler images with more recognizable,
-                          normal-looking objects.
-                        </div>
-                      )}
-                      <input
-                        type="range"
-                        name="truncation"
-                        min={0.1}
-                        max={1}
-                        step="0.05"
-                        value={videoParams.truncation}
-                        onChange={handleSliderChange}
-                      />
-                    </CreateVideoLabel>
-                  </div>
-                  <div className="pitch">
-                    <CreateVideoLabel>
-                      Pitch Sensitivity
-                      <div
-                        onMouseEnter={handlePitchHover}
-                        onMouseLeave={handlePitchHover}
-                      >
-                        ?
-                      </div>
-                      {pitchHover && (
-                        <div>
-                          Controls how rapidly the thematic content of the video
-                          will react to changes in pitch.
-                        </div>
-                      )}
-                      <input
-                        type="range"
-                        name="pitch_sensitivity"
-                        min={200}
-                        max={295}
-                        step="5"
-                        value={videoParams.pitch_sensitivity}
-                        onChange={handleSliderChange}
-                      />
-                    </CreateVideoLabel>
-                  </div>
-                  <div className="tempo">
-                    <CreateVideoLabel>
-                      Tempo Sensitivity
-                      <div
-                        onMouseEnter={handleTempoHover}
-                        onMouseLeave={handleTempoHover}
-                      >
-                        ?
-                      </div>
-                      {tempoHover && (
-                        <div>
-                          Controls how rapidly the overall size, position, and
-                          orientation of objects in the images will react to
-                          changes in volume and tempo.{" "}
-                        </div>
-                      )}
-                      <input
-                        type="range"
-                        name="tempo_sensitivity"
-                        min={0.05}
-                        max={0.8}
-                        step="0.05"
-                        value={videoParams.tempo_sensitivity}
-                        onChange={handleSliderChange}
-                      />
-                    </CreateVideoLabel>
-                  </div>
-                  <div className="smooth">
-                    <CreateVideoLabel>
-                      Smooth Factor
-                      <div
-                        onMouseEnter={handleSmoothHover}
-                        onMouseLeave={handleSmoothHover}
-                      >
-                        ?
-                      </div>
-                      {smoothHover && (
-                        <div>
-                          Small local fluctuations in pitch can cause the video
-                          frames to fluctuate back and forth. If you want to
-                          visualize very fast music with rapid changes in pitch,
-                          lower the smooth factor.
-                        </div>
-                      )}
-                      <input
-                        type="range"
-                        name="smooth_factor"
-                        min={10}
-                        max={30}
-                        step="1"
-                        value={videoParams.smooth_factor}
-                        onChange={handleSliderChange}
-                      />
-                    </CreateVideoLabel>
-                  </div>
-                </div>
+                <AdvancedOptions onChange={handleVideoParams} />
               ) : (
                 console.log("Hooray")
               )}

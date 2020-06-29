@@ -8,11 +8,18 @@ const PageAlign = style.div`
   display: flex;
   min-height: 100vh;
   overflow: hidden;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const FormContents = style.div`
   width: 30%;
   padding: 80px;
+  @media (max-width: 768px) {
+    width: 90%;
+    padding: 40px;
+  }
 `;
 
 const SidebarContents = style.div`
@@ -24,6 +31,9 @@ const SidebarContents = style.div`
     margin: 0 auto;
     width: 150%;
     display: block;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
@@ -53,6 +63,7 @@ const SignupInput = style.input`
   background-color: #0E0429;
   display: block;
   width: 100%;
+  transition: all .25s ease-in-out;
   &:focus {
     border: 2px solid #44E0F6;
     outline: none;
@@ -71,8 +82,15 @@ const SignupButton = style.button`
   cursor: pointer;
   white-space: nowrap;
   font-size: 26px;
+  transition: all .25s ease-in-out;
   &:hover {
     background-color: #F14946;
+  }
+  &:disabled {
+    background-color: #0E0429;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 

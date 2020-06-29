@@ -120,6 +120,7 @@ function Login(props) {
               required
               type="text"
               name="email"
+              placeholder="email"
               value={creds.email}
               onChange={handleChange}
             ></LoginInput>
@@ -128,6 +129,7 @@ function Login(props) {
               required
               type="password"
               name="password"
+              placeholder="password"
               value={creds.password}
               onChange={handleChange}
             ></LoginInput>
@@ -136,7 +138,9 @@ function Login(props) {
                 Loading...
               </LoginButton>
             ) : (
-              <LoginButton type="submit">Login</LoginButton>
+              <LoginButton type="submit" data-testid="submit">
+                Login
+              </LoginButton>
             )}
             {props.loginError && (
               <p

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayer should have video player element 1`] = `
+<Fragment>
+  <styled.div
+    onClick={[Function]}
+  >
+    <Styled(ReactPlayer)
+      config={
+        Object {
+          "file": Object {
+            "attributes": Object {
+              "poster": "test.png",
+            },
+          },
+        }
+      }
+      controls={false}
+      height="100%"
+      playing={false}
+      playsinline={true}
+      url="test"
+      width="100%"
+    />
+    <styled.img
+      playing={false}
+      src="../images/icon-video-play.svg"
+    />
+  </styled.div>
+</Fragment>
+`;

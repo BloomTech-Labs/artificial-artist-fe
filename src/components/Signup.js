@@ -126,6 +126,7 @@ function Signup(props) {
               required
               type="text"
               name="username"
+              placeholder="username"
               value={creds.username}
               onChange={handleChange}
             ></SignupInput>
@@ -134,6 +135,7 @@ function Signup(props) {
               required
               type="text"
               name="first_name"
+              placeholder="first_name"
               value={creds.first_name}
               onChange={handleChange}
             ></SignupInput>
@@ -142,6 +144,7 @@ function Signup(props) {
               required
               type="text"
               name="last_name"
+              placeholder="last_name"
               value={creds.last_name}
               onChange={handleChange}
             ></SignupInput>
@@ -150,6 +153,7 @@ function Signup(props) {
               required
               type="text"
               name="email"
+              placeholder="email"
               value={creds.email}
               onChange={handleChange}
             ></SignupInput>
@@ -158,6 +162,7 @@ function Signup(props) {
               required
               type="password"
               name="password"
+              placeholder="password"
               value={creds.password}
               onChange={handleChange}
             ></SignupInput>
@@ -166,7 +171,9 @@ function Signup(props) {
                 Loading...
               </SignupButton>
             ) : (
-              <SignupButton type="submit">Sign up</SignupButton>
+              <SignupButton type="submit" data-testid="submit">
+                Sign up
+              </SignupButton>
             )}
             {props.signupError && (
               <p
